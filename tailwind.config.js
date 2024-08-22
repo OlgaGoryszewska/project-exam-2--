@@ -2,7 +2,14 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        "deep-blue": "#44468A",
+        "rav-mango": "#EAA123",
+        "dark-coconut": "#70493C",
+        "pink-silk": "#F9EDF0"
+      },
+    },
   },
   plugins: [],
 };

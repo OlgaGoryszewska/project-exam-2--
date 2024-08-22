@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function Nav() {
   return (
-    <nav>
+    <nav className="bg-deep-blue">
       <ul>
         <li>
           <Link to="/">Home</Link>
@@ -14,4 +14,4 @@ function Nav() {
     </nav>
   );
 }
-export default Nav; 
+export default Nav;
