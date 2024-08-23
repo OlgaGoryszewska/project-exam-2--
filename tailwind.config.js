@@ -7,7 +7,7 @@ export default {
         "deep-blue": "#44468A",
         "rav-mango": "#EAA123",
         "dark-coconut": "#70493C",
-        "pink-silk": "#F9EDF0"
+        "pink-silk": "#F9EDF0",
       },
     },
   },
