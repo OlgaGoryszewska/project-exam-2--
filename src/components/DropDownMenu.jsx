@@ -1,12 +1,15 @@
 import {useState} from 'react';
-import { Link } from "react-router-dom";    
+import { Link } from "react-router-dom"; 
+
+//Icons
+import palm from '../assets/img/palm.png';   
 
 function DropDownMenu() {
   const [showMenu, setShowMenu] = useState(false);
 
   return (
     <>
-      <button onClick={() => setShowMenu(!showMenu)}>Menu</button>
+      <button onClick={() => setShowMenu(!showMenu)}>< img className="h-8" src={palm} alt="menu icon"/></button>
       {showMenu && (
         <nav>
           <ul>
