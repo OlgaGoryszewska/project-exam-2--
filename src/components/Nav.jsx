@@ -6,7 +6,7 @@ function Nav() {
   return (
     <>
       <header className="flex flex-row bg-deep-blue h-12">
-        <img class=" h-11 "src={logo} alt="Logo for a nav bar" />
+        <img className=" h-11 "src={logo} alt="Logo for a nav bar" />
         <nav >
           <ul>
             <li>
