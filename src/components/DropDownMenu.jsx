@@ -9,9 +9,10 @@ function DropDownMenu() {
 
   return (
     <>
-      <button onClick={() => setShowMenu(!showMenu)}>< img className="relative h-8 " src={palm} alt="menu icon"/></button>
+      <button onClick={() => setShowMenu(!showMenu)}>< img className="relative h-8 z-40 " src={palm} alt="menu icon"/></button>
       {showMenu && (
-        <nav className='absolute bg-deep-blue '>
+        <nav className=' flex flex-row justify-center pt-10 absolute bg-deep-blue w-full h-full
+         '>
           <ul>
             <li>
               <Link className="link" to="/">Home</Link>
