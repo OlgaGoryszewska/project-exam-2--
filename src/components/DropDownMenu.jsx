@@ -11,7 +11,7 @@ function DropDownMenu() {
     <>
       <button onClick={() => setShowMenu(!showMenu)}>< img className="relative h-8 " src={palm} alt="menu icon"/></button>
       {showMenu && (
-        <nav className='absolute'>
+        <nav className='absolute bg-deep-blue '>
           <ul>
             <li>
               <Link to="/">Home</Link>
