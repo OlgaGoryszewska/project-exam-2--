@@ -14,10 +14,10 @@ function DropDownMenu() {
         <nav className='absolute bg-deep-blue '>
           <ul>
             <li>
-              <Link to="/">Home</Link>
+              <Link className="link" to="/">Home</Link>
             </li>
             <li>
-              <Link to="/login">Login</Link>
+              <Link className="link" to="/login">Login</Link>
             </li>
           </ul>
         </nav>
