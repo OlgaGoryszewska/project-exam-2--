@@ -9,9 +9,9 @@ function DropDownMenu() {
 
   return (
     <>
-      <button onClick={() => setShowMenu(!showMenu)}>< img className="h-8" src={palm} alt="menu icon"/></button>
+      <button onClick={() => setShowMenu(!showMenu)}>< img className="relative h-8 " src={palm} alt="menu icon"/></button>
       {showMenu && (
-        <nav>
+        <nav className='absolute'>
           <ul>
             <li>
               <Link to="/">Home</Link>
