@@ -10,7 +10,7 @@ export default {
         "pink-silk": "#F9EDF0",
       },
       fontFamily: {
-        "marvel": ["Marvel", "sans-serif"],
+        "unica": ["Unica One", "cursive"],
         "roboto": ["Roboto", "sans-serif"],
         
       },

@@ -15,10 +15,10 @@ function DropDownMenu() {
          '>
           <ul>
             <li className='pt-6'>
-              <Link className="link" to="/">Home</Link>
+              <Link onClick={() => setShowMenu(!showMenu)}className="link" to="/">Home</Link>
             </li>
             <li className='pt-4'>
-              <Link className="link" to="/login">Login</Link>
+              <Link onClick={() => setShowMenu(!showMenu)}className="link" to="/login">Login</Link>
             </li >
           </ul>
         </nav>
