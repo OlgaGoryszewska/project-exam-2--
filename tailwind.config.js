@@ -11,6 +11,7 @@ export default {
       },
       fontFamily: {
         "marvel": ["Marvel", "sans-serif"],
+        "roboto": ["Roboto", "sans-serif"],
         
       },
     },
