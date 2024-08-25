@@ -9,16 +9,17 @@ function DropDownMenu() {
 
   return (
     <>
-      <button onClick={() => setShowMenu(!showMenu)}>< img className="relative h-8 " src={palm} alt="menu icon"/></button>
+      <button onClick={() => setShowMenu(!showMenu)}>< img className="relative h-8 z-40 pr-4 " src={palm} alt="menu icon"/></button>
       {showMenu && (
-        <nav className='absolute bg-deep-blue '>
+        <nav className=' flex flex-row justify-center pt-10 absolute bg-deep-blue w-full h-full
+         '>
           <ul>
-            <li>
-              <Link to="/">Home</Link>
+            <li className='pt-6'>
+              <Link onClick={() => setShowMenu(!showMenu)}className="link" to="/">Home</Link>
             </li>
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
+            <li className='pt-4'>
+              <Link onClick={() => setShowMenu(!showMenu)}className="link" to="/login">Login</Link>
+            </li >
           </ul>
         </nav>
       )}

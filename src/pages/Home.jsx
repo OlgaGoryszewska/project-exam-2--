@@ -1,9 +1,11 @@
 import React from "react";
+import heroImg from "../assets/img/heroImg.png";
 
 function Home() {
   return (
     <div>
-      <h1>This is the home page</h1>
+      <img src={heroImg} alt="home" />
+      <h1>Discover the best retreats of Sri Lanka</h1>
     </div>
   );
 }

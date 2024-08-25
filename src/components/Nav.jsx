@@ -7,7 +7,7 @@ function Nav() {
   return (
     <>
       <header className="flex flex-row justify-between bg-deep-blue h-12">
-        <img className=" h-11 "src={logo} alt="Logo for a nav bar" />
+        <img className=" z-40 h-11 "src={logo} alt="Logo for a nav bar" />
         <DropDownMenu/>
       </header>
     </>

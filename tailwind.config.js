@@ -9,6 +9,11 @@ export default {
         "dark-coconut": "#70493C",
         "pink-silk": "#F9EDF0",
       },
+      fontFamily: {
+        "unica": ["Unica One", "cursive"],
+        "roboto": ["Roboto", "sans-serif"],
+        
+      },
     },
   },
   plugins: [],
