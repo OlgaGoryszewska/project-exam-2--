@@ -1,8 +1,16 @@
-# React + Vite
+**Welcome to my project exam 2**
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+I decided to name my project Travel Lanka since all the venues will be listed from that contry. I decided to do so for a styling puroses.
 
-Currently, two official plugins are available:
+*Figma wirefram link:*
+https://www.figma.com/design/XWlL5cnC562oPm6EQ5ZBf1/Project-Exam-2?node-id=40-275&t=jk0UPB9AKBru2Ane-1
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+*Figma prototype link:*
+https://www.figma.com/proto/XWlL5cnC562oPm6EQ5ZBf1/Project-Exam-2?node-id=40-275&t=jk0UPB9AKBru2Ane-1
+
+Netlify Link:
+https://lanka-travel.netlify.app/
+
+Git Repository Link:
+
+https://github.com/OlgaGoryszewska/project-exam-2--
