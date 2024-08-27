@@ -10,7 +10,7 @@ function GetVenueList() {
       try {
         const response = await fetch(url);
         const data = await response.json();
-        setVenueList(data.data); 
+        setVenueList(data.data); // Assuming the array of venues is in `data.data`
       } catch (error) {
         console.error("Error fetching venue data:", error);
       }
@@ -23,7 +23,7 @@ function GetVenueList() {
       {venueList.length > 0 ? (
         venueList.map((venue) => (
           <div key={venue.id}>
-            <h1>{venue.name}</h1>
+            <h2>{venue.name}</h2>
             <p>{venue.description}</p>
           </div>
         ))

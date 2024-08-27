@@ -12,8 +12,12 @@ export default {
       fontFamily: {
         "unica": ["Unica One", "cursive"],
         "roboto": ["Roboto", "sans-serif"],
-        
       },
+      maxHeight: {
+        "800": "864px",
+      },
+
+    
     },
   },
   plugins: [],
