@@ -31,7 +31,7 @@ function GetVenueList() {
                   key={index}
                   src={mediaItem.url} 
                   alt={mediaItem.alt || 'Venue Image'} 
-                  className="w-full h-auto my-4"
+                  className="venue-image"
                 />
               ))
             ) : (

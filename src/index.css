@@ -30,3 +30,8 @@
     @apply  text-pink-silk font-unica text-3xl;
 
 }
+
+.venue-image {
+    @apply  rounded;
+
+}
