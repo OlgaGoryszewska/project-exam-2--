@@ -10,7 +10,7 @@ function GetVenueList() {
       try {
         const response = await fetch(url);
         const data = await response.json();
-        setVenueList(data.data); // Assuming the array of venues is in `data.data`
+        setVenueList(data.data); 
       } catch (error) {
         console.error("Error fetching venue data:", error);
       }
