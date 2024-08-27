@@ -19,12 +19,24 @@ function GetVenueList() {
   }, []);
 
   return (
-    <div>
+    <div className='mx-4'>
       {venueList.length > 0 ? (
         venueList.map((venue) => (
           <div key={venue.id}>
             <h2>{venue.name}</h2>
             <p>{venue.description}</p>
+            {venue.media && venue.media.length > 0 ? (
+              venue.media.map((mediaItem, index) => (
+                <img 
+                  key={index}
+                  src={mediaItem.url} 
+                  alt={mediaItem.alt || 'Venue Image'} 
+                  className="w-full h-auto my-4"
+                />
+              ))
+            ) : (
+              <p>No images available</p>
+            )}
           </div>
         ))
       ) : (
