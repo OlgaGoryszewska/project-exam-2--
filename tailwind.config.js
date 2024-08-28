@@ -10,14 +10,12 @@ export default {
         "pink-silk": "#F9EDF0",
       },
       fontFamily: {
-        "unica": ["Unica One", "cursive"],
-        "roboto": ["Roboto", "sans-serif"],
+        unica: ["Unica One", "cursive"],
+        roboto: ["Roboto", "sans-serif"],
       },
       maxHeight: {
-        "800": "864px",
+        800: "864px",
       },
-
-    
     },
   },
   plugins: [],

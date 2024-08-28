@@ -1,8 +1,13 @@
-import { useState, useEffect } from 'react';
-import Venue from '../assets/img/venue.png';
-import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
+import { useState, useEffect } from "react";
+import Venue from "../assets/img/venue.png";
 
-const url = 'https://v2.api.noroff.dev/holidaze/venues';
+//Icons
+import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
+import WifiIcon from '@mui/icons-material/Wifi';
+import BakeryDiningIcon from '@mui/icons-material/BakeryDining';
+import PlaceOutlinedIcon from '@mui/icons-material/PlaceOutlined';
+
+const url = "https://v2.api.noroff.dev/holidaze/venues";
 
 function GetVenueList() {
   const [venueList, setVenueList] = useState([]);
@@ -12,7 +17,7 @@ function GetVenueList() {
       try {
         const response = await fetch(url);
         const data = await response.json();
-        setVenueList(data.data); 
+        setVenueList(data.data);
       } catch (error) {
         console.error("Error fetching venue data:", error);
       }
@@ -21,37 +26,47 @@ function GetVenueList() {
   }, []);
 
   return (
-      <div className='mx-4'>
-        {venueList.length > 0 ? (
-          venueList.map((venue) => (
-            <div key={venue.id} className="venue-item">
-              <h2>
-                {venue.name}
-              </h2>
-              {venue.media && venue.media.length > 0 ? (
-                venue.media.map((mediaItem, index) => (
-                  <img 
-                    key={index}
-                    src={mediaItem.url} 
-                    alt={mediaItem.alt || 'Venue Image'} 
-                    className="venue-image"
-                  />
-                ))
-              ) : (
-                <img 
-                src={Venue} 
-                alt="missing img" 
-                className="venue-image"
+    <div className="mx-4">
+      {venueList.length > 0 ? (
+        venueList.map((venue) => (
+          <div key={venue.id} className="venue-item">
+            <h2>{venue.name}</h2>
+            {venue.media && venue.media.length > 0 ? (
+              venue.media.map((mediaItem, index) => (
+                <img
+                  key={index}
+                  src={mediaItem.url}
+                  alt={mediaItem.alt || "Venue Image"}
+                  className="venue-image"
                 />
-              )}
-              <PeopleAltIcon  />
+              ))
+            ) : (
+              <img src={Venue} alt="missing img" className="venue-image" />
+            )}
+            <div className="card-home-page">
+              <PeopleAltIcon />
+              <p>{venue.maxGuests} Guests </p>
             </div>
-          ))
-        ) : (
-          <p>Loading venues...</p>
-        )}
-      </div>
-    );
+            <div className="card-home-page">
+              <WifiIcon/> 
+              <p>{venue.meta.wifi ? "Available" : "Not Available"}</p>
+            </div>
+            <div className="card-home-page">
+              <BakeryDiningIcon/> 
+              <p>{venue.meta.breakfast ? "Breakfast" : "Not Available"}</p>
+            </div>
+            <div className="card-home-page">
+             <PlaceOutlinedIcon/> 
+             <p>{venue.city ? venue.city : 'Sri Lanka'}</p>
+
+            </div>
+          </div>
+        ))
+      ) : (
+        <p>Loading venues...</p>
+      )}
+    </div>
+  );
 }
 
 export default GetVenueList;
