@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import Venue from '../assets/img/venue.png';
 
+
+
 const url = 'https://v2.api.noroff.dev/holidaze/venues';
 
 function GetVenueList() {
@@ -20,34 +22,34 @@ function GetVenueList() {
   }, []);
 
   return (
-    <div className='mx-4'>
-      {venueList.length > 0 ? (
-        venueList.map((venue) => (
-          <div key={venue.id}>
-            <h2>{venue.name}</h2>
-            {venue.media && venue.media.length > 0 ? (
-              venue.media.map((mediaItem, index) => (
+      <div className='mx-4'>
+        {venueList.length > 0 ? (
+          venueList.map((venue) => (
+            <div key={venue.id}>
+              <h2>{venue.name}</h2>
+              {venue.media && venue.media.length > 0 ? (
+                venue.media.map((mediaItem, index) => (
+                  <img 
+                    key={index}
+                    src={mediaItem.url} 
+                    alt={mediaItem.alt || 'Venue Image'} 
+                    className="venue-image"
+                  />
+                ))
+              ) : (
                 <img 
-                  key={index}
-                  src={mediaItem.url} 
-                  alt={mediaItem.alt || 'Venue Image'} 
-                  className="venue-image"
+                src={Venue} 
+                alt="missing img" 
+                className="venue-image"
                 />
-              ))
-            ) : (
-              <img 
-              src={Venue} 
-              alt="missing img" 
-              className="venue-image"
-              />
-            )}
-          </div>
-        ))
-      ) : (
-        <p>Loading venues...</p>
-      )}
-    </div>
-  );
+              )}
+            </div>
+          ))
+        ) : (
+          <p>Loading venues...</p>
+        )}
+      </div>
+    );
 }
 
 export default GetVenueList;
