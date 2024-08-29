@@ -43,3 +43,6 @@
 .venue-icon {
   @apply text-dark-coconut pr-2;
 }
+.star {
+  @apply text-rav-mango  pr-1  ;
+}

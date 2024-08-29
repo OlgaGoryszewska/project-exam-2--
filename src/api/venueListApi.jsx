@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Venue from "../assets/img/venue.png";
+import StarRating from "../components/RatingStars";
 
 //Icons
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
@@ -62,7 +63,10 @@ function GetVenueList() {
               </div>
             </div>
             <div>
+              <StarRating rating={venue.rating}/>
               
+              
+
             </div>
           </div>
         ))
