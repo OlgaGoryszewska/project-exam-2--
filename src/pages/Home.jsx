@@ -1,4 +1,4 @@
-import GetVenueList from "../api/venueListApi";
+import GetVenueList from "../api/VenueList";
 import heroImg from "../assets/img/heroImg.png";
 
 function Home() {
