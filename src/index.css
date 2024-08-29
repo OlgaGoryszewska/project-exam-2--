@@ -44,5 +44,8 @@
   @apply text-dark-coconut pr-2;
 }
 .star {
-  @apply text-rav-mango  pr-1  ;
+  @apply text-rav-mango  pr-1;
+}
+.button {
+  @apply text-dark-coconut border border-dark-coconut px-4 rounded;
 }

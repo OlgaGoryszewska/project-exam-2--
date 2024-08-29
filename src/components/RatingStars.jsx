@@ -1,9 +1,7 @@
-
-import PropTypes from 'prop-types';
-import StarIcon from '@mui/icons-material/Star';
-import StarHalfIcon from '@mui/icons-material/StarHalf';
-import StarOutlineIcon from '@mui/icons-material/StarOutline';
-
+import PropTypes from "prop-types";
+import StarIcon from "@mui/icons-material/Star";
+import StarHalfIcon from "@mui/icons-material/StarHalf";
+import StarOutlineIcon from "@mui/icons-material/StarOutline";
 
 function StarRating({ rating }) {
   const fullStars = Math.floor(rating);
@@ -12,13 +10,17 @@ function StarRating({ rating }) {
 
   return (
     <>
-      {Array(fullStars).fill().map((_, index) => (
-        <StarIcon key={index} className="star" />
-      ))}
+      {Array(fullStars)
+        .fill()
+        .map((_, index) => (
+          <StarIcon key={index} className="star" />
+        ))}
       {halfStar && <StarHalfIcon className="star" />}
-      {Array(emptyStars).fill().map((_, index) => (
-        <StarOutlineIcon key={index + fullStars} className="star" />
-      ))}
+      {Array(emptyStars)
+        .fill()
+        .map((_, index) => (
+          <StarOutlineIcon key={index + fullStars} className="star" />
+        ))}
     </>
   );
 }

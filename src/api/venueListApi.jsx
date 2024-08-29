@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Venue from "../assets/img/venue.png";
 import StarRating from "../components/RatingStars";
+import { Link } from "react-router-dom";
 
 //Icons
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
@@ -62,11 +63,15 @@ function GetVenueList() {
                 <p>{venue.city ? venue.city : "Colombo"}</p>
               </div>
             </div>
-            <div>
-              <StarRating rating={venue.rating}/>
-              
-              
+            <div className="flex flex-row justify-between py-3 border-b border-pink-silk border-dashed mb-2">
+              <div>
+                <StarRating rating={venue.rating} />
+              </div>
 
+              <p>{venue.price} $</p>
+              <button type="button" className="button">
+                <Link to={"/Venue"}>View</Link>
+              </button>
             </div>
           </div>
         ))
