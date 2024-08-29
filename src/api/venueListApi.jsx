@@ -3,9 +3,9 @@ import Venue from "../assets/img/venue.png";
 
 //Icons
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
-import WifiIcon from '@mui/icons-material/Wifi';
-import BakeryDiningIcon from '@mui/icons-material/BakeryDining';
-import PlaceOutlinedIcon from '@mui/icons-material/PlaceOutlined';
+import WifiIcon from "@mui/icons-material/Wifi";
+import BakeryDiningIcon from "@mui/icons-material/BakeryDining";
+import PlaceOutlinedIcon from "@mui/icons-material/PlaceOutlined";
 
 const url = "https://v2.api.noroff.dev/holidaze/venues";
 
@@ -43,22 +43,26 @@ function GetVenueList() {
             ) : (
               <img src={Venue} alt="missing img" className="venue-image" />
             )}
-            <div className="card-home-page">
-              <PeopleAltIcon />
-              <p>{venue.maxGuests} Guests </p>
+            <div className="grid grid-cols-2 gap-2 border-dashed border-b border-pink-silk ">
+              <div className="card-home-page">
+                <PeopleAltIcon className="venue-icon" />
+                <p>{venue.maxGuests} Guests </p>
+              </div>
+              <div className="card-home-page">
+                <WifiIcon className="venue-icon" />
+                <p>{venue.meta.wifi ? "Available" : "Not Available"}</p>
+              </div>
+              <div className="card-home-page">
+                <BakeryDiningIcon className="venue-icon" />
+                <p>{venue.meta.breakfast ? "Breakfast" : "Not Available"}</p>
+              </div>
+              <div className="card-home-page">
+                <PlaceOutlinedIcon className="venue-icon" />
+                <p>{venue.city ? venue.city : "Colombo"}</p>
+              </div>
             </div>
-            <div className="card-home-page">
-              <WifiIcon/> 
-              <p>{venue.meta.wifi ? "Available" : "Not Available"}</p>
-            </div>
-            <div className="card-home-page">
-              <BakeryDiningIcon/> 
-              <p>{venue.meta.breakfast ? "Breakfast" : "Not Available"}</p>
-            </div>
-            <div className="card-home-page">
-             <PlaceOutlinedIcon/> 
-             <p>{venue.city ? venue.city : 'Sri Lanka'}</p>
-
+            <div>
+              
             </div>
           </div>
         ))

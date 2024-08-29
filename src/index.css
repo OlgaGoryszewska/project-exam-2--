@@ -33,9 +33,13 @@
 }
 
 .venue-image {
-  @apply object-cover rounded max-h-44 w-full;
+  @apply object-cover rounded max-h-44 w-full pb-2;
 }
 
 .card-home-page {
   @apply flex flex-row;
+}
+
+.venue-icon {
+  @apply text-dark-coconut pr-2;
 }
