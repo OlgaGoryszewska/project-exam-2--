@@ -1,11 +1,11 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-const url = 'https://v2.api.noroff.dev/holidaze/venues';
+const url = "https://v2.api.noroff.dev/holidaze/venues";
 
 function VenueById() {
-  const [venueById, setVenueById] = useState(null); 
-  const { id } = useParams(); 
+  const [venueById, setVenueById] = useState(null);
+  const { id } = useParams();
 
   useEffect(() => {
     async function fetchVenueById() {
@@ -16,7 +16,7 @@ function VenueById() {
         }
         const data = await response.json();
         setVenueById(data.data);
-        document.title = `${data.data.name}`; 
+        document.title = `${data.data.name}`;
       } catch (error) {
         console.error("Error fetching venue data:", error);
       }
@@ -25,10 +25,10 @@ function VenueById() {
     if (id) {
       fetchVenueById();
     }
-  }, [id]); 
+  }, [id]);
 
   if (!venueById) {
-    return <p>we are on the wayyyyy</p>; 
+    return <p>we are on the wayyyyy</p>;
   }
 
   return (

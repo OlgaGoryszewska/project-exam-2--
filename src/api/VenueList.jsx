@@ -70,7 +70,7 @@ function GetVenueList() {
 
               <p>{venue.price} $</p>
               <button type="button" className="button">
-                <Link to={"/Venue"}>View</Link>
+                <Link to={`/Venue/${venue.id}`}>View</Link>
               </button>
             </div>
           </div>
