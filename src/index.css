@@ -49,3 +49,6 @@
 .button {
   @apply text-dark-coconut border border-dark-coconut px-4 rounded;
 }
+.card {
+  @apply bg-white shadow-md rounded max-h-44 m-2;
+}
