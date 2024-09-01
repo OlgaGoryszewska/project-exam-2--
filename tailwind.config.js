@@ -8,6 +8,7 @@ export default {
         "rav-mango": "#EAA123",
         "dark-coconut": "#70493C",
         "pink-silk": "#F9EDF0",
+        "light-gray":"#CACACA"
       },
       fontFamily: {
         unica: ["Unica One", "cursive"],

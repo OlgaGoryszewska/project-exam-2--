@@ -44,9 +44,9 @@ function VenueById() {
 
   return (
     <div>
-      <div>
-        <p>{venueById.created}</p>
-        <p>{venueById.updated}</p>
+      <div className="flex flex justify-between p-4">
+        <p className="text-light-gray italic">Created: {venueById.created}</p >
+        <p className="text-light-gray italic">Updated: {venueById.updated}</p>
       </div>
       <div className="card">
         {venueById.media && venueById.media.length > 0 ? (
@@ -56,10 +56,10 @@ function VenueById() {
                 <img
                   src={mediaItem.url}
                   alt={mediaItem.alt || "Venue Image"}
-                  className="venue-image"
+                  className="venue-image "
                 />
-                <h2>{venueById.name}</h2>
-                <div className="data-container">
+                <h2 className="mx-4">{venueById.name}</h2>
+                <div className="data-container ">
                   <div className="card-home-page">
                     <PeopleAltIcon className="venue-icon" />
                     <p>{venueById.maxGuests} Guests </p>
@@ -90,16 +90,16 @@ function VenueById() {
                   </div>
                   <div className="card-home-page">
                     <PublicIcon className="venue-icon" />
-                    <p>{venueById.meta.parking ? "Parking" : "No Parking"}</p>
+                    <p>{venueById.country ? venueById.country: "Sri Lanka"}</p>
                   </div>
                 </div>
-                <p>{venueById.description}</p>
-                <div className="flex flex-row justify-between py-3 border-b border-pink-silk border-dashed mb-2">
+                <p className="mx-4">{venueById.description}</p>
+                <div className="flex flex-row justify-between py-3 border-t border-pink-silk border-dashed m-4">
               <div>
                 <StarRating rating={venueById.rating} />
               </div>
 
-              <p>{venueById.price} $</p>
+              <p>{venueById.price} $/Per Night</p>
             </div>
 
               </div>
