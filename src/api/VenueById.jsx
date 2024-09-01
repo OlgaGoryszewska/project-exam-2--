@@ -1,15 +1,16 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Venue from "../assets/img/venue.png";
+import StarRating from "../components/RatingStars";
 
 //Icons
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import WifiIcon from "@mui/icons-material/Wifi";
 import BakeryDiningIcon from "@mui/icons-material/BakeryDining";
 import PlaceOutlinedIcon from "@mui/icons-material/PlaceOutlined";
-import PetsIcon from '@mui/icons-material/Pets';
-import LocalParkingIcon from '@mui/icons-material/LocalParking';
-import PublicIcon from '@mui/icons-material/Public';
+import PetsIcon from "@mui/icons-material/Pets";
+import LocalParkingIcon from "@mui/icons-material/LocalParking";
+import PublicIcon from "@mui/icons-material/Public";
 
 const url = "https://v2.api.noroff.dev/holidaze/venues";
 
@@ -47,7 +48,7 @@ function VenueById() {
         <p>{venueById.created}</p>
         <p>{venueById.updated}</p>
       </div>
-      <div>
+      <div className="card">
         {venueById.media && venueById.media.length > 0 ? (
           <>
             {venueById.media.map((mediaItem, index) => (
@@ -58,7 +59,7 @@ function VenueById() {
                   className="venue-image"
                 />
                 <h2>{venueById.name}</h2>
-                <div>
+                <div className="data-container">
                   <div className="card-home-page">
                     <PeopleAltIcon className="venue-icon" />
                     <p>{venueById.maxGuests} Guests </p>
@@ -81,9 +82,7 @@ function VenueById() {
                   </div>
                   <div className="card-home-page">
                     <LocalParkingIcon className="venue-icon" />
-                    <p>
-                      {venueById.meta.parking ? "Parking" : "No Parking"}
-                    </p>
+                    <p>{venueById.meta.parking ? "Parking" : "No Parking"}</p>
                   </div>
                   <div className="card-home-page">
                     <PlaceOutlinedIcon className="venue-icon" />
@@ -91,11 +90,18 @@ function VenueById() {
                   </div>
                   <div className="card-home-page">
                     <PublicIcon className="venue-icon" />
-                    <p>
-                      {venueById.meta.parking ? "Parking" : "No Parking"}
-                    </p>
+                    <p>{venueById.meta.parking ? "Parking" : "No Parking"}</p>
                   </div>
                 </div>
+                <p>{venueById.description}</p>
+                <div className="flex flex-row justify-between py-3 border-b border-pink-silk border-dashed mb-2">
+              <div>
+                <StarRating rating={venueById.rating} />
+              </div>
+
+              <p>{venueById.price} $</p>
+            </div>
+
               </div>
             ))}
           </>

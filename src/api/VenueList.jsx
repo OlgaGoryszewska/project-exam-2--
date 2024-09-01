@@ -45,7 +45,7 @@ function GetVenueList() {
             ) : (
               <img src={Venue} alt="missing img" className="venue-image" />
             )}
-            <div className="grid grid-cols-2 gap-2 border-dashed border-b border-pink-silk ">
+            <div className="data-container">
               <div className="card-home-page">
                 <PeopleAltIcon className="venue-icon" />
                 <p>{venue.maxGuests} Guests </p>
