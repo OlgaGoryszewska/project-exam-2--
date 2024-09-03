@@ -1,5 +1,6 @@
 import GetVenueList from "../api/venueList";
 import heroImg from "../assets/img/heroImg.png";
+import SearchVenue from "../components/SearchVenue";  
 
 function Home() {
   return (
@@ -9,6 +10,8 @@ function Home() {
         <h1 className="text-center p-4 ">
           Discover the best retreats of Sri Lanka
         </h1>
+        <SearchVenue />
+
         <GetVenueList />
       </div>
     </div>
