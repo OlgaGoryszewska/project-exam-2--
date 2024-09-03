@@ -1,6 +1,6 @@
 import GetVenueList from "../api/venueList";
 import heroImg from "../assets/img/heroImg.png";
-import SearchVenue from "../components/SearchVenue";  
+import SearchVenue from "../api/SearchVenue";  
 
 function Home() {
   return (
@@ -11,7 +11,7 @@ function Home() {
           Discover the best retreats of Sri Lanka
         </h1>
         <SearchVenue />
-
+        <h3>All Venues...</h3>
         <GetVenueList />
       </div>
     </div>

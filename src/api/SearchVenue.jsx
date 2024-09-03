@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Venue from "../assets/img/venue.png";
-import StarRating from "./RatingStars";
+import StarRating from "../components/RatingStars";
 import { Link } from "react-router-dom";
 
 
