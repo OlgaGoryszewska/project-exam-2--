@@ -61,7 +61,7 @@ function SearchVenue() {
           </button>
         )}
       </div>
-      <ul className="mt-4">
+      <div className="mt-4">
         {filteredVenues.length > 0 ? (
           filteredVenues.map((venue) => (
             <div key={venue.id} className="venue-item">
@@ -109,9 +109,9 @@ function SearchVenue() {
             </div>
           ))
         ) : (
-          <li className="p-2 text-gray-500">No results found</li>
+          <p >No results found...</p>
         )}
-      </ul>
+      </div>
     </div>
   );
 }
