@@ -2,10 +2,10 @@
 
 I decided to name my project Travel Lanka since all the venues will be listed from that country. I decided to do so for styling purposes.
 
-*Figma wire frame link:*
+_Figma wire frame link:_
 https://www.figma.com/design/XWlL5cnC562oPm6EQ5ZBf1/Project-Exam-2?node-id=40-275&t=jk0UPB9AKBru2Ane-1
 
-*Figma prototype link:*
+_Figma prototype link:_
 https://www.figma.com/proto/XWlL5cnC562oPm6EQ5ZBf1/Project-Exam-2?node-id=40-275&t=jk0UPB9AKBru2Ane-1
 
 Netlify Link:
