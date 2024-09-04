@@ -1,4 +1,4 @@
-import GetVenueList from "../api/venueList";
+import GetVenueList from "../api/VenueList";
 import heroImg from "../assets/img/heroImg.png";
 import SearchVenue from "../api/SearchVenue";  
 
