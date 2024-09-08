@@ -1,8 +1,6 @@
-import { registerUser } from '../api/RegisterUser'
 import RegisterForm from '../components/RegisterForm'
-
+Ø
 function Register() {
-    registerUser()
     return (
         <div>
             <RegisterForm />

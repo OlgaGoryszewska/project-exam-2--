@@ -16,16 +16,31 @@ const RegistrationForm = () => {
 
     const [error, setError] = useState('')
 
-    const handleInputChange = (e) => {
-        const { name, value } = e.target
+    const handleInputChange = (event) => {
+        // const { name, value } = event.target
+        const inputName = event.target.name
+        const inputValue = event.target.value
         setFormData({
             ...formData,
-            [name]: value,
+            [inputName]: inputValue,
         })
     }
 
-    const handleSubmit = async (e) => {
-        e.preventDefault()
+    const handleSubmit = async (event) => {
+        event.preventDefault()
+
+        // const test = formData.avatarUrl ? formData.avatarUrl : undefined
+        // if avatarUrl is an empty string, set avatar to undefined
+
+        const avatar = formData.avatarUrl === '' ? undefined: {
+            url: formData.avatarUrl,
+            alt: formData.avatarAlt,
+        }
+
+        const banner = formData.bannerUrl === '' ? undefined: {
+            url: formData.bannerUrl,
+            alt: formData.bannerAlt,
+        }
 
         try {
             const newUser = {
@@ -33,14 +48,8 @@ const RegistrationForm = () => {
                 email: formData.email,
                 password: formData.password,
                 bio: formData.bio,
-                avatar: {
-                    url: formData.avatarUrl,
-                    alt: formData.avatarAlt,
-                },
-                banner: {
-                    url: formData.bannerUrl,
-                    alt: formData.bannerAlt,
-                },
+                avatar: avatar,
+                banner: banner,
                 venueManager: formData.venueManager,
             }
 
@@ -57,8 +66,8 @@ const RegistrationForm = () => {
             <input
                 type="text"
                 name="name"
-                value={formData.name}
                 onChange={handleInputChange}
+                value={formData.name}
                 placeholder="Name"
                 className="border rounded p-2 w-full"
             />
