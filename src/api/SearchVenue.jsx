@@ -44,7 +44,7 @@ function SearchVenue() {
 
   return (
     <div className="container mx-auto p-4 ">
-      <div className="relative">
+      <div >
         <input
           type="text"
           placeholder="Search venues by name or description"

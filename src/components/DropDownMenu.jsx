@@ -36,6 +36,16 @@ function DropDownMenu() {
                 Login
               </Link>
             </li>
+            <li className="pt-4">
+              <Link
+                onClick={() => setShowMenu(!showMenu)}
+                className="link"
+                to="/register"
+              >
+                Register
+              </Link>
+            </li>
+            
           </ul>
         </nav>
       )}
