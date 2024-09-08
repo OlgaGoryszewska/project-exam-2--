@@ -1,36 +1,26 @@
-const API_BASE_URL = 'https://v2.api.noroff.dev/holidaze';
+const API_BASE_URL = 'https://v2.api.noroff.dev/holidaze'
 
 export const registerUser = async (user) => {
-  try {
-    const response = await fetch(`${API_BASE_URL}/auth/register`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(user),
-    });
+    try {
+        const response = await fetch(`${API_BASE_URL}/auth/register`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(user),
+        })
 
-    if (!response.ok) {
-      throw new Error('Error registering user');
+        if (!response.ok) {
+            throw new Error('Error registering user')
+        }
+
+        const data = await response.json()
+        return data
+    } catch (error) {
+        console.error('Error registering user:', error)
+        throw error
     }
-
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error('Error registering user:', error);
-    throw error;
-  }
-};
-
-
-
-
-
-
-
-
-
-
+}
 
 /*{
   "name": "my_username", // Required
@@ -46,6 +36,4 @@ export const registerUser = async (user) => {
     "alt": "My banner alt text" // Optional
   },
   "venueManager": true // Optional
-} */  
-
-  
+} */

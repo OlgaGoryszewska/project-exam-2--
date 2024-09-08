@@ -1,11 +1,11 @@
-import VenueById from "../api/VenueById";
+import VenueById from '../api/VenueById'
 
 function Venue() {
-  return (
-    <div className="flex flex-col bg-pink-silk ">
-      <VenueById />
-    </div>
-  );
+    return (
+        <div className="flex flex-col bg-pink-silk ">
+            <VenueById />
+        </div>
+    )
 }
 
-export default Venue;
+export default Venue

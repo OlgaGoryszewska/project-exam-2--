@@ -1,15 +1,13 @@
-import { registerUser } from "../api/RegisterUser";
-import RegisterForm from "../components/RegisterForm";
-
+import { registerUser } from '../api/RegisterUser'
+import RegisterForm from '../components/RegisterForm'
 
 function Register() {
-registerUser();
+    registerUser()
     return (
-      <div>
-        <RegisterForm/>
-      </div>
-    );
-  }
-  
-  export default Register;
-  
+        <div>
+            <RegisterForm />
+        </div>
+    )
+}
+
+export default Register
