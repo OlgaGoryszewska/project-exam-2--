@@ -17,7 +17,6 @@ const RegistrationForm = () => {
     const [error, setError] = useState('')
 
     const handleInputChange = (event) => {
-        // const { name, value } = event.target
         const inputName = event.target.name
         const inputValue = event.target.value
         setFormData({
@@ -29,18 +28,21 @@ const RegistrationForm = () => {
     const handleSubmit = async (event) => {
         event.preventDefault()
 
-        // const test = formData.avatarUrl ? formData.avatarUrl : undefined
-        // if avatarUrl is an empty string, set avatar to undefined
+        const avatar =
+            formData.avatarUrl === ''
+                ? undefined
+                : {
+                      url: formData.avatarUrl,
+                      alt: formData.avatarAlt,
+                  }
 
-        const avatar = formData.avatarUrl === '' ? undefined: {
-            url: formData.avatarUrl,
-            alt: formData.avatarAlt,
-        }
-
-        const banner = formData.bannerUrl === '' ? undefined: {
-            url: formData.bannerUrl,
-            alt: formData.bannerAlt,
-        }
+        const banner =
+            formData.bannerUrl === ''
+                ? undefined
+                : {
+                      url: formData.bannerUrl,
+                      alt: formData.bannerAlt,
+                  }
 
         try {
             const newUser = {

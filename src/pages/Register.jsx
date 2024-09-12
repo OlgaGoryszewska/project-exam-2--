@@ -1,5 +1,5 @@
 import RegisterForm from '../components/RegisterForm'
-Ø
+
 function Register() {
     return (
         <div>
