@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { loginUser } from '../api/LoginUser'
+import { handleLogout } from '../handlers/logout'
 
 const LoginForm = () => {
     const [formData, setFormData] = useState({
@@ -57,6 +58,7 @@ const LoginForm = () => {
             >
                 Login
             </button>
+            <button onClick={handleLogout}>Logout</button>
         </form>
     )
 }
