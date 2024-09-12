@@ -1,6 +1,8 @@
-import GetVenueList from '../api/VenueList';
-import heroImg from '../assets/img/heroImg.png';
-import SearchVenue from '../api/SearchVenue';
+
+import GetVenueList from "../api/VenueList";
+import heroImg from "../assets/img/heroImg.png";
+import SearchVenue from "../api/SearchVenue";  
+
 
 function Home() {
     return (
