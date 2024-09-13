@@ -1,4 +1,4 @@
-import VenueById from '../api/VenueById'
+import VenueById from '../services/VenueById'
 
 function Venue() {
     return (
