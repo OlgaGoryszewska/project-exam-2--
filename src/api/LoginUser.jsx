@@ -3,7 +3,7 @@ const API_KEY = import.meta.env.VITE_API_KEY
 
 import { Save } from '../storage/Save'
 
-export async function loginUser(email, password) {
+export async function loginUser(object) {
 
     try {
         const response = await fetch(`${API_BASE_URL}/auth/login`, {
@@ -12,10 +12,7 @@ export async function loginUser(email, password) {
                 'Content-Type': 'application/json',
                 'X-Noroff-API-Key': API_KEY,
             },
-            body: JSON.stringify({
-                email,
-                password,
-            }),
+            body: JSON.stringify(object),
         });
         
         const responseData = await response.json();
