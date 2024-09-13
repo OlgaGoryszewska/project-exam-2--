@@ -1,3 +1,4 @@
+
 import GetVenueList from '../services/VenueList'
 import heroImg from '../assets/img/heroImg.png'
 import SearchVenue from '../services/SearchVenue'
