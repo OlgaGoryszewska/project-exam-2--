@@ -1,66 +1,54 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'
+const API_BASE_URL = 'https://v2.api.noroff.dev'
+const API_KEY = import.meta.env.VITE_API_KEY
 
-const ProfileRender = () => {
-    const [profile, setProfile] = useState(null); // State to hold profile data
-    const token = localStorage.getItem('token');  // Get token from localStorage
+export const ProfileRender = () => {
+    const [userName, setUserName] = useState('userName')
+    const accessToken = JSON.parse(localStorage.getItem('token'))
+    const profile = JSON.parse(localStorage.getItem('profile'))
+    console.log('this is the access token', accessToken)
 
     useEffect(() => {
         const fetchProfile = async () => {
             try {
-                const response = await fetch(`https://v2.api.noroff.dev/holidaze/profiles/<name>`, {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${token}`  // Include token in Authorization header
+                const response = await fetch(
+                    `${API_BASE_URL}/holidaze/profiles/${profile.name}`,
+                    {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            Authorization: `Bearer ${accessToken}`,
+                            'X-Noroff-API-Key': API_KEY,
+                        },
                     }
-                });
+                )
 
                 if (response.ok) {
-                    const data = await response.json();
-                    setProfile(data.data); // Assuming profile data is in "data" object
+                    const data = await response.json()
+                    setUserName(data.data)
                 } else {
-                    console.error('Error fetching profile:', response.statusText);
+                    console.error(
+                        'Error fetching profile:',
+                        response.statusText
+                    )
                 }
             } catch (error) {
-                console.error('Error fetching profile:', error);
+                console.error('Error fetching profile:', error)
             }
-        };
+        }
 
-        fetchProfile();
-    }, [token]);
+        fetchProfile()
+    }, [accessToken, profile.name])
 
-    if (!profile) {
-        return <div>Loading profile...</div>; // Show loading while fetching data
+    if (!accessToken) {
+        return <div>Loading profile...</div>
     }
 
     return (
         <div className="profile-page">
-            <h1>Welcome, {profile.name}</h1>
-            <p>Email: {profile.email}</p>
-            <p>Bio: {profile.bio || 'No bio available'}</p>
-            
-            {/* Display avatar */}
-            {profile.avatar && (
-                <div className="profile-avatar">
-                    <img src={profile.avatar.url} alt={profile.avatar.alt || 'Avatar'} />
-                </div>
-            )}
-
-            {/* Display banner */}
-            {profile.banner && (
-                <div className="profile-banner">
-                    <img src={profile.banner.url} alt={profile.banner.alt || 'Banner'} />
-                </div>
-            )}
-
-            {/* Display venue manager status */}
-            <p>Venue Manager: {profile.venueManager ? 'Yes' : 'No'}</p>
-
-            {/* Display counts of venues and bookings */}
-            <p>Venues: {profile._count?.venues || 0}</p>
-            <p>Bookings: {profile._count?.bookings || 0}</p>
+            <h1>Welcome, {userName.name}</h1>
         </div>
-    );
-};
+    )
+}
 
-export default ProfileRender;
+export default ProfileRender
