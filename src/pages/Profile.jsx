@@ -20,11 +20,18 @@ function Profile() {
 
     return (
         <div>
-            <h1>Profile</h1>
             {profile ? (
                 <div>
-                    <p>Name: {profile.name}</p>
-                    <p>Email: {profile.email}</p>
+                    <div className="flex items-center justify-end p-2">
+                        <p className=" p-2 ">
+                            {profile.name}
+                        </p>
+                        <img
+                            src={profile.avatar.url}
+                            alt="avatar"
+                            className="w-10 h-10 rounded-full "
+                        />
+                    </div>
                 </div>
             ) : (
                 <p>Loading profile...</p>
