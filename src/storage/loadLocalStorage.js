@@ -1,3 +1,3 @@
-export function Load(key) {
+export function loadLocalStorage(key) {
     return JSON.parse(localStorage.getItem(key))
 }
