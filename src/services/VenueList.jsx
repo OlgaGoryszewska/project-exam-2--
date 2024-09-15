@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import Venue from '../assets/img/venue.png'
+import Venue from '../assets/img/venuePng.png'
 import StarRating from '../components/RatingStars'
 import { Link } from 'react-router-dom'
 

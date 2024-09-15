@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import Venue from '../assets/img/venue.png'
+import VenuePng from '../assets/img/venuePng.png'
 import StarRating from './RatingStars'
 import { Link } from 'react-router-dom'
 import { findVenueByName } from '../services/findVenueByName'
@@ -59,7 +59,7 @@ function SearchVenue() {
                                 ))
                             ) : (
                                 <img
-                                    src={Venue}
+                                    src={VenuePng}
                                     alt="missing img"
                                     className="venue-image"
                                 />
