@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { registerUser } from '../services/RegisterUser'
+import { registerUser } from '../services/registerUser'
 
 const RegistrationForm = () => {
     const [formData, setFormData] = useState({

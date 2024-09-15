@@ -4,3 +4,5 @@ export const handleLogout = () => {
     alert('Logged out!')
     window.location.href = '/'
 }
+
+

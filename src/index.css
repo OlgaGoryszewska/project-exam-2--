@@ -7,7 +7,7 @@
 
 @layer base {
     body {
-        @apply font-roboto text-deep-blue;
+        @apply font-roboto text-deep-blue bg-pink-silk;
     }
 
     h1,
