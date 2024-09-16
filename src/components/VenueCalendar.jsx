@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Calendar from 'react-calendar'
-import 'react-calendar/dist/Calendar.css' // This is the default styling
+import 'react-calendar/dist/Calendar.css' 
 
 function VenueCalendar() {
     const [date, setDate] = useState(new Date())
