@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
-import Venue from '../assets/img/venue.png'
-import StarRating from '../components/RatingStars'
+import VenuePng from '../assets/img/venuePng.png'
+import StarRating from './RatingStars'
 import { Link } from 'react-router-dom'
+import { findVenueByName } from '../services/findVenueByName'
 
 //Icons
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt'
@@ -9,37 +10,19 @@ import WifiIcon from '@mui/icons-material/Wifi'
 import BakeryDiningIcon from '@mui/icons-material/BakeryDining'
 import PlaceOutlinedIcon from '@mui/icons-material/PlaceOutlined'
 
-const url = 'https://v2.api.noroff.dev/holidaze/venues'
-
 function SearchVenue() {
-    const [searchTerm, setSearchTerm] = useState('')
+    const [query, setQuery] = useState('')
     const [venues, setVenues] = useState([])
-    const [filteredVenues, setFilteredVenues] = useState([])
 
     useEffect(() => {
-        async function fetchVenues() {
-            try {
-                const response = await fetch(url)
-                const data = await response.json()
-                setVenues(data.data)
-                setFilteredVenues(data.data)
-            } catch (error) {
-                console.error('Error fetching venue data:', error)
-            }
-        }
-
-        fetchVenues()
-    }, [])
-    useEffect(() => {
-        if (searchTerm === '') {
-            setFilteredVenues(venues)
-        } else {
-            const filtered = venues.filter((venue) =>
-                venue.name.toLowerCase().includes(searchTerm.toLowerCase())
-            )
-            setFilteredVenues(filtered)
-        }
-    }, [searchTerm, venues])
+        findVenueByName(query)
+            .then((venuesReturnedByAPI) => {
+                setVenues(venuesReturnedByAPI)
+            })
+            .catch((error) => {
+                console.error('Error fetching profile:', error)
+            })
+    }, [query])
 
     return (
         <div className="container mx-auto p-4 ">
@@ -47,13 +30,13 @@ function SearchVenue() {
                 <input
                     type="text"
                     placeholder="Search venues by name or description"
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
+                    value={query}
+                    onChange={(e) => setQuery(e.target.value)}
                     className="w-full p-2 border border-deep-blue rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-rav-mango focus:border-transparent"
                 />
-                {searchTerm && (
+                {query && (
                     <button
-                        onClick={() => setSearchTerm('')}
+                        onClick={() => setQuery('')}
                         className="absolute right-2 top-2 text-gray-500 hover:text-rav-mango focus:outline-none"
                     >
                         Clear
@@ -61,8 +44,8 @@ function SearchVenue() {
                 )}
             </div>
             <div className="mt-4">
-                {filteredVenues.length > 0 ? (
-                    filteredVenues.map((venue) => (
+                {venues.length > 0 ? (
+                    venues.map((venue) => (
                         <div key={venue.id} className="venue-item">
                             <h2>{venue.name}</h2>
                             {venue.media && venue.media.length > 0 ? (
@@ -76,7 +59,7 @@ function SearchVenue() {
                                 ))
                             ) : (
                                 <img
-                                    src={Venue}
+                                    src={VenuePng}
                                     alt="missing img"
                                     className="venue-image"
                                 />

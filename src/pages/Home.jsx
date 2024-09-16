@@ -1,11 +1,11 @@
 
 import GetVenueList from '../services/VenueList'
 import heroImg from '../assets/img/heroImg.png'
-import SearchVenue from '../services/SearchVenue'
+import SearchVenue from '../components/SearchVenue'
 
 function Home() {
     return (
-        <div className="flex flex-col">
+        <div className="flex flex-col bg-white">
             <img
                 className="max-h-800  object-cover "
                 src={heroImg}
@@ -16,6 +16,7 @@ function Home() {
                     Discover the best retreats of Sri Lanka
                 </h1>
                 <SearchVenue />
+
                 <h3>All Venues...</h3>
                 <GetVenueList />
             </div>

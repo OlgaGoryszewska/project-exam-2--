@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Unica+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import'react-calendar/dist/Calendar.css';
 
 @tailwind base;
 @tailwind components;
@@ -7,7 +8,7 @@
 
 @layer base {
     body {
-        @apply font-roboto text-deep-blue;
+        @apply font-roboto text-deep-blue bg-pink-silk;
     }
 
     h1,
@@ -58,3 +59,20 @@
 .data-container {
     @apply grid grid-cols-2 gap-2   p-4;
 }
+.react-calendar {
+    @apply rounded  border-dark-coconut p-4 leading-normal
+  
+}
+.react-calendar__tile--active,
+.react-calendar button:enabled:hover,
+.react-calendar button:enabled:focus {
+    @apply bg-rav-mango text-white;
+  }
+.react-calendar__month-view__days__day--weekend {
+    @apply text-deep-blue;
+  }
+  .react-calendar__tile--now {
+    @apply bg-pink-silk;
+  }
+
+  

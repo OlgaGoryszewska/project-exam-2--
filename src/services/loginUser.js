@@ -1,10 +1,9 @@
-const API_BASE_URL = 'https://v2.api.noroff.dev'
-const API_KEY = import.meta.env.VITE_API_KEY
+import { API_BASE_URL } from '../constants'
 
-import { Save } from '../storage/Save'
+const API_KEY = import.meta.env.VITE_API_KEY
+import { saveLocalStorage } from '../storage/saveLocalStorage'
 
 export async function loginUser(object) {
-
     try {
         const response = await fetch(`${API_BASE_URL}/auth/login`, {
             method: 'POST',
@@ -13,18 +12,18 @@ export async function loginUser(object) {
                 'X-Noroff-API-Key': API_KEY,
             },
             body: JSON.stringify(object),
-        });
-        
-        const responseData = await response.json();
+        })
+
+        const responseData = await response.json()
 
         if (response.ok) {
-            const { data } = responseData;
-            const { accessToken, ...profile } = data;
+            const { data } = responseData
+            const { accessToken, ...profile } = data
 
-            Save('token', accessToken)
-            Save('profile', profile)
+            saveLocalStorage('token', accessToken)
+            saveLocalStorage('profile', profile)
 
-            return profile;
+            return profile
         } else {
             throw new Error(responseData.error)
         }

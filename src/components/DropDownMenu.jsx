@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { handleLogout } from '../handlers/logout'
 
 //Icons
 import palm from '../assets/img/palm.png'
@@ -47,6 +48,18 @@ function DropDownMenu() {
                                 to="/register"
                             >
                                 Register
+                            </Link>
+                        </li>
+                        <li className="pt-4">
+                            <Link
+                                onClick={() => {
+                                    setShowMenu(!showMenu)
+                                    handleLogout()
+                                }}
+                                className="link"
+                                to="/"
+                            >
+                                Logout
                             </Link>
                         </li>
                     </ul>
