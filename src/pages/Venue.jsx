@@ -1,4 +1,4 @@
-import Calendar from '../components/Calendar'
+import VenueCalendar from '../components/VenueCalendar'
 import VenueIntroCard from '../components/VenueIntroCard'
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
@@ -20,7 +20,7 @@ function Venue() {
 
                 setVenue(() => data.data)
                 document.title = `${data.data.name}`
-                console.log('data', data.data)
+
             } catch (error) {
                 console.error('Error fetching venue data:', error)
             }
@@ -38,7 +38,7 @@ function Venue() {
     return (
         <div className="flex flex-col bg-pink-silk ">
             <VenueIntroCard venue={venue} />
-            <Calendar />
+            <VenueCalendar />
         </div>
     )
 }

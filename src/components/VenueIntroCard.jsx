@@ -25,7 +25,6 @@ const VenueIntroCard = ({ venue }) => {
                 <p className="text-light-gray italic">
                     Updated: {venue.updated}
                 </p>
-                Ø
             </div>
             <div className="card">
                 {venue.media && venue.media.length > 0 ? (
