@@ -63,10 +63,16 @@
     @apply rounded  border-dark-coconut p-4 leading-normal
   
 }
-.react-calendar button:enabled:hover {
-    @apply bg-rav-mango text-white rounded-lg;
+.react-calendar__tile--active,
+.react-calendar button:enabled:hover,
+.react-calendar button:enabled:focus {
+    @apply bg-rav-mango text-white;
   }
 .react-calendar__month-view__days__day--weekend {
     @apply text-deep-blue;
   }
+  .react-calendar__tile--now {
+    @apply bg-pink-silk;
+  }
+
   
