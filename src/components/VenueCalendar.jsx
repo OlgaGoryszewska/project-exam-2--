@@ -7,7 +7,7 @@ function VenueCalendar() {
 
     return (
         <div className="card p-4">
-            <h2>Available dates for a </h2>
+            <h2>Available dates</h2>
             <Calendar onChange={setDate} value={date} />
             <p>Selected Date: {date.toDateString()}</p>
         </div>
