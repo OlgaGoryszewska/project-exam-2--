@@ -1,9 +1,16 @@
+import LoginForm from "../components/LoginForm" 
+
 function Login() {
-  return (
-    <div>
-      <h1>This is the login page</h1>
-    </div>
-  );
+    return (
+        <div className="">
+            <h1>Login</h1>
+            <LoginForm />
+            <button
+            onClick={() => window.location.href = '/Profile'}
+            >Profile</button>
+
+        </div>
+    )
 }
 
-export default Login;
+export default Login

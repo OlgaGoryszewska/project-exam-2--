@@ -136,10 +136,17 @@ const RegistrationForm = () => {
                 placeholder="Banner Alt Text"
                 className="border rounded p-2 w-full"
             />
+<<<<<<< HEAD
             <ButtonSwitch
                 onChange={handleSwitchChange}
                 checked={formData.venueManager}
             />
+=======
+
+                <ButtonSwitch onChange={handleSwitchChange}
+                 checked={formData.venueManager} />
+
+>>>>>>> f7bfc23c83c3b6aa706a3960fa7dcfe6b71a2911
             <button
                 type="submit"
                 className="bg-blue-500 text-white p-2 rounded"

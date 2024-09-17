@@ -1,60 +1,78 @@
-@import url("https://fonts.googleapis.com/css2?family=Unica+One&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Unica+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import'react-calendar/dist/Calendar.css';
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-  body {
-    @apply font-roboto text-deep-blue;
-  }
+    body {
+        @apply font-roboto text-deep-blue bg-pink-silk;
+    }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply font-unica;
-  }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        @apply font-unica;
+    }
 
-  h1 {
-    @apply text-5xl;
-  }
+    h1 {
+        @apply text-5xl;
+    }
 
-  h2 {
-    @apply text-4xl;
-  }
-  h3{
-    @apply text-xl font-medium text-deep-blue font-roboto m-4;
-  }
+    h2 {
+        @apply text-4xl;
+    }
+    h3 {
+        @apply text-xl font-medium text-deep-blue font-roboto m-4;
+    }
 }
 
 .link {
-  @apply text-pink-silk font-unica text-3xl;
+    @apply text-pink-silk font-unica text-3xl;
 }
 
 .venue-image {
-  @apply object-cover rounded max-h-44 w-full pb-2;
+    @apply object-cover rounded max-h-44 w-full pb-2;
 }
 
 .card-home-page {
-  @apply flex flex-row;
+    @apply flex flex-row;
 }
 
 .venue-icon {
-  @apply text-dark-coconut pr-2;
+    @apply text-dark-coconut pr-2;
 }
 .star {
-  @apply text-rav-mango  pr-1;
+    @apply text-rav-mango  pr-1;
 }
 .button {
-  @apply text-dark-coconut border border-dark-coconut px-4 rounded;
+    @apply text-dark-coconut border border-dark-coconut px-4 rounded;
 }
 .card {
-  @apply bg-white shadow-md rounded m-4 mt-0;
+    @apply bg-white shadow-md rounded m-4 mt-0;
 }
-.data-container{
-  @apply grid grid-cols-2 gap-2   p-4;
+.data-container {
+    @apply grid grid-cols-2 gap-2   p-4;
 }
+.react-calendar {
+    @apply rounded  border-dark-coconut p-4 leading-normal
+  
+}
+.react-calendar__tile--active,
+.react-calendar button:enabled:hover,
+.react-calendar button:enabled:focus {
+    @apply bg-rav-mango text-white;
+  }
+.react-calendar__month-view__days__day--weekend {
+    @apply text-deep-blue;
+  }
+  .react-calendar__tile--now {
+    @apply bg-pink-silk;
+  }
+
+  
