@@ -55,7 +55,7 @@ function Profile() {
                         <div className="card-home-page m-4">
                             <CalendarMonthIcon />
                             <p className="text-base font-medium mx-2  ">
-                                Venues:
+                                Bookings:
                                 {profile._count.venues}
                             </p>
                         </div>
@@ -104,3 +104,4 @@ export default Profile
 />
 </div>
 </div>*/
+
