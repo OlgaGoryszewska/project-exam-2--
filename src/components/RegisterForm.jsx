@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { registerUser } from '../services/registerUser'
+import ButtonSwitch from './ButtonSwitch'
 
 const RegistrationForm = () => {
     const [formData, setFormData] = useState({
@@ -22,6 +23,13 @@ const RegistrationForm = () => {
         setFormData({
             ...formData,
             [inputName]: inputValue,
+        })
+    }
+
+    const handleSwitchChange = (checked) => {
+        setFormData({
+            ...formData,
+            venueManager: checked,
         })
     }
 
@@ -78,7 +86,7 @@ const RegistrationForm = () => {
                 name="email"
                 value={formData.email}
                 onChange={handleInputChange}
-                placeholder="Email (must be @stud.noroff.no, or @noroff.no)"
+                placeholder="Email (must be @stud.noroff.no)"
                 className="border rounded p-2 w-full"
             />
             <input
@@ -128,6 +136,10 @@ const RegistrationForm = () => {
                 placeholder="Banner Alt Text"
                 className="border rounded p-2 w-full"
             />
+
+                <ButtonSwitch onChange={handleSwitchChange}
+                 checked={formData.venueManager} />
+
             <button
                 type="submit"
                 className="bg-blue-500 text-white p-2 rounded"

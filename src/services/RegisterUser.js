@@ -1,4 +1,4 @@
-const API_BASE_URL = 'https://v2.api.noroff.dev'
+import { API_BASE_URL } from '../constants'
 
 export const registerUser = async (user) => {
 
