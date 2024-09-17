@@ -7,7 +7,8 @@ import { loadLocalStorage } from '../storage/loadLocalStorage'
 import CabinIcon from '@mui/icons-material/Cabin'
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth'
 import SettingsAccessibilityIcon from '@mui/icons-material/SettingsAccessibility'
-import AddHomeIcon from '@mui/icons-material/AddHome';
+import AddHomeIcon from '@mui/icons-material/AddHome'
+import AddIcon from '@mui/icons-material/Add'
 
 function Profile() {
     const [profile, setProfile] = useState(null)
@@ -66,15 +67,19 @@ function Profile() {
                             </p>
                         </div>
                     </div>
-                    <div className="card pt-1"
-                    onClick={() => {   }}>
-                        <div className="card-home-page m-4">
+                    <div
+                        className="card  hover:border border-rav-mango flex justify-between"
+                        onClick={() => {
+                            window.location.href = '/AddVenue'
+                        }}
+                    >
+                        <div className="card-home-page m-4 mb-0 ">
                             <AddHomeIcon />
                             <p className="text-base font-medium mx-2 mb-4  ">
                                 Add Venue
-                                
                             </p>
                         </div>
+                        <AddIcon className="m-4 " />
                     </div>
                 </div>
             ) : (
