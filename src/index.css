@@ -71,8 +71,12 @@
 .react-calendar__month-view__days__day--weekend {
     @apply text-deep-blue;
   }
-  .react-calendar__tile--now {
+.react-calendar__tile--now {
     @apply bg-pink-silk;
   }
+.text-field{
+    @apply border border-dark-coconut rounded p-1 w-auto ;
+}
+
 
   

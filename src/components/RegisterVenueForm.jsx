@@ -1,6 +1,12 @@
 import { useState } from 'react'
 import { registerVenue } from '../services/registerVenue'
 
+//Icons
+import BakeryDiningIcon from '@mui/icons-material/BakeryDining'
+import WifiIcon from '@mui/icons-material/Wifi'
+import PetsIcon from '@mui/icons-material/Pets'
+import LocalParkingIcon from '@mui/icons-material/LocalParking'
+
 const RegistrationVenueForm = () => {
     const [formVenueData, setFormVenueData] = useState({
         name: '',
@@ -63,80 +69,75 @@ const RegistrationVenueForm = () => {
     }
 
     return (
-        <form className="flex flex-col space-y-5" onSubmit={handleSubmit}>
-            <label>
-                Venue Name
-                <input
-                    className="border border-dark-coconut rounded p-1 max-w-full mx-4"
-                    type="text"
-                    name="name"
-                    value={formVenueData.name}
-                    onChange={handleInputChange}
-                />
-            </label>
-            <label>
-                Description:
-                <input
-                    type="text"
-                    name="description"
-                    value={formVenueData.description}
-                    onChange={handleInputChange}
-                />
-            </label>
-            <label>
-                Media:
-                <input
-                    type="text"
-                    name="media"
-                    value={formVenueData.media}
-                    onChange={handleInputChange}
-                />
-            </label>
-            <label>
-                Price:
-                <input
-                    type="number"
-                    name="price"
-                    value={formVenueData.price}
-                    onChange={handleInputChange}
-                />
-            </label>
-            <label>
-                Max Guests:
-                <input
-                    type="number"
-                    name="maxGuests"
-                    value={formVenueData.maxGuests}
-                    onChange={handleInputChange}
-                />
-            </label>
-            <label>
-                Rating:
-                <input
-                    type="number"
-                    name="rating"
-                    value={formVenueData.rating}
-                    onChange={handleInputChange}
-                />
-            </label>
-            <label>
-                Meta:
-                <input
-                    type="text"
-                    name="meta"
-                    value={formVenueData.meta}
-                    onChange={handleInputChange}
-                />
-            </label>
-            <label>
-                Location:
-                <input
-                    type="text"
-                    name="location"
-                    value={formVenueData.location}
-                    onChange={handleInputChange}
-                />
-            </label>
+        <form className="card flex flex-col p-4" onSubmit={handleSubmit}>
+            <label>Venue Name</label>
+            <input
+                className="text-field"
+                type="text"
+                name="name"
+                value={formVenueData.name}
+                onChange={handleInputChange}
+            />
+            <label>Description</label>
+            <input
+                className="text-field"
+                type="text"
+                name="description"
+                value={formVenueData.description}
+                onChange={handleInputChange}
+            />
+            <label>Image of the Venue/link </label>
+            <input
+                className="text-field"
+                type="text"
+                name="media"
+                value={formVenueData.media.url}
+                onChange={handleInputChange}
+            />
+            <label>Price</label>
+            <input
+                className="text-field"
+                type="number"
+                name="price"
+                value={formVenueData.price}
+                onChange={handleInputChange}
+            />
+            <label>Max Guests</label>
+            <input
+                className="text-field"
+                type="number"
+                name="maxGuests"
+                value={formVenueData.maxGuests}
+                onChange={handleInputChange}
+            />
+            <label>Rating</label>
+            <input
+                className="text-field"
+                type="number"
+                name="rating"
+                value={formVenueData.rating}
+                onChange={handleInputChange}
+            />
+            <div className="card-home-page">
+                <BakeryDiningIcon />
+                <p> Do you provide a breakfast?
+                </p>
+            </div>
+            <div className="card-home-page">
+                <WifiIcon />
+                <p> Do you provide a wi-fi?
+                </p>
+            </div>
+            <div className="card-home-page">
+                <PetsIcon />
+                <p> Do you accept pets??
+                </p>
+            </div>
+            <div className="card-home-page">
+                <LocalParkingIcon/>
+                <p> Do you provide a parking?
+                </p>
+            </div>
             <button type="submit">Register Venue</button>
             {error && <p>{error}</p>}
         </form>
