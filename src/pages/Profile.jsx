@@ -31,11 +31,17 @@ function Profile() {
             {profile ? (
                 <div>
                     <img
-                        className="w-full h-40 object-cover mb-4"
+                        className="rounded-full h-36 w-36 object-cover border border-white border-4 ml-4 mt-20 absolute z-10"
+                        src={profile.avatar.url}
+                        alt="profile img"
+                    />
+                    <img
+                        className="w-full h-48 object-cover pb-6 relative "
                         src={profile.banner.url}
                         alt="banner for a profile"
                     />
-                    <div className="card ">
+
+                    <div className="card pt-8 ">
                         <h3 className="pt-4">{profile.name}</h3>
                         <p className="text-base font-medium mx-4  ">
                             {profile.email}
@@ -104,4 +110,3 @@ export default Profile
 />
 </div>
 </div>*/
-

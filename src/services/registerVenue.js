@@ -9,7 +9,7 @@ export const registerVenue = async (venue) => {
             headers: {
                 'Content-Type': 'application/json',
                 'X-Noroff-API-Key': API_KEY,
-                Authorization: `Bearer ${accessToken}`
+                Authorization: `Bearer ${accessToken}`,
             },
             body: JSON.stringify(venue),
         })
@@ -24,3 +24,6 @@ export const registerVenue = async (venue) => {
         throw error
     }
 }
+
+
+
