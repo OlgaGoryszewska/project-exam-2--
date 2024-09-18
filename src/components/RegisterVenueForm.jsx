@@ -13,7 +13,7 @@ const RegistrationVenueForm = () => {
         description: '',
         media: [
             {
-                url: 'https://url.com/image.jpg',
+                url: '',
                 alt: '',
             },
         ],

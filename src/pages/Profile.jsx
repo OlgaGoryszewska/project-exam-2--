@@ -1,6 +1,7 @@
 import { fetchProfile } from '../services/fetchProfile'
 import { useEffect, useState } from 'react'
 import { loadLocalStorage } from '../storage/loadLocalStorage'
+import ChangeAvatar from '../components/ChangeAvatar'
 
 //Icons
 
@@ -9,6 +10,7 @@ import CalendarMonthIcon from '@mui/icons-material/CalendarMonth'
 import SettingsAccessibilityIcon from '@mui/icons-material/SettingsAccessibility'
 import AddHomeIcon from '@mui/icons-material/AddHome'
 import AddIcon from '@mui/icons-material/Add'
+import EditNoteIcon from '@mui/icons-material/EditNote'
 
 function Profile() {
     const [profile, setProfile] = useState(null)
@@ -16,6 +18,8 @@ function Profile() {
     useEffect(() => {
         const profileName = loadLocalStorage('profile').name
         const accessToken = loadLocalStorage('token')
+      
+    
 
         fetchProfile(profileName, accessToken)
             .then((data) => {
@@ -42,7 +46,15 @@ function Profile() {
                     />
 
                     <div className="card pt-8 ">
-                        <h3 className="pt-4">{profile.name}</h3>
+                        <div className="flex flex-row pt-4 justify-between">
+                            <h3>{profile.name}</h3>
+                            <EditNoteIcon
+                                fontSize="large"
+                                className=" m-4 hover:text-rav-mango"
+                            />
+                        </div>
+                        <ChangeAvatar />
+
                         <p className="text-base font-medium mx-4  ">
                             {profile.email}
                         </p>

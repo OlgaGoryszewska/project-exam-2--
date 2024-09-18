@@ -4,6 +4,7 @@ import { API_KEY } from '../constants'
 import { saveLocalStorage } from '../storage/saveLocalStorage'
 
 export async function loginUser(object) {
+
     try {
         const response = await fetch(`${API_BASE_URL}/auth/login`, {
             method: 'POST',
