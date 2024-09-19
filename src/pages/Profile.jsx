@@ -14,6 +14,7 @@ import EditNoteIcon from '@mui/icons-material/EditNote'
 
 function Profile() {
     const [profile, setProfile] = useState(null)
+    const [showUpdateForm, setShowUpdateForm] = useState(false)
 
     useEffect(() => {
         const profileName = loadLocalStorage('profile').name
@@ -47,12 +48,13 @@ function Profile() {
                         <div className="flex flex-row pt-4 justify-between">
                             <h3>{profile.name}</h3>
                             <EditNoteIcon
+                                onClick={() => {
+                                    setShowUpdateForm(!showUpdateForm)
+                                }}
                                 fontSize="large"
-                                className=" m-4 hover:text-rav-mango"
+                                className=" m-4 hover:text-rav-mango  "
                             />
                         </div>
-                        <ChangeAvatar />
-
                         <p className="text-base font-medium mx-4  ">
                             {profile.email}
                         </p>
@@ -96,6 +98,9 @@ function Profile() {
                             </p>
                         </div>
                         <AddIcon className="m-4 " />
+                    </div>
+                    <div className="card hover:border border-rav-mango ">
+                        {showUpdateForm && <ChangeAvatar />}
                     </div>
                 </div>
             ) : (
