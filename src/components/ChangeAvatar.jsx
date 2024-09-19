@@ -4,23 +4,18 @@ import { API_BASE_URL, API_KEY } from '../constants'
 
 function UpdateProfileForm() {
     const [avatarUrl, setAvatarUrl] = useState('')
-    const [bannerUrl, setBannerUrl] = useState('')
-    const [bio, setBio] = useState('')
-    const [venueManager, setVenueManager] = useState(false)
+
     const [error, setError] = useState(null)
     const [success, setSuccess] = useState(null)
 
-    const handleUpdateProfile = async (e) => {
-        e.preventDefault()
+    const handleUpdateProfile = async (event) => {
+        event.preventDefault()
 
         const profileName = loadLocalStorage('profile').name
         const accessToken = loadLocalStorage('token')
 
         const payload = {
-            bio,
             avatar: { url: avatarUrl },
-            banner: { url: bannerUrl },
-            venueManager,
         }
 
         try {
@@ -30,7 +25,7 @@ function UpdateProfileForm() {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',
-                        Authorization: `Bearer ${accessToken}`, // Ensure proper token format
+                        Authorization: `Bearer ${accessToken}`,
                         'X-Noroff-API-Key': API_KEY,
                     },
                     body: JSON.stringify(payload),
@@ -38,7 +33,7 @@ function UpdateProfileForm() {
             )
 
             if (response.ok) {
-                const data = await response.json()
+                await response.json()
                 setSuccess('Profile updated successfully!')
             } else {
                 const errorData = await response.json()
@@ -52,37 +47,16 @@ function UpdateProfileForm() {
 
     return (
         <form onSubmit={handleUpdateProfile} className="p-4">
-            <div>
+            <div className='flex flex-col'>
                 <label>Avatar URL</label>
                 <input
                     type="url"
                     value={avatarUrl}
-                    onChange={(e) => setAvatarUrl(e.target.value)}
+                    onChange={(event) => setAvatarUrl(event.target.value)}
                     required
+                    className='text-field'
                 />
-            </div>
-            <div>
-                <label>Banner URL</label>
-                <input
-                    type="url"
-                    value={bannerUrl}
-                    onChange={(e) => setBannerUrl(e.target.value)}
-                />
-            </div>
-            <div>
-                <label>Bio</label>
-                <textarea
-                    value={bio}
-                    onChange={(e) => setBio(e.target.value)}
-                />
-            </div>
-            <div>
-                <label>Venue Manager</label>
-                <input
-                    type="checkbox"
-                    checked={venueManager}
-                    onChange={(e) => setVenueManager(e.target.checked)}
-                />
+     
             </div>
             <button type="submit">Update Profile</button>
             {error && <p className="text-red-500">{error}</p>}
