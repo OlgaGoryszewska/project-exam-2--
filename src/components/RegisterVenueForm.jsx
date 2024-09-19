@@ -56,10 +56,10 @@ const RegistrationVenueForm = () => {
     const handleSubmit = async (event) => {
         event.preventDefault()
         const mediaArray = Array.isArray(formVenueData.media)
-            ? formVenueData.media 
+            ? formVenueData.media
             : formVenueData.media.trim() !== ''
-              ? [{ url: formVenueData.media, alt: 'default alt' }] 
-              : [] 
+              ? [{ url: formVenueData.media, alt: 'default alt' }]
+              : []
 
         const accessToken = loadLocalStorage('token')
 
@@ -84,7 +84,6 @@ const RegistrationVenueForm = () => {
                 body: JSON.stringify(newVenue),
             })
             if (response.ok) {
-                await response(newVenue)
                 setSuccess(' Venue registered successfully!')
             }
             const errorData = await response.json()
