@@ -18,8 +18,6 @@ function Profile() {
     useEffect(() => {
         const profileName = loadLocalStorage('profile').name
         const accessToken = loadLocalStorage('token')
-      
-    
 
         fetchProfile(profileName, accessToken)
             .then((data) => {

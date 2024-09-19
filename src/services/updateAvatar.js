@@ -1,10 +1,7 @@
 import { API_BASE_URL, API_KEY } from '../constants'
 
 export const updateAvatar = async (profileName, accessToken) => {
-    // Ensure the token is parsed correctly from local storage
-    if (typeof accessToken === 'string' && accessToken.startsWith('"') && accessToken.endsWith('"')) {
-        accessToken = accessToken.slice(1, -1);
-    }
+ 
     try {
         const response = await fetch(
             `${API_BASE_URL}/holidaze/profiles/${profileName}`,
