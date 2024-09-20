@@ -25,13 +25,13 @@ export function AllVenuesByProfile() {
             })
     }, [])
 
-    const handleDelete = (Id) => {
+    const handleDelete = (id) => {
         const accessToken = loadLocalStorage('token')
 
-        deleteVenue(Id, accessToken)
+        deleteVenue(id, accessToken)
             .then(() => {
 
-                setBookings((prevBookings) => prevBookings.filter((booking) => booking.id !== Id))
+                setBookings((prevBookings) => prevBookings.filter((booking) => booking.id !== id))
             })
             .catch((error) => {
                 console.error('Error deleting venue:', error)
