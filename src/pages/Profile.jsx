@@ -89,7 +89,8 @@ function Profile() {
                             </p>
                         </div>
                     </div>
-                    <AllBookingsByProfile />
+                    <AllBookingsByProfile/>
+                    <AllVenuesByProfile />
                     <div
                         className="card  hover:border border-rav-mango flex justify-between"
                         onClick={() => {
@@ -104,18 +105,6 @@ function Profile() {
                         </div>
                         <AddIcon className="m-4 hover:text-rav-mango  " />
                     </div>
-                    <div
-                        className="card  hover:border border-rav-mango flex justify-between"
-                    >
-                        <div className="card-home-page m-4 mb-0 ">
-                            <DeckIcon />
-                            <p className="text-base font-medium mx-2 mb-4  ">
-                                Venues you manage
-                            </p>
-                        </div>
-                        <KeyboardArrowDownIcon className="m-4 hover:text-rav-mango  " />
-                    </div>
-                    <AllVenuesByProfile />
                     <div className="card hover:border border-rav-mango ">
                         {showUpdateForm && <ChangeAvatar />}
                     </div>

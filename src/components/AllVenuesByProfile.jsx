@@ -3,7 +3,8 @@ import { useEffect, useState } from 'react'
 import { loadLocalStorage } from '../storage/loadLocalStorage'
 
 //icons
-import EventAvailableIcon from '@mui/icons-material/EventAvailable'
+import DeckIcon from '@mui/icons-material/Deck'
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 
 export function AllVenuesByProfile() {
     const [bookings, setBookings] = useState(null)
@@ -22,29 +23,36 @@ export function AllVenuesByProfile() {
     }, [])
 
     return (
-        <div className="card flex flex-row py-4 align-center hover:border border-rav-mango">
-            <EventAvailableIcon
-                fontSize="medium"
-                className="text-base font-medium mx-2  "
-            />
-            <p className="text-base font-medium mx-2">Venues you manage</p>
-            {bookings ? (
-                <div>
-                    <ul>
-                        {bookings.map((booking) => (
-                            <li key={booking._id}>
-                                <p>{booking.dateFrom}</p>
-                                <p>{booking.dateTo}</p>
-                                <p>{booking.guest}</p>
-                                <p>{booking.created}</p>
-                                <p>{booking.updated}</p>
-                            </li>
-                        ))}
-                    </ul>
+        <>
+            <div className="card  hover:border border-rav-mango flex justify-between">
+                <div className="card-home-page m-4 mb-0 ">
+                    <DeckIcon />
+                    <p className="text-base font-medium mx-2 mb-4  ">
+                        Venues you manage
+                    </p>
                 </div>
-            ) : (
-                <p>Loading...</p>
-            )}
-        </div>
+                <KeyboardArrowDownIcon className="m-4 hover:text-rav-mango  " />
+            </div>
+            <div className="card">
+                {bookings &&
+                    bookings.map((booking) => (
+                        <div key={booking.id}>
+                            <p>{booking.name}</p>
+                            <p>{booking.price}</p>
+                            {booking.media && booking.media.length > 0 ? (
+                                booking.media.map((mediaItem, index) => (
+                                    <img
+                                        key={index}
+                                        src={mediaItem.url}
+                                        alt={mediaItem.alt || 'Venue image'}
+                                    />
+                                ))
+                            ) : (
+                                <p>No images available</p>
+                            )}
+                        </div>
+                    ))}
+            </div>
+        </>
     )
 }

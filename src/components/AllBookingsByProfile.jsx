@@ -4,6 +4,7 @@ import { loadLocalStorage } from '../storage/loadLocalStorage'
 
 //icons
 import EventAvailableIcon from '@mui/icons-material/EventAvailable'
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 
 export function AllBookingsByProfile() {
     const [bookings, setBookings] = useState(null)
@@ -22,29 +23,15 @@ export function AllBookingsByProfile() {
     }, [])
 
     return (
-        <div className="card flex flex-row py-4 align-center hover:border border-rav-mango">
-            <EventAvailableIcon
-                fontSize="medium"
-                className="text-base font-medium mx-2  "
-            />
-            <p className="text-base font-medium mx-2">Upcoming Bookings</p>
-            {bookings ? (
-                <div>
-                    <ul>
-                        {bookings.map((booking) => (
-                            <li key={booking._id}>
-                                <p>{booking.dateFrom}</p>
-                                <p>{booking.dateTo}</p>
-                                <p>{booking.guest}</p>
-                                <p>{booking.created}</p>
-                                <p>{booking.updated}</p>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            ) : (
-                <p>Loading...</p>
-            )}
+        <div className="card  hover:border border-rav-mango flex justify-between">
+        <div className="card-home-page m-4 mb-0 ">
+            <EventAvailableIcon />
+            <p className="text-base font-medium mx-2 mb-4  ">
+                Upcoming bookings
+            </p>
         </div>
+        < KeyboardArrowDownIcon className="m-4 hover:text-rav-mango  " />
+    </div>
+
     )
 }
