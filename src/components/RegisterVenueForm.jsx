@@ -95,7 +95,8 @@ const RegistrationVenueForm = () => {
     }
 
     return (
-        <form className="card flex flex-col p-4" onSubmit={handleSubmit}>
+        <form className=" card-registration" onSubmit={handleSubmit}>
+            <h2 className="pb-4">Register new Venue</h2>
             <label>Venue Name</label>
             <input
                 className="text-field"
@@ -105,7 +106,7 @@ const RegistrationVenueForm = () => {
                 onChange={handleInputChange}
             />
             <label>Description</label>
-            <input
+            <textarea
                 className="text-field"
                 type="text"
                 name="description"
@@ -121,7 +122,7 @@ const RegistrationVenueForm = () => {
                 onChange={handleInputChange}
             />
             <input
-                className="text-field"
+                className="text-field hidden"
                 type="text"
                 name="media"
                 value={formVenueData.media.alt}
@@ -151,23 +152,25 @@ const RegistrationVenueForm = () => {
                 value={formVenueData.rating}
                 onChange={handleInputChange}
             />
-            <div className="card-home-page">
+            <div className="card-home-page pt-4">
                 <BakeryDiningIcon />
-                <p> Do you provide a breakfast?</p>
+                <p className="pl-2"> Do you provide a breakfast?</p>
             </div>
-            <div className="card-home-page">
+            <div className="card-home-page pt-4">
                 <WifiIcon />
-                <p> Do you provide a wi-fi?</p>
+                <p className="pl-2"> Do you provide a wi-fi?</p>
             </div>
-            <div className="card-home-page">
+            <div className="card-home-page pt-4">
                 <PetsIcon />
-                <p> Do you accept pets??</p>
+                <p className="pl-2"> Do you accept pets??</p>
             </div>
-            <div className="card-home-page">
+            <div className="card-home-page pt-4">
                 <LocalParkingIcon />
-                <p> Do you provide a parking?</p>
+                <p className="pl-2 pb-4"> Do you provide a parking?</p>
             </div>
-            <button type="submit">Register Venue</button>
+            <button className="button-blue" type="submit">
+                Register Venue
+            </button>
             {error && <p className="text-red-500">{error}</p>}
             {success && <p className="text-green-500">{success}</p>}
         </form>

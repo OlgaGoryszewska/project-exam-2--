@@ -19,7 +19,7 @@ function DropDownMenu() {
             </button>
             {showMenu && (
                 <nav
-                    className=" flex flex-row justify-center pt-10 absolute bg-deep-blue w-full h-full
+                    className=" flex flex-row justify-center pt-10 absolute bg-deep-blue w-full h-full z-30
          "
                 >
                     <ul>
