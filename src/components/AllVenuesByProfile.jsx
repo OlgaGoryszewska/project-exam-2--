@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { loadLocalStorage } from '../storage/loadLocalStorage'
 import StarRating  from './RatingStars'
 import { deleteVenue } from '../services/deleteVenue'
+import { updateVenue } from '../services/updateVenue'
 
 //icons
 import DeckIcon from '@mui/icons-material/Deck'
@@ -77,7 +78,7 @@ export function AllVenuesByProfile() {
                                 <p>{booking.price} $/Per Night</p>
                             </div>
                             <div className='flex flex-row justify-between px-4 pb-4'>
-                                <button className='button-blue w-28'>Edit</button>
+                                <button className='button-blue w-28'>Update</button>
                                 <button onClick={() => handleDelete(booking.id)} className='button-blue w-28'>Delate</button>
                             </div>
                         </div>

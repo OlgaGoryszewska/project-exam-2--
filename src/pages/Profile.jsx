@@ -5,6 +5,7 @@ import ChangeAvatar from '../components/ChangeAvatar'
 import { AllBookingsByProfile } from '../components/AllBookingsByProfile'
 import { AllVenuesByProfile } from '../components/AllVenuesByProfile'
 
+
 //Icons
 
 import CabinIcon from '@mui/icons-material/Cabin'
@@ -14,11 +15,9 @@ import AddHomeIcon from '@mui/icons-material/AddHome'
 import AddIcon from '@mui/icons-material/Add'
 import EditNoteIcon from '@mui/icons-material/EditNote'
 
-
 function Profile() {
     const [profile, setProfile] = useState(null)
     const [showUpdateForm, setShowUpdateForm] = useState(false)
-
 
     useEffect(() => {
         const profileName = loadLocalStorage('profile').name
@@ -108,7 +107,7 @@ function Profile() {
                         </div>
                         <AddIcon className="m-4 hover:text-rav-mango  " />
                     </div>
-                    
+
                 </div>
             ) : (
                 <p>Loading profile...</p>
