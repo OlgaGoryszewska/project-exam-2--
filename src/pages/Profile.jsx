@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { loadLocalStorage } from '../storage/loadLocalStorage'
 import ChangeAvatar from '../components/ChangeAvatar'
 import { AllBookingsByProfile } from '../components/AllBookingsByProfile'
+import { AllVenuesByProfile } from '../components/AllVenuesByProfile'
 
 //Icons
 
@@ -12,6 +13,8 @@ import SettingsAccessibilityIcon from '@mui/icons-material/SettingsAccessibility
 import AddHomeIcon from '@mui/icons-material/AddHome'
 import AddIcon from '@mui/icons-material/Add'
 import EditNoteIcon from '@mui/icons-material/EditNote'
+import DeckIcon from '@mui/icons-material/Deck';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 function Profile() {
     const [profile, setProfile] = useState(null)
@@ -99,8 +102,20 @@ function Profile() {
                                 Add Venue
                             </p>
                         </div>
-                        <AddIcon className="m-4 " />
+                        <AddIcon className="m-4 hover:text-rav-mango  " />
                     </div>
+                    <div
+                        className="card  hover:border border-rav-mango flex justify-between"
+                    >
+                        <div className="card-home-page m-4 mb-0 ">
+                            <DeckIcon />
+                            <p className="text-base font-medium mx-2 mb-4  ">
+                                Venues you manage
+                            </p>
+                        </div>
+                        <KeyboardArrowDownIcon className="m-4 hover:text-rav-mango  " />
+                    </div>
+                    <AllVenuesByProfile />
                     <div className="card hover:border border-rav-mango ">
                         {showUpdateForm && <ChangeAvatar />}
                     </div>
