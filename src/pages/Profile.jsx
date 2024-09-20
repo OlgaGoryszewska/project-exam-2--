@@ -2,6 +2,7 @@ import { fetchProfile } from '../services/fetchProfile'
 import { useEffect, useState } from 'react'
 import { loadLocalStorage } from '../storage/loadLocalStorage'
 import ChangeAvatar from '../components/ChangeAvatar'
+import { AllBookingsByProfile } from '../components/AllBookingsByProfile'
 
 //Icons
 
@@ -85,6 +86,7 @@ function Profile() {
                             </p>
                         </div>
                     </div>
+                    <AllBookingsByProfile />
                     <div
                         className="card  hover:border border-rav-mango flex justify-between"
                         onClick={() => {
