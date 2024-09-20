@@ -18,8 +18,6 @@ const LoginForm = () => {
         })
     }
 
-
-    
     const handleSubmit = async (event) => {
         event.preventDefault()
 
@@ -28,8 +26,7 @@ const LoginForm = () => {
                 email: formData.email,
                 password: formData.password,
             })
-            alert('Logged in successfully!')
-
+            window.location = '/Profile'
         } catch (error) {
             setError('Error logging in: ' + error.message)
         }
@@ -57,10 +54,7 @@ const LoginForm = () => {
                 placeholder="Password"
                 className="text-field"
             />
-            <button
-                type="submit"
-                className="button-blue mt-4"
-            >
+            <button type="submit" className="button-blue mt-4">
                 Login
             </button>
         </form>

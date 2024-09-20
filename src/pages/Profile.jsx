@@ -13,12 +13,12 @@ import SettingsAccessibilityIcon from '@mui/icons-material/SettingsAccessibility
 import AddHomeIcon from '@mui/icons-material/AddHome'
 import AddIcon from '@mui/icons-material/Add'
 import EditNoteIcon from '@mui/icons-material/EditNote'
-import DeckIcon from '@mui/icons-material/Deck';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+
 
 function Profile() {
     const [profile, setProfile] = useState(null)
     const [showUpdateForm, setShowUpdateForm] = useState(false)
+
 
     useEffect(() => {
         const profileName = loadLocalStorage('profile').name
@@ -89,7 +89,10 @@ function Profile() {
                             </p>
                         </div>
                     </div>
-                    <AllBookingsByProfile/>
+                    <div className="card hover:border border-rav-mango ">
+                        {showUpdateForm && <ChangeAvatar />}
+                    </div>
+                    <AllBookingsByProfile />
                     <AllVenuesByProfile />
                     <div
                         className="card  hover:border border-rav-mango flex justify-between"
@@ -105,9 +108,7 @@ function Profile() {
                         </div>
                         <AddIcon className="m-4 hover:text-rav-mango  " />
                     </div>
-                    <div className="card hover:border border-rav-mango ">
-                        {showUpdateForm && <ChangeAvatar />}
-                    </div>
+                    
                 </div>
             ) : (
                 <p>Loading profile...</p>

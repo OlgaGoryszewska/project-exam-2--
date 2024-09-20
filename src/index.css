@@ -30,6 +30,9 @@
     h3 {
         @apply text-xl font-medium text-deep-blue font-roboto m-4;
     }
+    h4{
+        @apply text-lg font-medium font-roboto;
+    }
 }
 
 .link {

@@ -1,6 +1,8 @@
 import { fetchAllVenuesByProfile } from '../services/fetchAllVenuesByProfile'
 import { useEffect, useState } from 'react'
 import { loadLocalStorage } from '../storage/loadLocalStorage'
+import StarRating  from './RatingStars'
+import { deleteVenue } from '../services/deleteVenue'
 
 //icons
 import DeckIcon from '@mui/icons-material/Deck'
@@ -8,6 +10,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 
 export function AllVenuesByProfile() {
     const [bookings, setBookings] = useState(null)
+
 
     useEffect(() => {
         const profileName = loadLocalStorage('profile').name
@@ -22,6 +25,21 @@ export function AllVenuesByProfile() {
             })
     }, [])
 
+    const handleDelete = (Id) => {
+        const accessToken = loadLocalStorage('token')
+
+        deleteVenue(Id, accessToken)
+            .then(() => {
+
+                setBookings((prevBookings) => prevBookings.filter((booking) => booking.id !== Id))
+            })
+            .catch((error) => {
+                console.error('Error deleting venue:', error)
+                
+            })
+    }
+
+
     return (
         <>
             <div className="card  hover:border border-rav-mango flex justify-between">
@@ -33,23 +51,35 @@ export function AllVenuesByProfile() {
                 </div>
                 <KeyboardArrowDownIcon className="m-4 hover:text-rav-mango  " />
             </div>
-            <div className="card">
+            <div className="card"
+             >
                 {bookings &&
                     bookings.map((booking) => (
                         <div key={booking.id}>
-                            <p>{booking.name}</p>
-                            <p>{booking.price}</p>
                             {booking.media && booking.media.length > 0 ? (
                                 booking.media.map((mediaItem, index) => (
                                     <img
                                         key={index}
                                         src={mediaItem.url}
                                         alt={mediaItem.alt || 'Venue image'}
+                                        className="venue-image "
                                     />
                                 ))
                             ) : (
                                 <p>No images available</p>
                             )}
+                            <h2 className="mx-4">{booking.name}</h2>
+                            <div className="flex flex-row justify-between py-3 border-y border-pink-silk border-dashed m-4">
+                                <div>
+                                    <StarRating rating={booking.rating} />
+                                </div>
+
+                                <p>{booking.price} $/Per Night</p>
+                            </div>
+                            <div className='flex flex-row justify-between px-4 pb-4'>
+                                <button className='button-blue w-28'>Edit</button>
+                                <button onClick={() => handleDelete(booking.id)} className='button-blue w-28'>Delate</button>
+                            </div>
                         </div>
                     ))}
             </div>

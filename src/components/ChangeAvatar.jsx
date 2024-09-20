@@ -48,6 +48,7 @@ function UpdateProfileForm() {
     return (
         <form onSubmit={handleUpdateProfile} className="p-4">
             <div className='flex flex-col'>
+                <h4 className='text-lg font-medium'>Change Avatar</h4>
                 <label>Avatar URL</label>
                 <input
                     type="url"
