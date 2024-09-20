@@ -58,7 +58,7 @@ function UpdateProfileForm() {
                 />
      
             </div>
-            <button type="submit">Update Profile</button>
+            <button className="button-blue mt-4" type="submit">Update Profile</button>
             {error && <p className="text-red-500">{error}</p>}
             {success && <p className="text-green-500">{success}</p>}
         </form>

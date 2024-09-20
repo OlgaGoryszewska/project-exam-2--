@@ -2,11 +2,8 @@ import LoginForm from "../components/LoginForm"
 
 function Login() {
     return (
-        <div className="">
+        <div className="px-4">
             <LoginForm />
-            <button
-            onClick={() => window.location.href = '/Profile'}
-            >Profile</button>
 
         </div>
     )

@@ -54,6 +54,18 @@ function DropDownMenu() {
                             <Link
                                 onClick={() => {
                                     setShowMenu(!showMenu)
+                                    
+                                }}
+                                className="link"
+                                to="/profile"
+                            >
+                                Profile
+                            </Link>
+                        </li>
+                        <li className="pt-4">
+                            <Link
+                                onClick={() => {
+                                    setShowMenu(!showMenu)
                                     handleLogout()
                                 }}
                                 className="link"

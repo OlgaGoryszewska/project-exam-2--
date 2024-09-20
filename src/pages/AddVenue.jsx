@@ -2,7 +2,7 @@ import RegistrationVenueForm from '../components/RegisterVenueForm'
 
 function RegisterVenue() {
     return (
-        <div>
+        <div className='px-4'>
             <RegistrationVenueForm />
         </div>
     )
