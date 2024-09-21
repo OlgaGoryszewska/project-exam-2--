@@ -18,6 +18,7 @@ export const UpdateVenueForm = () => {
 
     const handleFormSubmit = (event) => {
         event.preventDefault()
+        console.log('Venue:', venue)
         const id = loadLocalStorage('profile').id
         const accessToken = loadLocalStorage('token')
 
@@ -55,8 +56,8 @@ export const UpdateVenueForm = () => {
                         className="text-field"
                     />
 
-                    <button type="submit" className="btn-primary">
-                        Update Venue
+                    <button onClick={handleFormSubmit} type="submit" className="btn-primary">
+                        Update Venue 
                     </button>
                 </div>
             </form>

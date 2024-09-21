@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { loadLocalStorage } from '../storage/loadLocalStorage'
 import StarRating from './RatingStars'
 import { deleteVenue } from '../services/deleteVenue'
+import { UpdateVenueForm } from './UpdateVenueForm'
 
 //icons
 import DeckIcon from '@mui/icons-material/Deck'
@@ -10,7 +11,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 
 export function AllVenuesByProfile() {
     const [venues, setVenues] = useState(null)
-
+    const [selectedVenue, setSelectedVenue] = useState(null)
 
     useEffect(() => {
         const profileName = loadLocalStorage('profile').name
@@ -40,59 +41,63 @@ export function AllVenuesByProfile() {
             })
     }
 
-
-        // Set selected venue for update
-        return (
-            <>
-                <div className="card  hover:border border-rav-mango flex justify-between">
-                    <div className="card-home-page m-4 mb-0 ">
-                        <DeckIcon />
-                        <p className="text-base font-medium mx-2 mb-4  ">
-                            Venues you manage
-                        </p>
-                    </div>
-                    <KeyboardArrowDownIcon className="m-4 hover:text-rav-mango  " />
-                </div>
-                <div className="card">
-                    {venues &&
-                        venues.map((venue) => (
-                            <div key={venue.id}>
-                                {venue.media && venue.media.length > 0 ? (
-                                    venue.media.map((mediaItem, index) => (
-
-                                        <img
-                                            key={index}
-                                            src={mediaItem.url}
-                                            alt={mediaItem.alt || 'Venue image'}
-                                            className="venue-image "
-                                        />
-                                    ))
-                                ) : (
-                                    <p>No images available</p>
-                                )}
-                                <h2 className="mx-4">{venue.name}</h2>
-                                <div className="flex flex-row justify-between py-3 border-y border-pink-silk border-dashed m-4">
-                                    <div>
-                                        <StarRating rating={venue.rating} />
-                                    </div>
-
-                                    <p>{venue.price} $/Per Night</p>
-                                </div>
-                                <div className="flex flex-row justify-between px-4 pb-4">
-                                    <button className="button-blue w-28">
-                                        Update
-                                    </button>
-                                    <button
-                                        onClick={() => handleDelete(venue.id)}
-                                        className="button-blue w-28"
-                                    >
-                                        Delate
-                                    </button>
-                                </div>
-                            </div>
-                        ))}
-                </div>
-            </>
-        )
+    const handleUpdateClick = (venue) => {
+        setSelectedVenue(venue)
     }
 
+    return (
+        <>
+            <div className="card  hover:border border-rav-mango flex justify-between">
+                <div className="card-home-page m-4 mb-0 ">
+                    <DeckIcon />
+                    <p className="text-base font-medium mx-2 mb-4  ">
+                        Venues you manage
+                    </p>
+                </div>
+                <KeyboardArrowDownIcon className="m-4 hover:text-rav-mango  " />
+            </div>
+            <div className="card">
+                {venues &&
+                    venues.map((venue) => (
+                        <div key={venue.id}>
+                            {venue.media && venue.media.length > 0 ? (
+                                venue.media.map((mediaItem, index) => (
+                                    <img
+                                        key={index}
+                                        src={mediaItem.url}
+                                        alt={mediaItem.alt || 'Venue image'}
+                                        className="venue-image "
+                                    />
+                                ))
+                            ) : (
+                                <p>No images available</p>
+                            )}
+                            <h2 className="mx-4">{venue.name}</h2>
+                            <div className="flex flex-row justify-between py-3 border-y border-pink-silk border-dashed m-4">
+                                <div>
+                                    <StarRating rating={venue.rating} />
+                                </div>
+
+                                <p>{venue.price} $/Per Night</p>
+                            </div>
+                            <div className="flex flex-row justify-between px-4 pb-4">
+                                <button onClick={()=> handleUpdateClick(venue)} className="button-blue w-28">
+                                    Update
+                                </button>
+                                <button
+                                    onClick={() => handleDelete(venue.id)}
+                                    className="button-blue w-28"
+                                >
+                                    Delate
+                                </button>
+                            </div>
+                            {selectedVenue && (
+                <UpdateVenueForm venueData={selectedVenue} />
+            )}
+                            
+                        </div>
+                    ))}
+            </div>
+        </>
+    )
+}
