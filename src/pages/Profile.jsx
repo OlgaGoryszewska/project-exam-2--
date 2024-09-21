@@ -4,6 +4,7 @@ import { loadLocalStorage } from '../storage/loadLocalStorage'
 import ChangeAvatar from '../components/ChangeAvatar'
 import { AllBookingsByProfile } from '../components/AllBookingsByProfile'
 import { AllVenuesByProfile } from '../components/AllVenuesByProfile'
+import { UpdateVenueForm } from '../components/UpdateVenueForm'
 
 
 //Icons
@@ -93,6 +94,7 @@ function Profile() {
                     </div>
                     <AllBookingsByProfile />
                     <AllVenuesByProfile />
+                    <UpdateVenueForm />
                     <div
                         className="card  hover:border border-rav-mango flex justify-between"
                         onClick={() => {

@@ -1,0 +1,65 @@
+import { useState } from 'react'
+import { updateVenue } from '../services/updateVenue'
+import { loadLocalStorage } from '../storage/loadLocalStorage'
+
+export const UpdateVenueForm = () => {
+    const [venue, setVenue] = useState({
+        name: '',
+        description: '',
+    })
+
+    const handleInputChange = (event) => {
+        const { name, value } = event.target
+        setVenue((prevData) => ({
+            ...prevData,
+            [name]: value,
+        }))
+    }
+
+    const handleFormSubmit = (event) => {
+        event.preventDefault()
+        const id = loadLocalStorage('profile').id
+        const accessToken = loadLocalStorage('token')
+
+        updateVenue(id, accessToken) // Update the venue by ID
+            .then(() => {
+                console.log('Venue updated successfully')
+            })
+            .catch((error) => {
+                console.error('Error updating venue:', error)
+            })
+    }
+
+    return (
+        <div>
+            <form onSubmit={handleFormSubmit} className="p-4">
+                <div className="flex flex-col">
+                    <h4 className="text-lg font-medium">Update Venue</h4>
+
+                    <label>Venue Name</label>
+                    <input
+                        type="text"
+                        name="name"
+                        value={venue.name}
+                        onChange={handleInputChange}
+                        required
+                        className="text-field"
+                    />
+
+                    <label>Venue Description</label>
+                    <textarea
+                        name="description"
+                        value={venue.description}
+                        onChange={handleInputChange}
+                        required
+                        className="text-field"
+                    />
+
+                    <button type="submit" className="btn-primary">
+                        Update Venue
+                    </button>
+                </div>
+            </form>
+        </div>
+    )
+}
