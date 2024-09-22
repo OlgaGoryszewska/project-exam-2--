@@ -81,13 +81,11 @@ export function AllVenuesByProfile() {
                                     onClick={() => {
                                         setShowUpdateForm(!showUpdateForm)
                                     }}
-                                    
                                     className="button-blue w-28"
                                 >
                                     Update
                                 </button>
-                               
-                                
+
                                 <button
                                     onClick={() => handleDelete(venue.id)}
                                     className="button-blue w-28"
@@ -95,9 +93,81 @@ export function AllVenuesByProfile() {
                                     Delate
                                 </button>
                             </div>
-                            <div>
-                                {showUpdateForm && <UpdateVenueForm />}
-                                </div>
+                            <div className="m-4">
+                                {venue.bookings && venue.bookings.length > 0 ? (
+                                    (console.log(venue.bookings),
+                                    (
+                                        <div>
+                                            <h3>Bookings:</h3>
+                                            {venue.bookings.map(
+                                                (booking, index) => (
+                                                    <div
+                                                        key={index}
+                                                        className="border p-2 mb-2"
+                                                    >
+                                                        <p>
+                                                            <strong>
+                                                                From:
+                                                            </strong>{' '}
+                                                            {booking.dateFrom} -{' '}
+                                                            <strong>To:</strong>{' '}
+                                                            {booking.dateTo}
+                                                        </p>
+                                                        <p>
+                                                            <strong>
+                                                                Guests:
+                                                            </strong>{' '}
+                                                            {booking.guests}
+                                                        </p>
+                                                        <p>
+                                                            <strong>
+                                                                Customer:
+                                                            </strong>{' '}
+                                                            {
+                                                                booking.customer
+                                                                    .name
+                                                            }{' '}
+                                                            (
+                                                            {
+                                                                booking.customer
+                                                                    .email
+                                                            }
+                                                            )
+                                                        </p>
+                                                        {booking.customer
+                                                            .avatar && (
+                                                            <img
+                                                                src={
+                                                                    booking
+                                                                        .customer
+                                                                        .avatar
+                                                                        .url
+                                                                }
+                                                                alt={
+                                                                    booking
+                                                                        .customer
+                                                                        .avatar
+                                                                        .alt ||
+                                                                    'Customer avatar'
+                                                                }
+                                                                className="avatar-image"
+                                                            />
+                                                        )}
+                                                    </div>
+                                                )
+                                            )}
+                                        </div>
+                                    ))
+                                ) : (
+                                    <div className="py-4 border-t border-dashed border-pink-silk ">
+                                        <h4>Bookings:</h4>
+                                        <p className="py-4 ">
+                                            No bookings yet!
+                                        </p>
+                                    </div>
+                                )}
+                            </div>
+                            <div>{showUpdateForm && <UpdateVenueForm />}</div>
                         </div>
                     ))}
             </div>

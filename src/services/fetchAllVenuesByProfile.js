@@ -3,7 +3,7 @@ import { API_BASE_URL, API_KEY } from '../constants'
 export const fetchAllVenuesByProfile = async (profileName, accessToken) => {
     try {
         const response = await fetch(
-            `${API_BASE_URL}/holidaze/profiles/${profileName}/venues`,
+            `${API_BASE_URL}/holidaze/profiles/${profileName}/venues?_bookings=true`,
             {
                 method: 'GET',
                 headers: {

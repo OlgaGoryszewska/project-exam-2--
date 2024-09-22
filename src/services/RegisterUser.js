@@ -1,7 +1,6 @@
 import { API_BASE_URL } from '../constants'
 
 export const registerUser = async (user) => {
-
     try {
         const response = await fetch(`${API_BASE_URL}/auth/register`, {
             method: 'POST',
@@ -21,4 +20,3 @@ export const registerUser = async (user) => {
         throw error
     }
 }
-
