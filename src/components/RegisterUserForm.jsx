@@ -143,18 +143,14 @@ const RegistrationForm = () => {
                 placeholder="Banner Alt Text"
                 className="hidden"
             />
-            <div className='flex flex-row py-4 justify-between'>
-            <p>Are you a venue manager?</p>
-            <ButtonSwitch
-                onChange={handleSwitchChange}
-                checked={formData.venueManager}
-            />
+            <div className="flex flex-row py-4 justify-between">
+                <p>Are you a venue manager?</p>
+                <ButtonSwitch
+                    onChange={handleSwitchChange}
+                    checked={formData.venueManager}
+                />
             </div>
-            
-            <button
-                type="submit"
-                className="button-blue"
-            >
+            <button type="submit" className="button-blue">
                 Register
             </button>
         </form>
