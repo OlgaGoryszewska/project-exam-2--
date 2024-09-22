@@ -1,6 +1,7 @@
 //A user may view a calendar with available dates for a Venue
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Calendar from 'react-calendar'
+import { createBooking } from '../services/bookingService'
 import 'react-calendar/dist/Calendar.css'
 
 const VenueCalendar = () => {

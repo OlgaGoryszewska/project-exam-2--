@@ -1,9 +1,10 @@
+import PropTypes from 'prop-types'
+
 import { useState } from 'react'
 import { updateVenue } from '../services/updateVenue'
 import { loadLocalStorage } from '../storage/loadLocalStorage'
 
-
-export const UpdateVenueForm = (id) => {
+export const UpdateVenueForm = ({ id }) => {
     const [venueState, setVenueState] = useState({
         name: '',
         description: '',
@@ -20,12 +21,13 @@ export const UpdateVenueForm = (id) => {
     const handleFormSubmit = (event) => {
         event.preventDefault()
         const accessToken = loadLocalStorage('token')
-        updateVenue(id, accessToken).then((data) => {
-            console.log('data', data)
-        }   ).catch((error) => {
-            console.error('Error updating venue:', error)
-        })
-    
+        updateVenue(id, accessToken, venueState)
+            .then((data) => {
+                console.log('data', data)
+            })
+            .catch((error) => {
+                console.error('Error updating venue:', error)
+            })
     }
 
     return (
@@ -64,4 +66,8 @@ export const UpdateVenueForm = (id) => {
             </form>
         </div>
     )
+}
+UpdateVenueForm.propTypes = {
+    id: PropTypes.string.isRequired,
+    
 }

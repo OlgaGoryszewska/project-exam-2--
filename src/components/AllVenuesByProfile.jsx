@@ -167,7 +167,7 @@ export function AllVenuesByProfile() {
                                     </div>
                                 )}
                             </div>
-                            <div>{showUpdateForm && <UpdateVenueForm />}</div>
+                            <div>{showUpdateForm && <UpdateVenueForm id={venue.id} />}</div>
                         </div>
                     ))}
             </div>
