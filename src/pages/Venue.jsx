@@ -7,18 +7,29 @@ const url = 'https://v2.api.noroff.dev/holidaze/venues'
 
 function Venue() {
     const [venue, setVenue] = useState(null)
+    const [bookedDates, setBookedDates] = useState([])
     const { id } = useParams()
 
     useEffect(() => {
         async function fetchVenueById() {
             try {
-                const response = await fetch(`${url}/${id}`)
+                const response = await fetch(`${url}/${id}?_bookings=true`)
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`)
                 }
                 const data = await response.json()
 
                 setVenue(() => data.data)
+
+                setBookedDates(() => {
+                    return data.data.bookings.map((booking) => {
+                        return {
+                            dateFrom: new Date(booking.dateFrom),
+                            dateTo: new Date(booking.dateTo),
+                        }
+                    })
+                })
+
                 document.title = `${data.data.name}`
             } catch (error) {
                 console.error('Error fetching venue data:', error)
@@ -37,7 +48,7 @@ function Venue() {
     return (
         <div className="flex flex-col bg-pink-silk max-w-screen-sm m-auto ">
             <VenueIntroCard venue={venue} />
-            <VenueCalendar />
+            <VenueCalendar venueId={venue.id} bookedDates={bookedDates} />
         </div>
     )
 }

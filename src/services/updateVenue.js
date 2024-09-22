@@ -1,10 +1,7 @@
 import { API_BASE_URL, API_KEY } from '../constants'
 
-export const updateVenue = async (id, accessToken) => {
-    console
-
+export const updateVenue = async (id, accessToken, newData) => {
     try {
-
         const response = await fetch(`${API_BASE_URL}/holidaze/venues/${id}`, {
             method: 'PUT',
             headers: {
@@ -12,6 +9,7 @@ export const updateVenue = async (id, accessToken) => {
                 Authorization: `Bearer ${accessToken}`,
                 'X-Noroff-API-Key': API_KEY,
             },
+            body: JSON.stringify({ ...newData }),
         })
 
         if (!response.ok) {
