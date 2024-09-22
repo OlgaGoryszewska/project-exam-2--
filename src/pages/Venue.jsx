@@ -5,44 +5,6 @@ import { useEffect, useState } from 'react'
 
 const url = 'https://v2.api.noroff.dev/holidaze/venues'
 
-/* 
-- get booked dates from the api ✅
-
-- save the booked dates in a variable, as an array of dates
-
-- disable booked dates in the calendar
-
-
-api returns:
-
-[
-{
-    dateFrom: "2022-10-01T00:00:00.000Z",
-    dateTo: "2022-10-02T00:00:00.000Z",
-},
-{
-    dateFrom: "2022-10-01T00:00:00.000Z",
-    dateTo: "2022-10-02T00:00:00.000Z",
-},
-]
-
-const bookedDates = [
-new Date('2022-10-01'),
-new Date('2022-10-02'),
-new Date('2022-10-03'),
-new Date('2022-10-04'),
-]
-
-function isBetweenDates(date, startDate, endDate) {
-    return (
-        date.getTime() >= startDate.getTime() &&
-        date.getTime() <= endDate.getTime()
-    )
-}
-
-tileDisabled 	Pass a function to determine if a certain day should be displayed as disabled. 	n/a 	({ activeStartDate, date, view }) => date.getDay() === 0
-*/
-
 function Venue() {
     const [venue, setVenue] = useState(null)
     const [bookedDates, setBookedDates] = useState([])

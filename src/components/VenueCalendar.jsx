@@ -1,4 +1,4 @@
-//A user may view a calendar with available dates for a Venue
+
 import { useState } from 'react'
 import Calendar from 'react-calendar'
 import { createBooking } from '../services/bookingService'
@@ -37,11 +37,11 @@ const VenueCalendar = ({ venueId, bookedDates }) => {
                 selectRange={true}
                 onChange={handleDateChange}
                 value={value}
-                tileDisabled={({ date }) => {
-                    return bookedDates.some((bookedDate) =>
-                        isBetweenDates(date, bookedDate.dateFrom, bookedDate.dateTo)
-                    );
-                }}
+                tileDisabled={({ date }) =>
+                    bookedDates.some(({ dateFrom, dateTo }) =>
+                        isBetweenDates(date, dateFrom, dateTo)
+                    )
+                }
             />
             <p>Selected Dates:</p>
             <p>
