@@ -6,7 +6,7 @@ import 'react-calendar/dist/Calendar.css'
 import { loadLocalStorage } from '../storage/loadLocalStorage'
 import propTypes from 'prop-types'
 
-const VenueCalendar = ({ venueId }) => {
+const VenueCalendar = ({ venueId, bookedDates }) => {
     const [value, onChange] = useState([new Date(), new Date()])
     const [guests, setGuests] = useState(0)
 
@@ -23,7 +23,6 @@ const VenueCalendar = ({ venueId }) => {
             guests: guests,
             venueId: venueId,
         }
-
         createBooking(bookingData, accessToken)
     }
 
@@ -38,6 +37,11 @@ const VenueCalendar = ({ venueId }) => {
                 selectRange={true}
                 onChange={handleDateChange}
                 value={value}
+                tileDisabled={({ date }) => {
+                    return bookedDates.some((bookedDate) =>
+                        isBetweenDates(date, bookedDate.dateFrom, bookedDate.dateTo)
+                    );
+                }}
             />
             <p>Selected Dates:</p>
             <p>
@@ -56,8 +60,16 @@ const VenueCalendar = ({ venueId }) => {
     )
 }
 
+function isBetweenDates(date, startDate, endDate) {
+    return (
+        date.getTime() >= startDate.getTime() &&
+        date.getTime() <= endDate.getTime()
+    )
+}
+
 VenueCalendar.propTypes = {
     venueId: propTypes.string.isRequired,
+    bookedDates: propTypes.array.isRequired,
 }
 
 export default VenueCalendar
