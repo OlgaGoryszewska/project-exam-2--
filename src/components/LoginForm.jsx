@@ -18,8 +18,6 @@ const LoginForm = () => {
         })
     }
 
-
-    
     const handleSubmit = async (event) => {
         event.preventDefault()
 
@@ -28,36 +26,35 @@ const LoginForm = () => {
                 email: formData.email,
                 password: formData.password,
             })
-            alert('Logged in successfully!')
-
+            window.location = '/Profile'
         } catch (error) {
             setError('Error logging in: ' + error.message)
         }
     }
 
     return (
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="card-registration">
             {error && <p className="text-red-500">{error}</p>}
+            <h2 className="">Login</h2>
+            <label>Email</label>
             <input
                 type="email"
                 name="email"
                 value={formData.email}
                 onChange={handleInputChange}
                 placeholder="Email"
-                className="border rounded p-2 w-full"
+                className="text-field"
             />
+            <label>Password</label>
             <input
                 type="password"
                 name="password"
                 value={formData.password}
                 onChange={handleInputChange}
                 placeholder="Password"
-                className="border rounded p-2 w-full"
+                className="text-field"
             />
-            <button
-                type="submit"
-                className="bg-blue-500 text-white p-2 rounded"
-            >
+            <button type="submit" className="button-blue mt-4">
                 Login
             </button>
         </form>

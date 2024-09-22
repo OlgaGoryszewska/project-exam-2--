@@ -1,8 +1,8 @@
-import RegisterForm from '../components/RegisterForm'
+import RegisterForm from '../components/RegisterUserForm'
 
 function Register() {
     return (
-        <div>
+        <div className='px-4'>
             <RegisterForm />
         </div>
     )

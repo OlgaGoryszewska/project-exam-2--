@@ -30,6 +30,9 @@
     h3 {
         @apply text-xl font-medium text-deep-blue font-roboto m-4;
     }
+    h4{
+        @apply text-lg font-medium font-roboto;
+    }
 }
 
 .link {
@@ -56,6 +59,9 @@
 .card {
     @apply bg-white shadow-md rounded m-4 mt-0;
 }
+.card-registration{
+    @apply bg-white shadow-md rounded m-4 flex flex-col p-4 max-w-lg mx-auto;
+}
 .data-container {
     @apply grid grid-cols-2 gap-2   p-4;
 }
@@ -71,8 +77,17 @@
 .react-calendar__month-view__days__day--weekend {
     @apply text-deep-blue;
   }
-  .react-calendar__tile--now {
+.react-calendar__tile--now {
     @apply bg-pink-silk;
   }
+.text-field{
+    @apply border border-dark-coconut rounded p-2 w-auto ;
+}
+.button-blue{
+    @apply text-white bg-deep-blue p-2 max-w-lg rounded;
+}
+label{
+    @apply mt-1;
+}
 
   

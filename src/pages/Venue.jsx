@@ -20,7 +20,6 @@ function Venue() {
 
                 setVenue(() => data.data)
                 document.title = `${data.data.name}`
-
             } catch (error) {
                 console.error('Error fetching venue data:', error)
             }
@@ -36,7 +35,7 @@ function Venue() {
     }
 
     return (
-        <div className="flex flex-col bg-pink-silk ">
+        <div className="flex flex-col bg-pink-silk max-w-screen-sm m-auto ">
             <VenueIntroCard venue={venue} />
             <VenueCalendar />
         </div>

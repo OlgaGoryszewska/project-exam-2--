@@ -71,46 +71,52 @@ const RegistrationForm = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="card-registration">
             {error && <p className="text-red-500">{error}</p>} {}
+            <h2 className="pb-4">Register</h2>
+            <label>Full Name</label>
             <input
                 type="text"
                 name="name"
                 onChange={handleInputChange}
                 value={formData.name}
                 placeholder="Name"
-                className="border rounded p-2 w-full"
+                className="text-field"
             />
+            <label>Email</label>
             <input
                 type="email"
                 name="email"
                 value={formData.email}
                 onChange={handleInputChange}
                 placeholder="Email (must be @stud.noroff.no)"
-                className="border rounded p-2 w-full"
+                className="text-field"
             />
+            <label>Password</label>
             <input
                 type="password"
                 name="password"
                 value={formData.password}
                 onChange={handleInputChange}
                 placeholder="Password"
-                className="border rounded p-2 w-full"
+                className="text-field"
             />
+            <label>Bio</label>
             <textarea
                 name="bio"
                 value={formData.bio}
                 onChange={handleInputChange}
                 placeholder="Bio (max 160 characters)"
-                className="border rounded p-2 w-full"
+                className="text-field"
             />
+            <label>Avatar</label>
             <input
                 type="text"
                 name="avatarUrl"
                 value={formData.avatarUrl}
                 onChange={handleInputChange}
                 placeholder="Avatar URL"
-                className="border rounded p-2 w-full"
+                className="text-field"
             />
             <input
                 type="text"
@@ -118,15 +124,16 @@ const RegistrationForm = () => {
                 value={formData.avatarAlt}
                 onChange={handleInputChange}
                 placeholder="Avatar Alt Text"
-                className="border rounded p-2 w-full"
+                className="hidden"
             />
+            <label>Banner</label>
             <input
                 type="text"
                 name="bannerUrl"
                 value={formData.bannerUrl}
                 onChange={handleInputChange}
                 placeholder="Banner URL"
-                className="border rounded p-2 w-full"
+                className="text-field"
             />
             <input
                 type="text"
@@ -134,17 +141,19 @@ const RegistrationForm = () => {
                 value={formData.bannerAlt}
                 onChange={handleInputChange}
                 placeholder="Banner Alt Text"
-                className="border rounded p-2 w-full"
+                className="hidden"
             />
-
+            <div className='flex flex-row py-4 justify-between'>
+            <p>Are you a venue manager?</p>
             <ButtonSwitch
                 onChange={handleSwitchChange}
                 checked={formData.venueManager}
             />
-
+            </div>
+            
             <button
                 type="submit"
-                className="bg-blue-500 text-white p-2 rounded"
+                className="button-blue"
             >
                 Register
             </button>
