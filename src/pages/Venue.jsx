@@ -37,9 +37,11 @@ function Venue() {
     return (
         <div className="flex flex-col bg-pink-silk max-w-screen-sm m-auto ">
             <VenueIntroCard venue={venue} />
-            <VenueCalendar />
+            <VenueCalendar venueId={venue.id} />
         </div>
     )
 }
 
 export default Venue
+
+
