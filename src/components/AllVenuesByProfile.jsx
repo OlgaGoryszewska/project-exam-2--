@@ -11,7 +11,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 
 export function AllVenuesByProfile() {
     const [venues, setVenues] = useState(null)
-    const [selectedVenue, setSelectedVenue] = useState(null)
+    const [showUpdateForm, setShowUpdateForm] = useState(false)
 
     useEffect(() => {
         const profileName = loadLocalStorage('profile').name
@@ -39,10 +39,6 @@ export function AllVenuesByProfile() {
             .catch((error) => {
                 console.error('Error deleting venue:', error)
             })
-    }
-
-    const handleUpdateClick = (venue) => {
-        setSelectedVenue(venue)
     }
 
     return (
@@ -81,9 +77,17 @@ export function AllVenuesByProfile() {
                                 <p>{venue.price} $/Per Night</p>
                             </div>
                             <div className="flex flex-row justify-between px-4 pb-4">
-                                <button onClick={()=> handleUpdateClick(venue)} className="button-blue w-28">
+                                <button
+                                    onClick={() => {
+                                        setShowUpdateForm(!showUpdateForm)
+                                    }}
+                                    
+                                    className="button-blue w-28"
+                                >
                                     Update
                                 </button>
+                               
+                                
                                 <button
                                     onClick={() => handleDelete(venue.id)}
                                     className="button-blue w-28"
@@ -91,10 +95,9 @@ export function AllVenuesByProfile() {
                                     Delate
                                 </button>
                             </div>
-                            {selectedVenue && (
-                <UpdateVenueForm venueData={selectedVenue} />
-            )}
-                            
+                            <div>
+                                {showUpdateForm && <UpdateVenueForm />}
+                                </div>
                         </div>
                     ))}
             </div>

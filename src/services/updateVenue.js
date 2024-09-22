@@ -1,6 +1,7 @@
 import { API_BASE_URL, API_KEY } from '../constants'
 
 export const updateVenue = async (id, accessToken) => {
+    console
 
     try {
 

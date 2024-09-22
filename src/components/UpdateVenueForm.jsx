@@ -2,15 +2,16 @@ import { useState } from 'react'
 import { updateVenue } from '../services/updateVenue'
 import { loadLocalStorage } from '../storage/loadLocalStorage'
 
-export const UpdateVenueForm = () => {
-    const [venue, setVenue] = useState({
+
+export const UpdateVenueForm = (id) => {
+    const [venueState, setVenueState] = useState({
         name: '',
         description: '',
     })
 
     const handleInputChange = (event) => {
         const { name, value } = event.target
-        setVenue((prevData) => ({
+        setVenueState((prevData) => ({
             ...prevData,
             [name]: value,
         }))
@@ -18,17 +19,13 @@ export const UpdateVenueForm = () => {
 
     const handleFormSubmit = (event) => {
         event.preventDefault()
-        console.log('Venue:', venue)
-        const id = loadLocalStorage('profile').id
         const accessToken = loadLocalStorage('token')
-
-        updateVenue(id, accessToken) // Update the venue by ID
-            .then(() => {
-                console.log('Venue updated successfully')
-            })
-            .catch((error) => {
-                console.error('Error updating venue:', error)
-            })
+        updateVenue(id, accessToken).then((data) => {
+            console.log('data', data)
+        }   ).catch((error) => {
+            console.error('Error updating venue:', error)
+        })
+    
     }
 
     return (
@@ -41,7 +38,7 @@ export const UpdateVenueForm = () => {
                     <input
                         type="text"
                         name="name"
-                        value={venue.name}
+                        value={venueState.name}
                         onChange={handleInputChange}
                         required
                         className="text-field"
@@ -50,14 +47,18 @@ export const UpdateVenueForm = () => {
                     <label>Venue Description</label>
                     <textarea
                         name="description"
-                        value={venue.description}
+                        value={venueState.description}
                         onChange={handleInputChange}
                         required
                         className="text-field"
                     />
 
-                    <button onClick={handleFormSubmit} type="submit" className="btn-primary">
-                        Update Venue 
+                    <button
+                        onClick={handleFormSubmit}
+                        type="submit"
+                        className="btn-primary"
+                    >
+                        Update Venue
                     </button>
                 </div>
             </form>

@@ -6,7 +6,6 @@ import { AllBookingsByProfile } from '../components/AllBookingsByProfile'
 import { AllVenuesByProfile } from '../components/AllVenuesByProfile'
 import { UpdateVenueForm } from '../components/UpdateVenueForm'
 
-
 //Icons
 
 import CabinIcon from '@mui/icons-material/Cabin'
@@ -94,7 +93,6 @@ function Profile() {
                     </div>
                     <AllBookingsByProfile />
                     <AllVenuesByProfile />
-                    <UpdateVenueForm />
                     <div
                         className="card  hover:border border-rav-mango flex justify-between"
                         onClick={() => {
@@ -109,7 +107,6 @@ function Profile() {
                         </div>
                         <AddIcon className="m-4 hover:text-rav-mango  " />
                     </div>
-
                 </div>
             ) : (
                 <p>Loading profile...</p>
