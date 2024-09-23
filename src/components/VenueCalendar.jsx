@@ -10,6 +10,7 @@ const VenueCalendar = ({ venueId, bookedDates }) => {
     const [value, onChange] = useState([new Date(), new Date()])
     const [guests, setGuests] = useState(0)
 
+
     const handleDateChange = (date) => {
         onChange(date)
     }
@@ -43,19 +44,22 @@ const VenueCalendar = ({ venueId, bookedDates }) => {
                     )
                 }
             />
-            <p>Selected Dates:</p>
-            <p>
+            <h4>Selected Dates:</h4>
+            <p className='pb-4'>
                 {Array.isArray(value)
                     ? `${value[0]?.toDateString()} - ${value[1]?.toDateString()}`
                     : value.toDateString()}
             </p>
-            <button className="button-blue mt-4 w-full">Book Venue</button>
-            <input
+            <h4 >Number og guests</h4>
+            <input className='text-field'
                 type="number"
                 name="guests"
                 value={guests}
                 onChange={(e) => setGuests(parseInt(e.target.value, 10))}
             />
+            <button 
+            className="button-blue mt-4 w-full">Book Venue</button>
+            
         </form>
     )
 }

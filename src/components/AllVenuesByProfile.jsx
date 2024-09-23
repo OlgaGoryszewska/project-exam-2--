@@ -4,10 +4,12 @@ import { loadLocalStorage } from '../storage/loadLocalStorage'
 import StarRating from './RatingStars'
 import { deleteVenue } from '../services/deleteVenue'
 import { UpdateVenueForm } from './UpdateVenueForm'
+import { formatDate } from '../utils/formatDate'
 
 //icons
 import DeckIcon from '@mui/icons-material/Deck'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
+import ThumbDownOffAltIcon from '@mui/icons-material/ThumbDownOffAlt'
 
 export function AllVenuesByProfile() {
     const [venues, setVenues] = useState(null)
@@ -52,10 +54,10 @@ export function AllVenuesByProfile() {
                 </div>
                 <KeyboardArrowDownIcon className="m-4 hover:text-rav-mango  " />
             </div>
-            <div className="card">
+            <div >
                 {venues &&
                     venues.map((venue) => (
-                        <div key={venue.id}>
+                        <div className="card "key={venue.id}>
                             {venue.media && venue.media.length > 0 ? (
                                 venue.media.map((mediaItem, index) => (
                                     <img
@@ -69,12 +71,106 @@ export function AllVenuesByProfile() {
                                 <p>No images available</p>
                             )}
                             <h2 className="mx-4">{venue.name}</h2>
-                            <div className="flex flex-row justify-between py-3 border-y border-pink-silk border-dashed m-4">
+                            <div className="flex flex-row justify-between py-3 border-t border-pink-silk border-dashed m-4 pb-0">
                                 <div>
                                     <StarRating rating={venue.rating} />
                                 </div>
 
                                 <p>{venue.price} $/Per Night</p>
+                            </div>
+
+                            <div className="border border-dashed border-dark-coconut m-4 ">
+                                {venue.bookings && venue.bookings.length > 0 ? (
+                                    (console.log(venue.bookings),
+                                    (
+                                        <div>
+                                            <h3>Bookings:</h3>
+                                            {venue.bookings.map(
+                                                (booking, index) => (
+                                                    <div
+                                                        key={index}
+                                                        className=" border-t border-dashed border-pink-silk p-4"
+                                                    >
+                                                        <div className="flex flex-col">
+                                                            <div className="flex flex-row ">
+                                                                {booking
+                                                                    .customer
+                                                                    .avatar && (
+                                                                    <img
+                                                                        src={
+                                                                            booking
+                                                                                .customer
+                                                                                .avatar
+                                                                                .url
+                                                                        }
+                                                                        alt={
+                                                                            booking
+                                                                                .customer
+                                                                                .avatar
+                                                                                .alt ||
+                                                                            'Customer avatar'
+                                                                        }
+                                                                        className="w-10 h-10 rounded-full object-cover mr-3"
+                                                                    />
+                                                                )}
+                                                                <h4 className="my-auto">
+                                                                    {
+                                                                        booking
+                                                                            .customer
+                                                                            .name
+                                                                    }
+                                                                </h4>
+                                                            </div>
+                                                            <p>
+                                                                <strong>
+                                                                    From:
+                                                                </strong>{' '}
+                                                                {formatDate(
+                                                                    booking.dateFrom
+                                                                )}{' '}
+                                                                <strong>
+                                                                    To:
+                                                                </strong>{' '}
+                                                                {formatDate(
+                                                                    booking.dateTo
+                                                                )}
+                                                            </p>
+                                                            <p>
+                                                                <strong>
+                                                                    Guests:
+                                                                </strong>{' '}
+                                                                {booking.guests}
+                                                            </p>
+
+                                                            <p>
+                                                                {' '}
+                                                                <strong>
+                                                                    Email:
+                                                                </strong>{' '}
+                                                                {
+                                                                    booking
+                                                                        .customer
+                                                                        .email
+                                                                }
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                )
+                                            )}
+                                        </div>
+                                    ))
+                                ) : (
+                                    <div className=" flex flex-col items-center ">
+                                        <ThumbDownOffAltIcon
+                                            fontSize="large"
+                                            className="mt-4"
+                                        />
+                                        <p className="p-4 ">
+                                            It seem like you have no bookings
+                                            yet for this venue!
+                                        </p>
+                                    </div>
+                                )}
                             </div>
                             <div className="flex flex-row justify-between px-4 pb-4">
                                 <button
@@ -93,81 +189,11 @@ export function AllVenuesByProfile() {
                                     Delate
                                 </button>
                             </div>
-                            <div className="m-4">
-                                {venue.bookings && venue.bookings.length > 0 ? (
-                                    (console.log(venue.bookings),
-                                    (
-                                        <div>
-                                            <h3>Bookings:</h3>
-                                            {venue.bookings.map(
-                                                (booking, index) => (
-                                                    <div
-                                                        key={index}
-                                                        className="border p-2 mb-2"
-                                                    >
-                                                        <p>
-                                                            <strong>
-                                                                From:
-                                                            </strong>{' '}
-                                                            {booking.dateFrom} -{' '}
-                                                            <strong>To:</strong>{' '}
-                                                            {booking.dateTo}
-                                                        </p>
-                                                        <p>
-                                                            <strong>
-                                                                Guests:
-                                                            </strong>{' '}
-                                                            {booking.guests}
-                                                        </p>
-                                                        <p>
-                                                            <strong>
-                                                                Customer:
-                                                            </strong>{' '}
-                                                            {
-                                                                booking.customer
-                                                                    .name
-                                                            }{' '}
-                                                            (
-                                                            {
-                                                                booking.customer
-                                                                    .email
-                                                            }
-                                                            )
-                                                        </p>
-                                                        {booking.customer
-                                                            .avatar && (
-                                                            <img
-                                                                src={
-                                                                    booking
-                                                                        .customer
-                                                                        .avatar
-                                                                        .url
-                                                                }
-                                                                alt={
-                                                                    booking
-                                                                        .customer
-                                                                        .avatar
-                                                                        .alt ||
-                                                                    'Customer avatar'
-                                                                }
-                                                                className="avatar-image"
-                                                            />
-                                                        )}
-                                                    </div>
-                                                )
-                                            )}
-                                        </div>
-                                    ))
-                                ) : (
-                                    <div className="py-4 border-t border-dashed border-pink-silk ">
-                                        <h4>Bookings:</h4>
-                                        <p className="py-4 ">
-                                            No bookings yet!
-                                        </p>
-                                    </div>
+                            <div>
+                                {showUpdateForm && (
+                                    <UpdateVenueForm id={venue.id} />
                                 )}
                             </div>
-                            <div>{showUpdateForm && <UpdateVenueForm id={venue.id} />}</div>
                         </div>
                     ))}
             </div>

@@ -4,7 +4,7 @@ import { loadLocalStorage } from '../storage/loadLocalStorage'
 import ChangeAvatar from '../components/ChangeAvatar'
 import { AllBookingsByProfile } from '../components/AllBookingsByProfile'
 import { AllVenuesByProfile } from '../components/AllVenuesByProfile'
-import { UpdateVenueForm } from '../components/UpdateVenueForm'
+import propTypes from 'prop-types'
 
 //Icons
 
@@ -22,8 +22,20 @@ function Profile() {
     useEffect(() => {
         const profileName = loadLocalStorage('profile').name
         const accessToken = loadLocalStorage('token')
-
-        fetchProfile(profileName, accessToken)
+        const userBookings = {
+            bookings: [
+                {
+                    dateFrom: '',
+                    dateTo: '',
+                    guests: 0,
+                    venue: {
+                        name: '',
+                    },
+                },
+            ],
+        }
+        // use a props to pass the bookings of a user to the data
+        fetchProfile(profileName, accessToken, userBookings)
             .then((data) => {
                 setProfile(data)
             })
@@ -77,7 +89,7 @@ function Profile() {
                             <CalendarMonthIcon />
                             <p className="text-base font-medium mx-2  ">
                                 Bookings:
-                                {profile._count.venues}
+                                {profile._count.bookings}
                             </p>
                         </div>
                         <div className="card-home-page m-4">
@@ -116,6 +128,8 @@ function Profile() {
 }
 
 export default Profile
+
+Profile.propTypes = { userBookings: propTypes.array }
 
 // AVATAR And login name
 //<div>
