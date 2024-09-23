@@ -1,6 +1,7 @@
 import { useState } from 'react'
-import { registerUser } from '../services/registerUser'
+
 import ButtonSwitch from './ButtonSwitch'
+import { registerUser } from '../services/registerUser'
 
 const RegistrationForm = () => {
     const [formData, setFormData] = useState({
