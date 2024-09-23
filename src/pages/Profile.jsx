@@ -5,14 +5,14 @@ import ChangeAvatar from '../components/ChangeAvatar'
 import { AllBookingsByProfile } from '../components/AllBookingsByProfile'
 import { AllVenuesByProfile } from '../components/AllVenuesByProfile'
 import propTypes from 'prop-types'
+import RegisterVenueForm from '../components/RegisterVenueForm'
 
 //Icons
 
 import CabinIcon from '@mui/icons-material/Cabin'
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth'
 import SettingsAccessibilityIcon from '@mui/icons-material/SettingsAccessibility'
-import AddHomeIcon from '@mui/icons-material/AddHome'
-import AddIcon from '@mui/icons-material/Add'
+
 import EditNoteIcon from '@mui/icons-material/EditNote'
 
 function Profile() {
@@ -34,7 +34,7 @@ function Profile() {
                 },
             ],
         }
-        // use a props to pass the bookings of a user to the data
+
         fetchProfile(profileName, accessToken, userBookings)
             .then((data) => {
                 setProfile(data)
@@ -45,7 +45,7 @@ function Profile() {
     }, [])
 
     return (
-        <div>
+        <div className="flex flex-col max-w-4xl mx-auto">
             {profile ? (
                 <div>
                     <img
@@ -105,20 +105,8 @@ function Profile() {
                     </div>
                     <AllBookingsByProfile />
                     <AllVenuesByProfile />
-                    <div
-                        className="card  hover:border border-rav-mango flex justify-between"
-                        onClick={() => {
-                            window.location.href = '/AddVenue'
-                        }}
-                    >
-                        <div className="card-home-page m-4 mb-0 ">
-                            <AddHomeIcon />
-                            <p className="text-base font-medium mx-2 mb-4  ">
-                                Add Venue
-                            </p>
-                        </div>
-                        <AddIcon className="m-4 hover:text-rav-mango  " />
-                    </div>
+                    <RegisterVenueForm />
+                 
                 </div>
             ) : (
                 <p>Loading profile...</p>

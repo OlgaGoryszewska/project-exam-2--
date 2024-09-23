@@ -22,8 +22,8 @@ function DropDownMenu() {
                     className=" flex flex-row justify-center pt-10 absolute bg-deep-blue w-full h-full z-30
          "
                 >
-                    <ul>
-                        <li className="pt-6">
+                    <ul className='flex flex-col '>
+                        <li className="pt-12 mx-auto">
                             <Link
                                 onClick={() => setShowMenu(!showMenu)}
                                 className="link"
@@ -32,7 +32,7 @@ function DropDownMenu() {
                                 Home
                             </Link>
                         </li>
-                        <li className="pt-4">
+                        <li className="pt-5 mx-auto">
                             <Link
                                 onClick={() => setShowMenu(!showMenu)}
                                 className="link"
@@ -41,7 +41,7 @@ function DropDownMenu() {
                                 Login
                             </Link>
                         </li>
-                        <li className="pt-4">
+                        <li className="pt-5 mx-auto">
                             <Link
                                 onClick={() => setShowMenu(!showMenu)}
                                 className="link"
@@ -50,7 +50,7 @@ function DropDownMenu() {
                                 Register
                             </Link>
                         </li>
-                        <li className="pt-4">
+                        <li className="pt-5 mx-auto">
                             <Link
                                 onClick={() => {
                                     setShowMenu(!showMenu)
@@ -62,7 +62,7 @@ function DropDownMenu() {
                                 Profile
                             </Link>
                         </li>
-                        <li className="pt-4">
+                        <li className="pt-5 mx-auto">
                             <Link
                                 onClick={() => {
                                     setShowMenu(!showMenu)
