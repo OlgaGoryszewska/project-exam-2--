@@ -37,24 +37,25 @@ export function AllBookingsByProfile() {
     }, [])
     return (
         <>
-            <div className="  card hover:border border-rav-mango pl-4 flex justify-between ">
+            <div 
+            onClick={() => setShowUpComingBookings(!showUpComingBookings)}
+            className="  card hover:border border-rav-mango pl-4 flex justify-between ">
                 <div className="flex items-center">
                     <EventAvailableIcon />
                     <p className="text-base font-medium mx-2">
                         Upcoming bookings
                     </p>
                 </div>
-                <KeyboardArrowDownIcon className="m-4 hover:text-rav-mango" />
+                <KeyboardArrowDownIcon className={`m-4 hover:text-rav-mango transform transition-transform duration-200 ${showUpComingBookings ? 'rotate-180' : ''}`} />
             </div>
-
-            <div className="bookings-list m-4">
+            {showUpComingBookings && (<div className="card m-4">
                 {loading ? (
                     <p>Loading bookings...</p>
                 ) : error ? (
                     <p className="text-red-500">{error}</p>
                 ) : bookings && bookings.length > 0 ? (
                     bookings.map((booking) => (
-                        <div className=" flex " key={booking.id}>
+                        <div className=" flex pl-4 " key={booking.id}>
                             <p className="text-dark-coconut pr-4">
                                 Check-in: {formatDate(booking.dateFrom)}
                             </p>
@@ -78,7 +79,9 @@ export function AllBookingsByProfile() {
                         </p>
                     </div>
                 )}
-            </div>
+            </div>)}
+
+            
         </>
     )
 }
