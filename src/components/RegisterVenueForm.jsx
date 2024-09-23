@@ -86,8 +86,6 @@ const RegistrationVenueForm = () => {
             if (response.ok) {
                 setSuccess(' Venue registered successfully!')
             }
-            const errorData = await response.json()
-            setError(errorData.error || 'Failed to create the venue')
         } catch (err) {
             setError('An error occurred while creating the venue')
             console.error(err)

@@ -1,9 +1,10 @@
 import { API_BASE_URL, API_KEY } from '../constants'
 
-export const fetchProfile = async (profileName, accessToken) => {
+export const fetchProfile = async (profileName, accessToken, userBookings) => {
+    console.log('userBookings', userBookings)
     try {
         const response = await fetch(
-            `${API_BASE_URL}/holidaze/profiles/${profileName}`,
+            `${API_BASE_URL}/holidaze/profiles/${profileName}?_bookings=true`,
             {
                 method: 'GET',
                 headers: {
@@ -19,6 +20,7 @@ export const fetchProfile = async (profileName, accessToken) => {
         }
 
         const data = await response.json()
+
         return data.data
     } catch (error) {
         console.error('Error fetching profile:', error)
