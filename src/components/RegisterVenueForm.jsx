@@ -8,8 +8,11 @@ import BakeryDiningIcon from '@mui/icons-material/BakeryDining'
 import WifiIcon from '@mui/icons-material/Wifi'
 import PetsIcon from '@mui/icons-material/Pets'
 import LocalParkingIcon from '@mui/icons-material/LocalParking'
+import AddHomeIcon from '@mui/icons-material/AddHome'
+import AddIcon from '@mui/icons-material/Add'
 
-const RegistrationVenueForm = () => {
+const RegisterVenueForm = () => {
+    const [showRegisterVenueForm, setShowRegisterVenueForm] = useState(false)
     const [formVenueData, setFormVenueData] = useState({
         name: '',
         description: '',
@@ -93,85 +96,103 @@ const RegistrationVenueForm = () => {
     }
 
     return (
-        <form className=" card-registration" onSubmit={handleSubmit}>
-            <h2 className="pb-4">Register new Venue</h2>
-            <label>Venue Name</label>
-            <input
-                className="text-field"
-                type="text"
-                name="name"
-                value={formVenueData.name}
-                onChange={handleInputChange}
-            />
-            <label>Description</label>
-            <textarea
-                className="text-field"
-                type="text"
-                name="description"
-                value={formVenueData.description}
-                onChange={handleInputChange}
-            />
-            <label>Image of the Venue/link </label>
-            <input
-                className="text-field"
-                type="text"
-                name="media"
-                value={formVenueData.media.url}
-                onChange={handleInputChange}
-            />
-            <input
-                className="text-field hidden"
-                type="text"
-                name="media"
-                value={formVenueData.media.alt}
-                onChange={handleInputChange}
-            />
-            <label>Price</label>
-            <input
-                className="text-field"
-                type="number"
-                name="price"
-                value={formVenueData.price}
-                onChange={handleInputChange}
-            />
-            <label>Max Guests</label>
-            <input
-                className="text-field"
-                type="number"
-                name="maxGuests"
-                value={formVenueData.maxGuests}
-                onChange={handleInputChange}
-            />
-            <label>Rating</label>
-            <input
-                className="text-field"
-                type="number"
-                name="rating"
-                value={formVenueData.rating}
-                onChange={handleInputChange}
-            />
-            <div className="card-home-page pt-4">
-                <BakeryDiningIcon />
-                <p className="pl-2"> Do you provide a breakfast?</p>
+        <>
+            <div
+                className="card  hover:border border-rav-mango flex justify-between"
+                onClick={() => {
+                    setShowRegisterVenueForm(!showRegisterVenueForm)
+                }}
+            >
+                <div className="card-home-page m-4 mb-0 ">
+                    <AddHomeIcon />
+                    <p className="text-base font-medium mx-2 mb-4  ">
+                        Add Venue
+                    </p>
+                </div>
+                <AddIcon className="m-4 hover:text-rav-mango  " />
             </div>
-            <div className="card-home-page pt-4">
-                <WifiIcon />
-                <p className="pl-2"> Do you provide a wi-fi?</p>
-            </div>
-            <div className="card-home-page pt-4">
-                <PetsIcon />
-                <p className="pl-2"> Do you accept pets??</p>
-            </div>
-            <div className="card-home-page pt-4">
-                <LocalParkingIcon />
-                <p className="pl-2 pb-4"> Do you provide a parking?</p>
-            </div>
-            <button className="button-blue" type="submit">
-                Register Venue
-            </button>
-            {error && <p className="text-red-500">{error}</p>}
-            {success && <p className="text-green-500">{success}</p>}
-        </form>
+            {showRegisterVenueForm && (<form className=" card-registration" onSubmit={handleSubmit}>
+                <h2 className="pb-4">Register new Venue</h2>
+                <label>Venue Name</label>
+                <input
+                    className="text-field"
+                    type="text"
+                    name="name"
+                    value={formVenueData.name}
+                    onChange={handleInputChange}
+                />
+                <label>Description</label>
+                <textarea
+                    className="text-field"
+                    type="text"
+                    name="description"
+                    value={formVenueData.description}
+                    onChange={handleInputChange}
+                />
+                <label>Image of the Venue/link </label>
+                <input
+                    className="text-field"
+                    type="text"
+                    name="media"
+                    value={formVenueData.media.url}
+                    onChange={handleInputChange}
+                />
+                <input
+                    className="text-field hidden"
+                    type="text"
+                    name="media"
+                    value={formVenueData.media.alt}
+                    onChange={handleInputChange}
+                />
+                <label>Price</label>
+                <input
+                    className="text-field"
+                    type="number"
+                    name="price"
+                    value={formVenueData.price}
+                    onChange={handleInputChange}
+                />
+                <label>Max Guests</label>
+                <input
+                    className="text-field"
+                    type="number"
+                    name="maxGuests"
+                    value={formVenueData.maxGuests}
+                    onChange={handleInputChange}
+                />
+                <label>Rating</label>
+                <input
+                    className="text-field"
+                    type="number"
+                    name="rating"
+                    value={formVenueData.rating}
+                    onChange={handleInputChange}
+                />
+                <div className="card-home-page pt-4">
+                    <BakeryDiningIcon />
+                    <p className="pl-2"> Do you provide a breakfast?</p>
+                </div>
+                <div className="card-home-page pt-4">
+                    <WifiIcon />
+                    <p className="pl-2"> Do you provide a wi-fi?</p>
+                </div>
+                <div className="card-home-page pt-4">
+                    <PetsIcon />
+                    <p className="pl-2"> Do you accept pets??</p>
+                </div>
+                <div className="card-home-page pt-4">
+                    <LocalParkingIcon />
+                    <p className="pl-2 pb-4"> Do you provide a parking?</p>
+                </div>
+                <button className="button-blue" type="submit">
+                    Register Venue
+                </button>
+                {error && <p className="text-red-500">{error}</p>}
+                {success && <p className="text-green-500">{success}</p>}
+            </form>)}
+
+            
+        </>
     )
 }
-export default RegistrationVenueForm
+export default RegisterVenueForm
