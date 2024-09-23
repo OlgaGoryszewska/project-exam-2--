@@ -34,7 +34,7 @@ function Profile() {
                 },
             ],
         }
-        // use a props to pass the bookings of a user to the data
+
         fetchProfile(profileName, accessToken, userBookings)
             .then((data) => {
                 setProfile(data)

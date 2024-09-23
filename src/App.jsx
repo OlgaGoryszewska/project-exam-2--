@@ -1,14 +1,12 @@
 import { Routes, Route } from 'react-router-dom'
 import Nav from './components/Nav'
 
-
 // Pages
 import Home from './pages/Home'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Profile from './pages/Profile'
 import Venue from './pages/Venue'
-import AddVenue from './pages/AddVenue'
 
 function App() {
     return (
@@ -20,7 +18,6 @@ function App() {
                 <Route path="/Venue/:id" element={<Venue />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/profile" element={<Profile />} />
-                <Route path='/addVenue' element={<AddVenue />} />
             </Routes>
         </div>
     )
