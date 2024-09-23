@@ -35,8 +35,10 @@
     }
 }
 
+
+
 .link {
-    @apply text-pink-silk font-unica text-3xl;
+    @apply text-pink-silk font-unica text-4xl;
 }
 
 .venue-image {

@@ -74,8 +74,7 @@ export function AllBookingsByProfile() {
                             className="mt-4"
                         />
                         <p className="p-4 text-center">
-                            It seems like you have no bookings yet for this
-                            venue!
+                            It seems like you have not booked any venues yet
                         </p>
                     </div>
                 )}

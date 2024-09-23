@@ -111,7 +111,8 @@ const RegisterVenueForm = () => {
                 </div>
                 <AddIcon className="m-4 hover:text-rav-mango  " />
             </div>
-            {showRegisterVenueForm && (<form className=" card-registration" onSubmit={handleSubmit}>
+            {showRegisterVenueForm && (
+                <div className="m-4"><form className=" card-registration " onSubmit={handleSubmit}>
                 <h2 className="pb-4">Register new Venue</h2>
                 <label>Venue Name</label>
                 <input
@@ -189,8 +190,9 @@ const RegisterVenueForm = () => {
                 </button>
                 {error && <p className="text-red-500">{error}</p>}
                 {success && <p className="text-green-500">{success}</p>}
-            </form>)}
+            </form> </div>)}
 
+               
             
         </>
     )
