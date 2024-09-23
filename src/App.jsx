@@ -18,6 +18,8 @@ function App() {
                 <Route path="/Venue/:id" element={<Venue />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/profile" element={<Profile />} />
+                <Route path="*" element={<Login />} />
+
             </Routes>
         </div>
     )
