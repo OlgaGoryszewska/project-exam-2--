@@ -8,6 +8,15 @@ export const UpdateVenueForm = ({ id }) => {
     const [venueState, setVenueState] = useState({
         name: '',
         description: '',
+        media: [
+            {
+                url: '',
+                alt: '',
+            },
+        ],
+        price: 0,
+        maxGuests: 0,
+        rating: 0,
     })
 
     const handleInputChange = (event) => {
