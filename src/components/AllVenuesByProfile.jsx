@@ -5,6 +5,8 @@ import StarRating from './RatingStars'
 import { deleteVenue } from '../services/deleteVenue'
 import { UpdateVenueForm } from './UpdateVenueForm'
 import { formatDate } from '../utils/formatDate'
+import Venue from '../assets/img/venuePng.png'
+
 
 //icons
 import DeckIcon from '@mui/icons-material/Deck'
@@ -68,7 +70,11 @@ export function AllVenuesByProfile() {
                                     />
                                 ))
                             ) : (
-                                <p>No images available</p>
+                                <img
+                                src={Venue}
+                                alt="missing img"
+                                className="venue-image"
+                            />
                             )}
                             <h2 className="mx-4">{venue.name}</h2>
                             <div className="flex flex-row justify-between py-3 border-t border-pink-silk border-dashed m-4 pb-0">
