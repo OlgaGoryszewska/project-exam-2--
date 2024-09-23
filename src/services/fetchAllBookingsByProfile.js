@@ -1,6 +1,7 @@
 import { API_BASE_URL, API_KEY } from '../constants'
 
-export const fetchAllBookingsByProfile = async (profileName, accessToken) => {
+export const fetchAllBookingsByProfile = async ( profileName, accessToken) => {
+
     try {
         const response = await fetch(
             `${API_BASE_URL}/holidaze/profiles/${profileName}/bookings`,
