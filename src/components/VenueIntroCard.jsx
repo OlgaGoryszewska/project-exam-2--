@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types'
 import VenuePng from '../assets/img/venuePng.png'
 import StarRating from './RatingStars'
+import {formatDate} from '../utils/formatDate'
+
 
 //Icons
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt'
@@ -20,10 +22,10 @@ const VenueIntroCard = ({ venue }) => {
         <div>
             <div className="flex flex justify-between p-4">
                 <p className="text-light-gray italic">
-                    Created: {venue.created}
+                    Created: {formatDate(venue.created)}
                 </p>
                 <p className="text-light-gray italic">
-                    Updated: {venue.updated}
+                    Updated: {formatDate(venue.updated)}
                 </p>
             </div>
             <div className="card">
