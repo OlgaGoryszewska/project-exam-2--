@@ -45,7 +45,7 @@ function Profile() {
     }, [])
 
     return (
-        <div>
+        <div className="flex flex-col max-w-4xl mx-auto">
             {profile ? (
                 <div>
                     <img
