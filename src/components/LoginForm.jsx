@@ -26,7 +26,7 @@ const LoginForm = () => {
                 email: formData.email,
                 password: formData.password,
             })
-            window.location = '/Profile'
+            window.location = '/'
         } catch (error) {
             setError('Error logging in: ' + error.message)
         }
