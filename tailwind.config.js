@@ -9,6 +9,7 @@ export default {
                 'dark-coconut': '#70493C',
                 'pink-silk': '#F9EDF0',
                 'light-gray': '#CACACA',
+                'dark-gray': '#9ca3af',
             },
             fontFamily: {
                 unica: ['Unica One', 'cursive'],

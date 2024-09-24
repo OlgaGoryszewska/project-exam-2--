@@ -83,7 +83,7 @@
     @apply bg-pink-silk;
   }
 .text-field{
-    @apply border border-dark-coconut rounded p-2 w-auto ;
+    @apply border border-dark-coconut rounded p-2 w-auto hover:ring-rav-mango; ;
 }
 .button-blue{
     @apply text-white bg-deep-blue p-2 max-w-lg rounded;
