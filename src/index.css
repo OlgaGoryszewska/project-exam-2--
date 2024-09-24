@@ -35,10 +35,12 @@
     }
 }
 
-
+a{
+    @apply text-dark-coconut hover:text-rav-mango;
+}
 
 .link {
-    @apply text-pink-silk font-unica text-4xl;
+    @apply text-pink-silk font-unica text-4xl hover:text-rav-mango;
 }
 
 .venue-image {
@@ -83,10 +85,10 @@
     @apply bg-pink-silk;
   }
 .text-field{
-    @apply border border-dark-coconut rounded p-2 w-auto hover:ring-rav-mango; ;
+    @apply border border-dark-coconut rounded p-2 w-auto hover:border-rav-mango hover:border-2 ;
 }
 .button-blue{
-    @apply text-white bg-deep-blue p-2 max-w-lg rounded;
+    @apply text-white bg-deep-blue p-2 max-w-lg rounded hover:bg-rav-mango;
 }
 label{
     @apply mt-1;

@@ -172,6 +172,7 @@ const RegisterVenueForm = () => {
                 <div className="card-home-page pt-4">
                     <BakeryDiningIcon />
                     <p className="pl-2"> Do you provide a breakfast?</p>
+                    <input type="radio" value="yes" name="breakfast"/><input type="radio" value="no" name="breakfast"/>
                 </div>
                 <div className="card-home-page pt-4">
                     <WifiIcon />

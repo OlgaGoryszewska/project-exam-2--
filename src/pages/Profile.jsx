@@ -119,16 +119,3 @@ export default Profile
 
 Profile.propTypes = { userBookings: propTypes.array }
 
-// AVATAR And login name
-//<div>
-//<div className="flex items-center justify-end p-2">
-//<p className=" p-2 ">
-//{profile.name}
-/*</p>
-<img
-    src={profile.avatar.url}
-    alt="avatar"
-    className="w-10 h-10 rounded-full "
-/>
-</div>
-</div>*/
