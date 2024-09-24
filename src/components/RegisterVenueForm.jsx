@@ -177,7 +177,6 @@ const RegisterVenueForm = () => {
                             <div className="flex flex-row ">
                                 <BakeryDiningIcon />
                                 <p className="pl-2">
-                                    {' '}
                                     Do you provide a breakfast?
                                 </p>
                             </div>
