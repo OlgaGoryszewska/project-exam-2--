@@ -112,89 +112,138 @@ const RegisterVenueForm = () => {
                 <AddIcon className="m-4 hover:text-rav-mango  " />
             </div>
             {showRegisterVenueForm && (
-                <div className="m-4"><form className=" card-registration " onSubmit={handleSubmit}>
-                <h2 className="pb-4">Register new Venue</h2>
-                <label>Venue Name</label>
-                <input
-                    className="text-field"
-                    type="text"
-                    name="name"
-                    value={formVenueData.name}
-                    onChange={handleInputChange}
-                />
-                <label>Description</label>
-                <textarea
-                    className="text-field"
-                    type="text"
-                    name="description"
-                    value={formVenueData.description}
-                    onChange={handleInputChange}
-                />
-                <label>Image of the Venue/link </label>
-                <input
-                    className="text-field"
-                    type="text"
-                    name="media"
-                    value={formVenueData.media.url}
-                    onChange={handleInputChange}
-                />
-                <input
-                    className="text-field hidden"
-                    type="text"
-                    name="media"
-                    value={formVenueData.media.alt}
-                    onChange={handleInputChange}
-                />
-                <label>Price</label>
-                <input
-                    className="text-field"
-                    type="number"
-                    name="price"
-                    value={formVenueData.price}
-                    onChange={handleInputChange}
-                />
-                <label>Max Guests</label>
-                <input
-                    className="text-field"
-                    type="number"
-                    name="maxGuests"
-                    value={formVenueData.maxGuests}
-                    onChange={handleInputChange}
-                />
-                <label>Rating</label>
-                <input
-                    className="text-field"
-                    type="number"
-                    name="rating"
-                    value={formVenueData.rating}
-                    onChange={handleInputChange}
-                />
-                <div className="card-home-page pt-4">
-                    <BakeryDiningIcon />
-                    <p className="pl-2"> Do you provide a breakfast?</p>
-                    <input type="radio" value="yes" name="breakfast"/><input type="radio" value="no" name="breakfast"/>
-                </div>
-                <div className="card-home-page pt-4">
-                    <WifiIcon />
-                    <p className="pl-2"> Do you provide a wi-fi?</p>
-                </div>
-                <div className="card-home-page pt-4">
-                    <PetsIcon />
-                    <p className="pl-2"> Do you accept pets??</p>
-                </div>
-                <div className="card-home-page pt-4">
-                    <LocalParkingIcon />
-                    <p className="pl-2 pb-4"> Do you provide a parking?</p>
-                </div>
-                <button className="button-blue" type="submit">
-                    Register Venue
-                </button>
-                {error && <p className="text-red-500">{error}</p>}
-                {success && <p className="text-green-500">{success}</p>}
-            </form> </div>)}
+                <div className="m-4">
+                    <form
+                        className=" card-registration "
+                        onSubmit={handleSubmit}
+                    >
+                        <h2 className="pb-4">Register new Venue</h2>
+                        <label>Venue Name</label>
+                        <input
+                            className="text-field"
+                            type="text"
+                            name="name"
+                            value={formVenueData.name}
+                            onChange={handleInputChange}
+                        />
+                        <label>Description</label>
+                        <textarea
+                            className="text-field"
+                            type="text"
+                            name="description"
+                            value={formVenueData.description}
+                            onChange={handleInputChange}
+                        />
+                        <label>Image of the Venue/link </label>
+                        <input
+                            className="text-field"
+                            type="text"
+                            name="media"
+                            value={formVenueData.media.url}
+                            onChange={handleInputChange}
+                        />
+                        <input
+                            className="text-field hidden"
+                            type="text"
+                            name="media"
+                            value={formVenueData.media.alt}
+                            onChange={handleInputChange}
+                        />
+                        <label>Price</label>
+                        <input
+                            className="text-field"
+                            type="number"
+                            name="price"
+                            value={formVenueData.price}
+                            onChange={handleInputChange}
+                        />
+                        <label>Max Guests</label>
+                        <input
+                            className="text-field"
+                            type="number"
+                            name="maxGuests"
+                            value={formVenueData.maxGuests}
+                            onChange={handleInputChange}
+                        />
+                        <label>Rating</label>
+                        <input
+                            className="text-field"
+                            type="number"
+                            name="rating"
+                            value={formVenueData.rating}
+                            onChange={handleInputChange}
+                        />
+                        <div className="card-home-page pt-4 flex flex-row justify-between">
+                            <div className="flex flex-row ">
+                                <BakeryDiningIcon />
+                                <p className="pl-2">
+                                    {' '}
+                                    Do you provide a breakfast?
+                                </p>
+                            </div>
 
-               
-            
+                            <div>
+                                <label className="mt-0 px-2">Yes</label>
+                                <input
+                                    type="radio"
+                                    value="yes"
+                                    name="breakfast"
+                                />
+                                <label className="mt-0 px-2">No</label>
+                                <input
+                                    type="radio"
+                                    value="no"
+                                    name="breakfast"
+                                />
+                            </div>
+                        </div>
+                        <div className="card-home-page flex flex-row justify-between">
+                            <div className="card-home-page pt-4">
+                                <WifiIcon />
+                                <p className="pl-2"> Do you provide a wi-fi?</p>
+                            </div>
+                            <div className="mt-4">
+                                <label className="mt-0 px-2">Yes</label>
+                                <input type="radio" value="yes" name="pets" />
+                                <label className="mt-0 px-2">No</label>
+                                <input type="radio" value="no" name="pets" />
+                            </div>
+                        </div>
+                        <div className="card-home-page flex flex-row justify-between">
+                            <div className="card-home-page pt-4">
+                                <PetsIcon />
+                                <p className="pl-2"> Do you accept pets??</p>
+                            </div>
+                            <div className="mt-4">
+                                <label className="mt-0 px-2">Yes</label>
+                                <input type="radio" value="yes" name="wifi" />
+                                <label className="mt-0 px-2">No</label>
+                                <input type="radio" value="no" name="wifi" />
+                            </div>
+                        </div>
+                        <div className="card-home-page flex flex-row justify-between">
+                            <div className="card-home-page pt-4">
+                                <LocalParkingIcon />
+                                <p className="pl-2 pb-4">
+                                    Do you provide a parking?
+                                </p>
+                            </div>
+                            <div className="mt-4">
+                                <label className="mt-0 px-2">Yes</label>
+                                <input type="radio" value="yes" name="wifi" />
+                                <label className="mt-0 px-2">No</label>
+                                <input type="radio" value="no" name="wifi" />
+                            </div>
+                        </div>
+
+                        <button className="button-blue" type="submit">
+                            Register Venue
+                        </button>
+                        {error && <p className="text-red-500">{error}</p>}
+                        {success && <p className="text-green-500">{success}</p>}
+                    </form>{' '}
+                </div>
+            )}
         </>
     )
 }
