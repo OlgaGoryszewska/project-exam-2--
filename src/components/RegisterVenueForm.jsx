@@ -204,9 +204,9 @@ const RegisterVenueForm = () => {
                             </div>
                             <div className="mt-4">
                                 <label className="mt-0 px-2">Yes</label>
-                                <input type="radio" value="yes" name="pets" />
+                                <input type="radio" value="yes" name="wifi" />
                                 <label className="mt-0 px-2">No</label>
-                                <input type="radio" value="no" name="pets" />
+                                <input type="radio" value="no" name="wifi" />
                             </div>
                         </div>
                         <div className="card-home-page flex flex-row justify-between">
@@ -216,9 +216,9 @@ const RegisterVenueForm = () => {
                             </div>
                             <div className="mt-4">
                                 <label className="mt-0 px-2">Yes</label>
-                                <input type="radio" value="yes" name="wifi" />
+                                <input type="radio" value="yes" name="pets" />
                                 <label className="mt-0 px-2">No</label>
-                                <input type="radio" value="no" name="wifi" />
+                                <input type="radio" value="no" name="pets" />
                             </div>
                         </div>
                         <div className="card-home-page flex flex-row justify-between">
@@ -230,9 +230,13 @@ const RegisterVenueForm = () => {
                             </div>
                             <div className="mt-4">
                                 <label className="mt-0 px-2">Yes</label>
-                                <input type="radio" value="yes" name="wifi" />
+                                <input
+                                    type="radio"
+                                    value="yes"
+                                    name="parking"
+                                />
                                 <label className="mt-0 px-2">No</label>
-                                <input type="radio" value="no" name="wifi" />
+                                <input type="radio" value="no" name="parking" />
                             </div>
                         </div>
 
