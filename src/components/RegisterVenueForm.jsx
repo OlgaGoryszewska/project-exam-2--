@@ -44,6 +44,15 @@ const RegisterVenueForm = () => {
     const [error, setError] = useState(null)
     const [success, setSuccess] = useState(null)
 
+    const handleMetaChange = (event) => {
+        const { name, value } = event.target
+        const boleanValue = value === 'true'
+        setFormVenueData((prevState) => ({
+            ...prevState,
+            meta: { ...prevState.meta, [name]: boleanValue },
+        }))
+    }
+
     const handleInputChange = (event) => {
         const inputName = event.target.name
         let inputValue = event.target.value
@@ -185,14 +194,22 @@ const RegisterVenueForm = () => {
                                 <label className="mt-0 px-2">Yes</label>
                                 <input
                                     type="radio"
-                                    value="yes"
+                                    value="true"
                                     name="breakfast"
+                                    onChange={handleMetaChange}
+                                    checked={
+                                        formVenueData.meta.breakfast === true
+                                    }
                                 />
                                 <label className="mt-0 px-2">No</label>
                                 <input
                                     type="radio"
-                                    value="no"
+                                    value="false"
                                     name="breakfast"
+                                    onChange={handleMetaChange}
+                                    checked={
+                                        formVenueData.meta.breakfast === false
+                                    }
                                 />
                             </div>
                         </div>
@@ -203,9 +220,21 @@ const RegisterVenueForm = () => {
                             </div>
                             <div className="mt-4">
                                 <label className="mt-0 px-2">Yes</label>
-                                <input type="radio" value="yes" name="wifi" />
+                                <input
+                                    type="radio"
+                                    value="true"
+                                    name="wifi"
+                                    onChange={handleMetaChange}
+                                    checked={formVenueData.meta.wifi === true}
+                                />
                                 <label className="mt-0 px-2">No</label>
-                                <input type="radio" value="no" name="wifi" />
+                                <input
+                                    type="radio"
+                                    value="false"
+                                    name="wifi"
+                                    onChange={handleMetaChange}
+                                    checked={formVenueData.meta.wifi === false}
+                                />
                             </div>
                         </div>
                         <div className="card-home-page flex flex-row justify-between">
@@ -215,9 +244,21 @@ const RegisterVenueForm = () => {
                             </div>
                             <div className="mt-4">
                                 <label className="mt-0 px-2">Yes</label>
-                                <input type="radio" value="yes" name="pets" />
+                                <input
+                                    type="radio"
+                                    value="true"
+                                    name="pets"
+                                    onChange={handleMetaChange}
+                                    checked={formVenueData.meta.pets === true}
+                                />
                                 <label className="mt-0 px-2">No</label>
-                                <input type="radio" value="no" name="pets" />
+                                <input
+                                    type="radio"
+                                    value="false"
+                                    name="pets"
+                                    onChange={handleMetaChange}
+                                    checked={formVenueData.meta.pets === false}
+                                />
                             </div>
                         </div>
                         <div className="card-home-page flex flex-row justify-between">
@@ -231,11 +272,23 @@ const RegisterVenueForm = () => {
                                 <label className="mt-0 px-2">Yes</label>
                                 <input
                                     type="radio"
-                                    value="yes"
+                                    value="true"
                                     name="parking"
+                                    onChange={handleMetaChange}
+                                    checked={
+                                        formVenueData.meta.parking === true
+                                    }
                                 />
                                 <label className="mt-0 px-2">No</label>
-                                <input type="radio" value="no" name="parking" />
+                                <input
+                                    type="radio"
+                                    value="false"
+                                    name="parking"
+                                    onChange={handleMetaChange}
+                                    checked={
+                                        formVenueData.meta.parking === false
+                                    }
+                                />
                             </div>
                         </div>
 
