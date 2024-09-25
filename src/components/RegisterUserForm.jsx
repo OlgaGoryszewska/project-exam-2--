@@ -1,133 +1,47 @@
 import { useState } from 'react'
+import { useForm } from 'react-hook-form'
 import ButtonSwitch from './ButtonSwitch'
 import { registerUser } from '../services/registerUser'
 import logoRound from '../assets/img/logoRound.png'
 
 const RegistrationForm = () => {
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        password: '',
-        bio: '',
-        avatarUrl: '',
-        avatarAlt: '',
-        bannerUrl: '',
-        bannerAlt: '',
-        venueManager: false,
-    })
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+        setValue,
+        watch,
+    } = useForm()
 
     const [error, setError] = useState('')
 
-    const handleInputChange = (event) => {
-        const inputName = event.target.name
-        const inputValue = event.target.value
-        setFormData({
-            ...formData,
-            [inputName]: inputValue,
-        })
-    }
-
-    const handleSwitchChange = (checked) => {
-        setFormData({
-            ...formData,
-            venueManager: checked,
-        })
-    }
-
-    const handleSubmit = async (event) => {
-        event.preventDefault()
-
-        const errors = []
-        setError('')
-
-        // Validate name (no punctuation symbols apart from underscore)
-        const name = formData.name
-        const punctuationRegex = /[!"#$%&'()*+,\-./:;<=>?@[\]^`{|}~]/
-        if (punctuationRegex.test(name)) {
-            errors.push(
-                'Name must not contain punctuation symbols apart from underscore (_).'
-            )
-        }
-
-        // Validate email (must be a valid stud.noroff.no email address)
-        const email = formData.email
-        const emailRegex = /^[^\s@]+@stud\.noroff\.no$/
-        if (!emailRegex.test(email)) {
-            errors.push('Email must be a valid stud.noroff.no email address.')
-        }
-
-        // Validate password (at least 8 characters)
-        const password = formData.password
-        if (password.length < 8) {
-            errors.push('Password must be at least 8 characters.')
-        }
-
-        // Validate bio (less than 160 characters if set)
-        const bio = formData.bio
-        if (bio && bio.length > 160) {
-            errors.push('Bio must be less than 160 characters.')
-        }
-
-        // Validate avatar URL and alt text
-        const avatarUrl = formData.avatarUrl
-        const avatarAlt = formData.avatarAlt || ''
-        if (avatarUrl) {
-            try {
-                new URL(avatarUrl)
-            } catch {
-                errors.push('Avatar URL must be a valid URL.')
-            }
-            if (avatarAlt.length > 120) {
-                errors.push('Avatar alt text must be less than 120 characters.')
-            }
-        } else if (avatarAlt) {
-            errors.push('Avatar alt text requires avatar URL to be set.')
-        }
-
-        // Validate banner URL and alt text
-        const bannerUrl = formData.bannerUrl
-        const bannerAlt = formData.bannerAlt || ''
-        if (bannerUrl) {
-            try {
-                new URL(bannerUrl)
-            } catch {
-                errors.push('Banner URL must be a valid URL.')
-            }
-            if (bannerAlt.length > 120) {
-                errors.push('Banner alt text must be less than 120 characters.')
-            }
-        } else if (bannerAlt) {
-            errors.push('Banner alt text requires banner URL to be set.')
-        }
-
-        if (errors.length > 0) {
-            setError(errors.join('\n'))
-            return
-        }
-
-        const avatar = avatarUrl
-            ? {
-                  url: avatarUrl,
-                  alt: avatarAlt,
-              }
-            : undefined
-
-        const banner = bannerUrl
-            ? {
-                  url: bannerUrl,
-                  alt: bannerAlt,
-              }
-            : undefined
-
+    const isValidUrl = (url) => {
         try {
+            new URL(url)
+            return true
+        } catch {
+            return false
+        }
+    }
+
+    const onSubmit = async (data) => {
+        try {
+            const avatar = data.avatarUrl
+                ? { url: data.avatarUrl, alt: data.avatarAlt }
+                : undefined
+
+            const banner = data.bannerUrl
+                ? { url: data.bannerUrl, alt: data.bannerAlt }
+                : undefined
+
             const newUser = {
-                name: formData.name,
-                email: formData.email,
-                password: formData.password,
-                bio: formData.bio,
+                name: data.name,
+                email: data.email,
+                password: data.password,
+                bio: data.bio,
                 avatar: avatar,
                 banner: banner,
-                venueManager: formData.venueManager,
+                venueManager: data.venueManager || false,
             }
 
             await registerUser(newUser)
@@ -138,7 +52,7 @@ const RegistrationForm = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit} className="card-registration">
+        <form onSubmit={handleSubmit(onSubmit)} className="card-registration">
             {error && <p className="text-red-500">{error}</p>}
             <img
                 className="w-16 h-16 mx-auto mt-14"
@@ -150,79 +64,153 @@ const RegistrationForm = () => {
             <label>Full Name</label>
             <input
                 type="text"
-                name="name"
-                onChange={handleInputChange}
-                value={formData.name}
+                {...register('name', {
+                    required: 'Name is required.',
+                    pattern: {
+                        value: /^[a-zA-Z0-9_ ]+$/,
+                        message:
+                            'Name must not contain punctuation symbols apart from underscore (_).',
+                    },
+                })}
                 placeholder="Name"
                 className="text-field"
             />
+            {errors.name && (
+                <p className="text-red-500">{errors.name.message}</p>
+            )}
+
             <label>Email</label>
             <input
                 type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleInputChange}
+                {...register('email', {
+                    required: 'Email is required.',
+                    pattern: {
+                        value: /^[^\s@]+@stud\.noroff\.no$/,
+                        message:
+                            'Email must be a valid stud.noroff.no email address.',
+                    },
+                })}
                 placeholder="Email (must be @stud.noroff.no)"
                 className="text-field"
             />
+            {errors.email && (
+                <p className="text-red-500">{errors.email.message}</p>
+            )}
+
             <label>Password</label>
             <input
                 type="password"
-                name="password"
-                value={formData.password}
-                onChange={handleInputChange}
+                {...register('password', {
+                    required: 'Password is required.',
+                    minLength: {
+                        value: 8,
+                        message: 'Password must be at least 8 characters.',
+                    },
+                })}
                 placeholder="Password"
                 className="text-field"
             />
+            {errors.password && (
+                <p className="text-red-500">{errors.password.message}</p>
+            )}
+
             <label>Bio</label>
             <textarea
-                name="bio"
-                value={formData.bio}
-                onChange={handleInputChange}
+                {...register('bio', {
+                    maxLength: {
+                        value: 160,
+                        message: 'Bio must be less than 160 characters.',
+                    },
+                })}
                 placeholder="Bio (max 160 characters)"
                 className="text-field"
             />
-            <label>Avatar</label>
+            {errors.bio && <p className="text-red-500">{errors.bio.message}</p>}
+
+            <label>Avatar URL</label>
             <input
                 type="text"
-                name="avatarUrl"
-                value={formData.avatarUrl}
-                onChange={handleInputChange}
+                {...register('avatarUrl', {
+                    validate: (value) => {
+                        if (value && !isValidUrl(value)) {
+                            return 'Avatar URL must be a valid URL.'
+                        }
+                    },
+                })}
                 placeholder="Avatar URL"
                 className="text-field"
             />
+            {errors.avatarUrl && (
+                <p className="text-red-500">{errors.avatarUrl.message}</p>
+            )}
+
             <input
                 type="text"
-                name="avatarAlt"
-                value={formData.avatarAlt}
-                onChange={handleInputChange}
+                {...register('avatarAlt', {
+                    maxLength: {
+                        value: 120,
+                        message:
+                            'Avatar alt text must be less than 120 characters.',
+                    },
+                    validate: (value) => {
+                        if (value && !watch('avatarUrl')) {
+                            return 'Avatar alt text requires avatar URL to be set.'
+                        }
+                    },
+                })}
                 placeholder="Avatar Alt Text"
                 className="text-field hidden"
             />
-            <label>Banner</label>
+            {errors.avatarAlt && (
+                <p className="text-red-500">{errors.avatarAlt.message}</p>
+            )}
+
+            <label>Banner URL</label>
             <input
                 type="text"
-                name="bannerUrl"
-                value={formData.bannerUrl}
-                onChange={handleInputChange}
+                {...register('bannerUrl', {
+                    validate: (value) => {
+                        if (value && !isValidUrl(value)) {
+                            return 'Banner URL must be a valid URL.'
+                        }
+                    },
+                })}
                 placeholder="Banner URL"
                 className="text-field"
             />
+            {errors.bannerUrl && (
+                <p className="text-red-500">{errors.bannerUrl.message}</p>
+            )}
+
             <input
                 type="text"
-                name="bannerAlt"
-                value={formData.bannerAlt}
-                onChange={handleInputChange}
+                {...register('bannerAlt', {
+                    maxLength: {
+                        value: 120,
+                        message:
+                            'Banner alt text must be less than 120 characters.',
+                    },
+                    validate: (value) => {
+                        if (value && !watch('bannerUrl')) {
+                            return 'Banner alt text requires banner URL to be set.'
+                        }
+                    },
+                })}
                 placeholder="Banner Alt Text"
                 className="text-field hidden"
             />
+            {errors.bannerAlt && (
+                <p className="text-red-500">{errors.bannerAlt.message}</p>
+            )}
+
             <div className="flex flex-row py-4 justify-between">
                 <p>Are you a venue manager?</p>
                 <ButtonSwitch
-                    onChange={handleSwitchChange}
-                    checked={formData.venueManager}
+                    onChange={(checked) => setValue('venueManager', checked)}
+                    checked={watch('venueManager') || false}
                 />
             </div>
+
             <button type="submit" className="button-blue">
                 Register
             </button>
