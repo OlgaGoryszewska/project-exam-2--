@@ -20,7 +20,7 @@ function SearchVenue() {
                 setVenues(venuesReturnedByAPI)
             })
             .catch((error) => {
-                console.error('Error fetching profile:', error)
+                console.error('Error fetching Venue:', error)
             })
     }, [query])
 
