@@ -1,4 +1,4 @@
-import React from 'react'
+/*import React from 'react'
 
 const NavAvatar = () => {
     return (
@@ -13,9 +13,8 @@ const NavAvatar = () => {
                     />
                 </div>
             </div>
-            */
         </div>
     )
 }
 
-export default NavAvatar
+export default NavAvatar */
