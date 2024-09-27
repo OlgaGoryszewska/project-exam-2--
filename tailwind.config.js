@@ -10,6 +10,7 @@ export default {
                 'pink-silk': '#F9EDF0',
                 'light-gray': '#CACACA',
                 'dark-gray': '#9ca3af',
+                'disable': '#F0F0F0',
             },
             fontFamily: {
                 unica: ['Unica One', 'cursive'],

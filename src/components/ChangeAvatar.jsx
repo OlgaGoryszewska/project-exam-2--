@@ -1,12 +1,16 @@
 import { useState } from 'react'
 import { loadLocalStorage } from '../storage/loadLocalStorage'
 import { API_BASE_URL, API_KEY } from '../constants'
+import { CustomAlert } from './CustomAlert'
 
 function UpdateProfileForm() {
     const [avatarUrl, setAvatarUrl] = useState('')
 
     const [error, setError] = useState(null)
-    const [success, setSuccess] = useState(null)
+    const [alertMessage, setAlertMessage] = useState({
+        message: '',
+        show: false,
+    })
 
     const handleUpdateProfile = async (event) => {
         event.preventDefault()
@@ -34,7 +38,11 @@ function UpdateProfileForm() {
 
             if (response.ok) {
                 await response.json()
-                setSuccess('Profile updated successfully!')
+                setAlertMessage({
+                    message:
+                        'Profile updated successfully! Please refresh the page to see the changes.',
+                    show: true,
+                })
             } else {
                 const errorData = await response.json()
                 setError(errorData.error || 'Failed to update profile')
@@ -44,24 +52,33 @@ function UpdateProfileForm() {
             console.error(err)
         }
     }
+    const handleAlertClose = () => {
+        setAlertMessage({ ...alertMessage, show: false })
+    }
 
     return (
         <form onSubmit={handleUpdateProfile} className="p-4">
-            <div className='flex flex-col'>
-                <h4 className='text-lg font-medium'>Change Avatar</h4>
+            <div className="flex flex-col">
+                <h4 className="text-lg font-medium">Change Avatar</h4>
                 <label>Avatar URL</label>
                 <input
                     type="url"
                     value={avatarUrl}
                     onChange={(event) => setAvatarUrl(event.target.value)}
                     required
-                    className='text-field'
+                    className="text-field"
                 />
-     
             </div>
-            <button className="button-blue mt-4" type="submit">Update Profile</button>
+            <button className="button-blue mt-4" type="submit">
+                Update Profile
+            </button>
             {error && <p className="text-red-500">{error}</p>}
-            {success && <p className="text-green-500">{success}</p>}
+            {alertMessage.show && (
+                <CustomAlert
+                    message={alertMessage.message}
+                    onClose={handleAlertClose}
+                />
+            )}
         </form>
     )
 }

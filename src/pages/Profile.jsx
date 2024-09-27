@@ -62,6 +62,7 @@ function Profile() {
                     <div className="card pt-8 ">
                         <div className="flex flex-row pt-4 justify-between">
                             <h3>{profile.name}</h3>
+
                             <EditNoteIcon
                                 onClick={() => {
                                     setShowUpdateForm(!showUpdateForm)
@@ -104,9 +105,8 @@ function Profile() {
                         {showUpdateForm && <ChangeAvatar />}
                     </div>
                     <AllBookingsByProfile />
-                    <AllVenuesByProfile />
+                    <AllVenuesByProfile id="allVenues" />
                     <RegisterVenueForm />
-                 
                 </div>
             ) : (
                 <p>Loading profile...</p>
@@ -118,4 +118,3 @@ function Profile() {
 export default Profile
 
 Profile.propTypes = { userBookings: propTypes.array }
-

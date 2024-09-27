@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { API_BASE_URL } from '../constants'
 import { API_KEY } from '../constants'
 import { loadLocalStorage } from '../storage/loadLocalStorage'
+import { CustomAlert } from './CustomAlert'
+
 
 //Icons
 import BakeryDiningIcon from '@mui/icons-material/BakeryDining'
@@ -41,8 +43,11 @@ const RegisterVenueForm = () => {
             lng: 0,
         },
     })
+    const [alertMessage, setAlertMessage] = useState({
+        message: '',
+        show: false,
+    })
     const [error, setError] = useState(null)
-    const [success, setSuccess] = useState(null)
 
     const handleMetaChange = (event) => {
         const { name, value } = event.target
@@ -96,12 +101,19 @@ const RegisterVenueForm = () => {
                 body: JSON.stringify(newVenue),
             })
             if (response.ok) {
-                setSuccess(' Venue registered successfully!')
+                setAlertMessage({
+                    message: ' Venue registered successfully!',
+                    show: true,
+                })
             }
         } catch (err) {
             setError('An error occurred while creating the venue')
             console.error(err)
         }
+    }
+
+    const handleAlertClose = () => {
+        setAlertMessage({ ...alertMessage, show: false })
     }
 
     return (
@@ -295,9 +307,14 @@ const RegisterVenueForm = () => {
                         <button className="button-blue" type="submit">
                             Register Venue
                         </button>
+                        {alertMessage.show && (
+                            <CustomAlert
+                                message={alertMessage.message}
+                                onClose={handleAlertClose}
+                            />
+                        )}
                         {error && <p className="text-red-500">{error}</p>}
-                        {success && <p className="text-green-500">{success}</p>}
-                    </form>{' '}
+                    </form>
                 </div>
             )}
         </>
