@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import PropTypes from 'prop-types'
 
 //Icons
 import CheckIcon from '@mui/icons-material/Check'
 
-export const CustomAlert = ({ message, type, onClose, duration = 3000 }) => {
+export const CustomAlert = ({ message, onClose, duration = 4000 }) => {
     useEffect(() => {
         const timer = setTimeout(() => {
             onClose()
@@ -14,7 +14,7 @@ export const CustomAlert = ({ message, type, onClose, duration = 3000 }) => {
 
     return (
         <div>
-            <div className={`alert-custom alert-${type}`}>
+            <div className={`alert-custom `}>
                 <CheckIcon className="m-auto text-lg " />
                 <p className="pt-4 mx-auto">{message}</p>
                 <button onClick={onClose}></button>
@@ -25,7 +25,6 @@ export const CustomAlert = ({ message, type, onClose, duration = 3000 }) => {
 
 CustomAlert.propTypes = {
     message: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
     onClose: PropTypes.func.isRequired,
     duration: PropTypes.number,
 }

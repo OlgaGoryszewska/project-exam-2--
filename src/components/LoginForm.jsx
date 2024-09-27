@@ -3,7 +3,10 @@ import { useForm } from 'react-hook-form'
 import { loginUser } from '../services/loginUser'
 import logoRound from '../assets/img/logoRound.png'
 import { CustomAlert } from './CustomAlert'
+import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
+//Pages
 
 const LoginForm = () => {
     const {
@@ -13,11 +16,11 @@ const LoginForm = () => {
     } = useForm()
     const [alertMessage, setAlertMessage] = useState({
         message: '',
-        type: '',
         show: false,
     })
 
     const [error, setError] = useState('')
+    const navigate = useNavigate()
 
     const onSubmit = async (data) => {
         try {
@@ -36,7 +39,7 @@ const LoginForm = () => {
     }
     const handleCloseAlert = () => {
         setAlertMessage({ ...alert, show: false })
-        window.location.href = '/'
+        navigate('/')
     }
 
     return (
@@ -92,16 +95,15 @@ const LoginForm = () => {
                 </button>
                 <div className="flex my-4">
                     <p className="text-dark-gray">Do not have an account? </p>
-                    <a href="/Register" className="pl-2">
-                        Register
-                    </a>
+                    <Link to="/Register">
+                        <p className='pl-2'>Register</p>
+                    </Link>
                 </div>
             </form>
             <div>
                 {alertMessage.show && (
-                    <CustomAlert 
+                    <CustomAlert
                         message={alertMessage.message}
-                        type={alertMessage.type}
                         onClose={handleCloseAlert}
                     />
                 )}

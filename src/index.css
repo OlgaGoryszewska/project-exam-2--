@@ -94,7 +94,7 @@ label{
     @apply mt-1;
 }
 .alert-custom{
-    @apply flex flex-col bg-white text-deep-blue rounded m-auto p-6 shadow-md max-w-lg; 
+    @apply flex flex-col bg-white text-deep-blue rounded m-auto p-6 shadow-md max-w-lg mb-4; 
 }
 .alert-success{
     @apply  text-deep-blue;
