@@ -1,10 +1,16 @@
 import RegisterForm from '../components/RegisterUserForm'
+import { useAuthState } from '../hooks/useAuthState'
+import Nav from '../components/Nav'
 
 function Register() {
+    const { profile } = useAuthState()
     return (
-        <div className='px-4'>
-            <RegisterForm />
-        </div>
+        <>
+            <Nav profile={profile} />
+            <div className="px-4">
+                <RegisterForm />
+            </div>
+        </>
     )
 }
 
