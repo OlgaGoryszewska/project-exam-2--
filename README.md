@@ -1,7 +1,5 @@
 # Lanka Travel Accommodation Booking Frontend
 
-![Holidaze Logo](logoRound.png)
-
 ## Table of Contents
 
 - [Project Overview](#project-overview)
