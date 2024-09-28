@@ -2,28 +2,26 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { handleLogout } from '../handlers/logout'
 
-//Icons
+// Icons
 import palm from '../assets/img/palm.png'
 
 function DropDownMenu() {
     const [showMenu, setShowMenu] = useState(false)
     const token = localStorage.getItem('token')
+
     if (token) {
         return (
             <>
                 <button onClick={() => setShowMenu(!showMenu)}>
                     <img
-                        className="relative h-8 z-40 pr-4 "
+                        className="relative h-8 z-40 pr-4"
                         src={palm}
                         alt="menu icon"
                     />
                 </button>
                 {showMenu && (
-                    <nav
-                        className=" flex flex-row justify-center pt-10 absolute bg-deep-blue w-full h-full z-30
-         "
-                    >
-                        <ul className="flex flex-col ">
+                    <nav className="flex flex-row justify-center pt-10 absolute bg-deep-blue w-full h-full z-30">
+                        <ul className="flex flex-col">
                             <li className="pt-12 mx-auto">
                                 <Link
                                     onClick={() => setShowMenu(!showMenu)}
@@ -35,9 +33,7 @@ function DropDownMenu() {
                             </li>
                             <li className="pt-5 mx-auto">
                                 <Link
-                                    onClick={() => {
-                                        setShowMenu(!showMenu)
-                                    }}
+                                    onClick={() => setShowMenu(!showMenu)}
                                     className="link"
                                     to="/profile"
                                 >
@@ -66,17 +62,14 @@ function DropDownMenu() {
             <>
                 <button onClick={() => setShowMenu(!showMenu)}>
                     <img
-                        className="relative h-8 z-40 pr-4 "
+                        className="relative h-8 z-40 pr-4"
                         src={palm}
                         alt="menu icon"
                     />
                 </button>
                 {showMenu && (
-                    <nav
-                        className=" flex flex-row justify-center pt-10 absolute bg-deep-blue w-full h-full z-30
-         "
-                    >
-                        <ul className="flex flex-col ">
+                    <nav className="flex flex-row justify-center pt-10 absolute bg-deep-blue w-full h-full z-30">
+                        <ul className="flex flex-col">
                             <li className="pt-12 mx-auto">
                                 <Link
                                     onClick={() => setShowMenu(!showMenu)}

@@ -3,22 +3,8 @@ import { useState } from 'react'
 import { updateVenue } from '../services/updateVenue'
 import { loadLocalStorage } from '../storage/loadLocalStorage'
 
-export const UpdateVenueForm = ({ id }) => {
-    const [venueState, setVenueState] = useState({
-        name: '',
-        description: '',
-        media: [
-            {
-                url: '',
-                alt: '',
-            },
-        ],
-        price: 0,
-        maxGuests: 0,
-        rating: 0,
-        meta: {},
-        location: {},
-    })
+export const UpdateVenueForm = ({ id, venue }) => {
+    const [venueState, setVenueState] = useState(venue)
 
     const handleInputChange = (event) => {
         const { name, value } = event.target
@@ -159,4 +145,5 @@ export const UpdateVenueForm = ({ id }) => {
 
 UpdateVenueForm.propTypes = {
     id: PropTypes.string.isRequired,
+    venue: PropTypes.object,
 }

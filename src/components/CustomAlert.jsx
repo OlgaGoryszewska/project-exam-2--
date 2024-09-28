@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 //Icons
 import CheckIcon from '@mui/icons-material/Check'
 
-export const CustomAlert = ({ message, onClose, duration = 4000 }) => {
+export const CustomAlert = ({ message, onClose, duration = 3000 }) => {
     useEffect(() => {
         const timer = setTimeout(() => {
             onClose()

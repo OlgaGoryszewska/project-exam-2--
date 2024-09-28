@@ -1,7 +1,10 @@
 import logo from '../assets/img/logo.png'
 import DropDownMenu from './DropDownMenu'
+import { NavAvatar } from './NavAvatar'
+import PropTypes from 'prop-types'
 
-function Nav() {
+function Nav({ profile }) {
+    console.log('profile', profile)
     return (
         <>
             <header className="flex flex-row justify-between bg-deep-blue h-12">
@@ -12,7 +15,13 @@ function Nav() {
                 />
                 <DropDownMenu />
             </header>
+
+            {profile && <NavAvatar profile={profile} />}
         </>
     )
+}
+
+Nav.propTypes = {
+    profile: PropTypes.oneOfType([PropTypes.object, PropTypes.oneOf([null])]),
 }
 export default Nav
