@@ -9,7 +9,7 @@ function DropDownMenu() {
     const [showMenu, setShowMenu] = useState(false)
     const token = localStorage.getItem('token')
 
-    if (token.ok) {
+    if (token) {
         return (
             <>
                 <button onClick={() => setShowMenu(!showMenu)}>
@@ -29,24 +29,6 @@ function DropDownMenu() {
                                     to="/"
                                 >
                                     Home
-                                </Link>
-                            </li>
-                            <li className="pt-5 mx-auto">
-                                <Link
-                                    onClick={() => setShowMenu(!showMenu)}
-                                    className="link"
-                                    to="/login"
-                                >
-                                    Login
-                                </Link>
-                            </li>
-                            <li className="pt-5 mx-auto">
-                                <Link
-                                    onClick={() => setShowMenu(!showMenu)}
-                                    className="link"
-                                    to="/register"
-                                >
-                                    Register
                                 </Link>
                             </li>
                             <li className="pt-5 mx-auto">

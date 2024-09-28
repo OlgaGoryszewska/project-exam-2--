@@ -24,7 +24,7 @@ function App() {
         if (profileName && accessToken) {
             fetchProfile(profileName, accessToken)
                 .then((data) => {
-                    setProfile(data)
+                    setProfile(data ?? null)
                 })
                 .catch((error) => {
                     console.error('Error fetching profile:', error)
@@ -34,9 +34,12 @@ function App() {
         }
     }, [])
 
+    const [value1, value2] = useAuthState()
+
     return (
         <div className="flex flex-col min-h-screen">
             <Nav profile={profile} />
+
             <div className="flex-grow">
                 <Routes>
                     <Route path="/" element={<Home profile={profile} />} />
@@ -56,6 +59,20 @@ function App() {
             <Footer />
         </div>
     )
+}
+
+
+const useAuthState = () => {
+    return {
+        token: '123',
+        user: {
+            name: 'John Doe',
+            email: 'john@doe.com',
+            avatar: {
+                url: 'https://i.pravatar.cc/150?img=1',
+            },
+        },
+    }
 }
 
 export default App

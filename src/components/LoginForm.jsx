@@ -96,7 +96,7 @@ const LoginForm = () => {
                 <div className="flex my-4">
                     <p className="text-dark-gray">Do not have an account? </p>
                     <Link to="/Register">
-                        <p className='pl-2'>Register</p>
+                        <p className="pl-2">Register</p>
                     </Link>
                 </div>
             </form>

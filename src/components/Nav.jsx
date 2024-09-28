@@ -22,7 +22,7 @@ function Nav({ profile }) {
 }
 
 Nav.propTypes = {
-    profile: PropTypes.object
+    profile: PropTypes.oneOfType([PropTypes.object, PropTypes.null])
 };
 
 export default Nav
