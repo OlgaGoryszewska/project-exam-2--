@@ -186,7 +186,7 @@ const RegisterVenueForm = () => {
                             value={formVenueData.maxGuests}
                             onChange={handleInputChange}
                         />
-                        <label>Rating</label>
+                        <label>Rating/ max 5</label>
                         <input
                             className="text-field"
                             type="number"
