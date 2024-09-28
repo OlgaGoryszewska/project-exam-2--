@@ -170,7 +170,7 @@ export function AllVenuesByProfile() {
                   </button>
                 </div>
                 <div>
-                  {showUpdateForm && <UpdateVenueForm id={venue.id} />}
+                  {showUpdateForm && <UpdateVenueForm id={venue.id} venue={venue} />}
                 </div>
               </div>
             ))}
@@ -179,3 +179,4 @@ export function AllVenuesByProfile() {
     </>
   );
 }
+

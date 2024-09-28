@@ -15,6 +15,10 @@ function SearchVenue() {
     const [venues, setVenues] = useState([])
 
     useEffect(() => {
+        if (!query || query.length < 2) {
+            return
+        }
+
         findVenueByName(query)
             .then((venuesReturnedByAPI) => {
                 setVenues(venuesReturnedByAPI)
@@ -103,7 +107,7 @@ function SearchVenue() {
                         </div>
                     ))
                 ) : (
-                    <p>No results found...</p>
+                    <>{query === '' ? null : <p>No results found...</p>}</>
                 )}
             </div>
         </div>
