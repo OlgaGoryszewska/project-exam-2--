@@ -117,4 +117,6 @@ function Profile() {
 
 export default Profile
 
-Profile.propTypes = { userBookings: propTypes.array }
+Profile.propTypes = { userBookings: propTypes.array  }
+
+
