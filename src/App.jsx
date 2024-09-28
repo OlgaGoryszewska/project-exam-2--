@@ -1,10 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
-import Nav from './components/Nav'
 import Footer from './components/Footer'
 import NotFound from './components/NotFound'
-import { fetchProfile } from './services/fetchProfile'
-import { loadLocalStorage } from './storage/loadLocalStorage'
-import { useEffect, useState } from 'react'
 
 // Pages
 import Home from './pages/Home'
@@ -14,65 +10,21 @@ import Profile from './pages/Profile'
 import Venue from './pages/Venue'
 
 function App() {
-    const [profile, setProfile] = useState(null)
-
-    useEffect(() => {
-        const storedProfile = loadLocalStorage('profile')
-        const profileName = storedProfile?.name
-        const accessToken = loadLocalStorage('token')
-
-        if (profileName && accessToken) {
-            fetchProfile(profileName, accessToken)
-                .then((data) => {
-                    setProfile(data ?? null)
-                })
-                .catch((error) => {
-                    console.error('Error fetching profile:', error)
-                })
-        } else {
-            setProfile(null)
-        }
-    }, [])
-
-    const [value1, value2] = useAuthState()
-
     return (
         <div className="flex flex-col min-h-screen">
-            <Nav profile={profile} />
-
             <div className="flex-grow">
                 <Routes>
-                    <Route path="/" element={<Home profile={profile} />} />
+                    <Route path="/" element={<Home />} />
                     <Route path="/login" element={<Login />} />
-                    <Route
-                        path="/Venue/:id"
-                        element={<Venue profile={profile} />}
-                    />
+                    <Route path="/Venue/:id" element={<Venue />} />
                     <Route path="/register" element={<Register />} />
-                    <Route
-                        path="/profile"
-                        element={<Profile profile={profile} />}
-                    />
+                    <Route path="/profile" element={<Profile />} />
                     <Route path="*" element={<NotFound />} />
                 </Routes>
             </div>
             <Footer />
         </div>
     )
-}
-
-
-const useAuthState = () => {
-    return {
-        token: '123',
-        user: {
-            name: 'John Doe',
-            email: 'john@doe.com',
-            avatar: {
-                url: 'https://i.pravatar.cc/150?img=1',
-            },
-        },
-    }
 }
 
 export default App

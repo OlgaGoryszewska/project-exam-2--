@@ -2,6 +2,8 @@ import VenueCalendar from '../components/VenueCalendar'
 import VenueIntroCard from '../components/VenueIntroCard'
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
+import { useAuthState } from '../hooks/useAuthState'
+import Nav from '../components/Nav'
 
 const url = 'https://v2.api.noroff.dev/holidaze/venues'
 
@@ -9,6 +11,7 @@ function Venue() {
     const [venue, setVenue] = useState(null)
     const [bookedDates, setBookedDates] = useState([])
     const { id } = useParams()
+    const { profile } = useAuthState()
 
     useEffect(() => {
         async function fetchVenueById() {
@@ -46,10 +49,14 @@ function Venue() {
     }
 
     return (
-        <div className="flex flex-col bg-pink-silk max-w-screen-sm m-auto ">
-            <VenueIntroCard venue={venue} />
-            <VenueCalendar venueId={venue.id} bookedDates={bookedDates} />
-        </div>
+        <>
+            <Nav profile={profile} />
+
+            <div className="flex flex-col bg-pink-silk max-w-screen-sm m-auto ">
+                <VenueIntroCard venue={venue} />
+                <VenueCalendar venueId={venue.id} bookedDates={bookedDates} />
+            </div>
+        </>
     )
 }
 
