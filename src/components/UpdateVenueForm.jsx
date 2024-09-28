@@ -2,9 +2,15 @@ import PropTypes from 'prop-types'
 import { useState } from 'react'
 import { updateVenue } from '../services/updateVenue'
 import { loadLocalStorage } from '../storage/loadLocalStorage'
+import { CustomAlert } from './CustomAlert'
 
 export const UpdateVenueForm = ({ id, venue }) => {
     const [venueState, setVenueState] = useState(venue)
+    const [alertMessage, setAlertMessage] = useState({
+        message: '',
+        type: '',
+        show: false,
+    })
 
     const handleInputChange = (event) => {
         const { name, value } = event.target
@@ -54,11 +60,19 @@ export const UpdateVenueForm = ({ id, venue }) => {
 
         updateVenue(id, accessToken, venueState, newVenue)
             .then((data) => {
-                console.log('data', data)
+                setAlertMessage({
+                    message: 'Venue updated successfully',
+                    type: 'success',
+                    show: true,
+                })
+                console.log('Venue updated:', data)
             })
             .catch((error) => {
                 console.error('Error updating venue:', error)
             })
+    }
+    const handleCloseAlert = () => {
+        setAlertMessage({ ...alertMessage, show: false })
     }
 
     return (
@@ -138,6 +152,12 @@ export const UpdateVenueForm = ({ id, venue }) => {
                         Update Venue
                     </button>
                 </div>
+                {alertMessage.show && (
+                    <CustomAlert
+                        message={alertMessage.message}
+                        onClose={handleCloseAlert}
+                    />
+                )}
             </form>
         </div>
     )
