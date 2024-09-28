@@ -110,7 +110,7 @@ function Profile() {
                             {showUpdateForm && <ChangeAvatar />}
                         </div>
                         <AllBookingsByProfile />
-                        <AllVenuesByProfile id="allVenues" />
+                        <AllVenuesByProfile id="allVenues" venues />
                         <RegisterVenueForm />
                     </div>
                 ) : (
