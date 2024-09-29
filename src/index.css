@@ -50,6 +50,9 @@ a{
 .card-home-page {
     @apply flex flex-row;
 }
+.hero-card{
+    @apply mx-4;
+}
 
 .venue-icon {
     @apply text-dark-coconut pr-2;
