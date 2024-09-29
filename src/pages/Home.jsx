@@ -3,6 +3,7 @@ import SearchVenue from '../components/SearchVenue'
 import Nav from '../components/Nav'
 import { useAuthState } from '../hooks/useAuthState'
 import { HeroImg } from '../components/animated/HeroImg'
+import { HeroText } from '../components/animated/HeroText'
 
 function Home() {
     const { profile } = useAuthState()
@@ -14,9 +15,7 @@ function Home() {
                 <HeroImg />
 
                 <div className="flex flex-col max-w-4xl mx-auto ">
-                    <h1 className="text-center p-4 ">
-                        Discover the best retreats of Sri Lanka
-                    </h1>
+                    <HeroText />
                     <SearchVenue />
 
                     <h3>All Venues...</h3>
