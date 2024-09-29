@@ -9,11 +9,12 @@ export const HeroText = () => {
 
     useEffect(() => {
         gsap.to(textRef.current, {
-            duration: 3,
+            duration: 2,
             scrambleText: { text: 'Discover the best retreats of Sri Lanka' },
             chars: 'XO',
             revealDelay: 0.5,
             tweenLength: false,
+            ease: 'power3.out',
         })
     }, [])
 

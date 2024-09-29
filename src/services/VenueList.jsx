@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import Venue from '../assets/img/venuePng.png'
 import StarRating from '../components/RatingStars'
 import { Link } from 'react-router-dom'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 //Icons
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt'
@@ -27,8 +29,19 @@ function GetVenueList() {
         fetchVenueList()
     }, [])
 
+    useEffect(() => {
+        gsap.from('hero-card', {
+            scrollTrigger: {
+                trigger: '.hero-card',
+                start: 'top center',
+                end: 'bottom center',
+                scrub: 1,
+            },
+        })
+    }, [])
+
     return (
-        <div className="mx-4">
+        <div className="mx-4 hero-card">
             {venueList.length > 0 ? (
                 venueList.map((venue) => (
                     <div key={venue.id} className="venue-item">
