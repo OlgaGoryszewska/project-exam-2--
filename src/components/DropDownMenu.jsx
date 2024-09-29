@@ -1,6 +1,7 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { handleLogout } from '../handlers/logout'
+import { gsap } from 'gsap'
 
 // Icons
 import palm from '../assets/img/palm.png'
@@ -8,15 +9,43 @@ import palm from '../assets/img/palm.png'
 function DropDownMenu() {
     const [showMenu, setShowMenu] = useState(false)
     const token = localStorage.getItem('token')
+    const palmRef = useRef(null)
+
+    const handleClickAnimation = () => {
+        gsap.fromTo(
+            palmRef.current,
+            { rotation: 0, scale: 1 },
+            { rotation: 360, scale: 1.2, duration: 1, ease: 'power2.inOut' }
+        )
+        setShowMenu(!showMenu)
+    }
+    const handleHoverAnimation = () => {
+        gsap.to(palmRef.current, {
+            scale: 1.2,
+            duration: 0.3,
+            ease: 'power2.out',
+        })
+    }
+
+    const handleHoverLeaveAnimation = () => {
+        gsap.to(palmRef.current, {
+            scale: 1,
+            duration: 0.3,
+            ease: 'power2.out',
+        })
+    }
 
     if (token) {
         return (
             <>
-                <button onClick={() => setShowMenu(!showMenu)}>
+                <button onClick={handleClickAnimation}>
                     <img
                         className="relative h-8 z-40 pr-4"
                         src={palm}
                         alt="menu icon"
+                        ref={palmRef}
+                        onMouseEnter={handleHoverAnimation}
+                        onMouseLeave={handleHoverLeaveAnimation}
                     />
                 </button>
                 {showMenu && (
