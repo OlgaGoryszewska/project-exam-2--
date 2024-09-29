@@ -13,6 +13,7 @@ export const HeroText = () => {
             scrambleText: { text: 'Discover the best retreats of Sri Lanka' },
             chars: 'XO',
             ease: 'power3',
+
         })
     }, [])
 

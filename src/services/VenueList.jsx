@@ -32,10 +32,21 @@ function GetVenueList() {
     }, [])
 
     useEffect(() => {
-        gsap.from('.hero-card', {
-      
-        })
-    }, [])
+        if (venueList.length > 0) {
+            gsap.utils.toArray('.venue-item').forEach((item, index) => {
+                gsap.from(item, {
+                    scrollTrigger: {
+                        trigger: item,
+                        start: 'top 80%',
+                    },
+                    y: 50,
+                    opacity: 0,
+                    duration: 1,
+                    delay: index * 0.1,
+                })
+            })
+        }
+    }, [venueList])
 
     return (
         <div className="hero-card">
