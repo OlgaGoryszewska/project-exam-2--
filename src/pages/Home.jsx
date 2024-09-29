@@ -17,8 +17,6 @@ function Home() {
                 <div className="flex flex-col max-w-4xl mx-auto ">
                     <HeroText />
                     <SearchVenue />
-
-                    <h3>All Venues...</h3>
                     <GetVenueList />
                 </div>
             </div>
