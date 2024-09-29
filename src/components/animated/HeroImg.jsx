@@ -1,4 +1,4 @@
-import heroImg from '../assets/img/heroImg.png'
+import heroImg from '../../assets/img/heroImg.png'
 import { useEffect } from 'react'
 import { gsap } from 'gsap'
 import { useRef } from 'react'

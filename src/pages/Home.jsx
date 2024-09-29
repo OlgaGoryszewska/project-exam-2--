@@ -2,7 +2,7 @@ import GetVenueList from '../services/VenueList'
 import SearchVenue from '../components/SearchVenue'
 import Nav from '../components/Nav'
 import { useAuthState } from '../hooks/useAuthState'
-import { HeroImg } from '../components/HeroImg'
+import { HeroImg } from '../components/animated/HeroImg'
 
 function Home() {
     const { profile } = useAuthState()
