@@ -25,7 +25,7 @@ export function HeroImg() {
     return (
         <>
             <img
-                className="max-h-600  object-cover "
+                className="max-h-96  object-cover "
                 src={heroImg}
                 alt="home"
                 ref={imageRef}
