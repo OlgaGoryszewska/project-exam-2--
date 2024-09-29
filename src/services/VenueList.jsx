@@ -32,15 +32,8 @@ function GetVenueList() {
     }, [])
 
     useEffect(() => {
-        gsap.from('hero-card', {
-            scrollTrigger: {
-                trigger: '.hero-card',
-                start: 'top 80%',
-            },
-            stagger: { amount: 0.5 },
-            scale: 1,
-            duration: 1,
-            markers: true,
+        gsap.from('.hero-card', {
+      
         })
     }, [])
 
