@@ -198,7 +198,7 @@ const RegisterVenueForm = () => {
                             <div className="flex flex-row ">
                                 <BakeryDiningIcon />
                                 <p className="pl-2">
-                                    Do you provide a breakfast?
+                                    Have a breakfast?
                                 </p>
                             </div>
 
@@ -228,7 +228,7 @@ const RegisterVenueForm = () => {
                         <div className="card-home-page flex flex-row justify-between">
                             <div className="card-home-page pt-4">
                                 <WifiIcon />
-                                <p className="pl-2"> Do you provide a wi-fi?</p>
+                                <p className="pl-2"> Provide a wi-fi?</p>
                             </div>
                             <div className="mt-4">
                                 <label className="mt-0 px-2">Yes</label>
@@ -252,7 +252,7 @@ const RegisterVenueForm = () => {
                         <div className="card-home-page flex flex-row justify-between">
                             <div className="card-home-page pt-4">
                                 <PetsIcon />
-                                <p className="pl-2"> Do you accept pets??</p>
+                                <p className="pl-2"> Accept pets??</p>
                             </div>
                             <div className="mt-4">
                                 <label className="mt-0 px-2">Yes</label>
@@ -277,7 +277,7 @@ const RegisterVenueForm = () => {
                             <div className="card-home-page pt-4">
                                 <LocalParkingIcon />
                                 <p className="pl-2 pb-4">
-                                    Do you provide a parking?
+                                    Provide a parking?
                                 </p>
                             </div>
                             <div className="mt-4">

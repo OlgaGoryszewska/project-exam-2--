@@ -89,11 +89,14 @@ function DropDownMenu() {
     } else {
         return (
             <>
-                <button onClick={() => setShowMenu(!showMenu)}>
+                <button onClick={handleClickAnimation}>
                     <img
                         className="relative h-8 z-40 pr-4"
                         src={palm}
                         alt="menu icon"
+                        ref={palmRef}
+                        onMouseEnter={handleHoverAnimation}
+                        onMouseLeave={handleHoverLeaveAnimation}
                     />
                 </button>
                 {showMenu && (
