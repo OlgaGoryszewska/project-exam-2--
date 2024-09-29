@@ -60,8 +60,8 @@ const LoginForm = () => {
     useEffect(() => {
         gsap.fromTo(
             logoRef.current,
-            { x: '-100%', opacity: 0 }, // Start from off-screen left
-            { x: '0%', opacity: 1, duration: 1.5, ease: 'power3.out' } // Move to its original position with easing
+            { x: '-100%', opacity: 0 }, 
+            { x: '0%', opacity: 1, duration: 1.5, ease: 'power3.out' } 
         )
     }, [])
 

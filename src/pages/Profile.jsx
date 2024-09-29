@@ -1,5 +1,5 @@
 import { fetchProfile } from '../services/fetchProfile'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { loadLocalStorage } from '../storage/loadLocalStorage'
 import ChangeAvatar from '../components/ChangeAvatar'
 import { AllBookingsByProfile } from '../components/AllBookingsByProfile'
@@ -8,6 +8,10 @@ import propTypes from 'prop-types'
 import RegisterVenueForm from '../components/RegisterVenueForm'
 import { useAuthState } from '../hooks/useAuthState'
 import Nav from '../components/Nav'
+import { gsap } from 'gsap'
+import { ScrambleTextPlugin } from 'gsap/ScrambleTextPlugin'
+
+gsap.registerPlugin(ScrambleTextPlugin)
 
 //Icons
 
@@ -21,6 +25,8 @@ function Profile() {
     const [profile, setProfile] = useState(null)
     const [showUpdateForm, setShowUpdateForm] = useState(false)
     const { profile: profileAuth } = useAuthState()
+    const avatarRef = useRef(null)
+    const profileNameRef = useRef(null)
 
     useEffect(() => {
         const profileName = loadLocalStorage('profile').name
@@ -47,6 +53,27 @@ function Profile() {
             })
     }, [])
 
+    useEffect(() => {
+        if (profile && avatarRef.current) {
+            gsap.fromTo(
+                avatarRef.current,
+                { x: '-100%', opacity: 0 },
+                { x: '0%', opacity: 1, duration: 1.5, ease: 'power3.out' }
+            )
+        }
+    }, [profile])
+
+    useEffect(() => {
+        if (profile && profileNameRef.current) {
+            gsap.to(profileNameRef.current, {
+                duration: 3,
+                scrambleText: { text: profile.name },
+                chars: 'XO',
+                ease: 'power3',
+            })
+        }
+    }, [profile])
+
     return (
         <>
             <Nav profile={profileAuth} />
@@ -57,6 +84,7 @@ function Profile() {
                             className="rounded-full h-36 w-36 object-cover border border-white border-4 ml-4 mt-20 absolute z-10"
                             src={profile.avatar.url}
                             alt="profile img"
+                            ref={avatarRef}
                         />
                         <img
                             className="w-full h-48 object-cover pb-6 relative "
@@ -66,7 +94,7 @@ function Profile() {
 
                         <div className="card pt-8 ">
                             <div className="flex flex-row pt-4 justify-between">
-                                <h3>{profile.name}</h3>
+                                <h3 ref={profileNameRef}>{profile.name}</h3>
 
                                 <EditNoteIcon
                                     onClick={() => {
