@@ -5,8 +5,11 @@ import logoRound from '../assets/img/logoRound.png'
 import { CustomAlert } from './CustomAlert'
 import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import { useRef, useEffect } from 'react'
+import { gsap } from 'gsap'
+import { ScrambleTextPlugin } from 'gsap/ScrambleTextPlugin'
 
-//Pages
+gsap.registerPlugin(ScrambleTextPlugin)
 
 const LoginForm = () => {
     const {
@@ -42,6 +45,26 @@ const LoginForm = () => {
         navigate('/')
     }
 
+    const textRef = useRef(null)
+    const logoRef = useRef(null)
+
+    useEffect(() => {
+        gsap.to(textRef.current, {
+            duration: 3,
+            scrambleText: { text: 'Login' },
+            chars: 'XO',
+            ease: 'power3',
+        })
+    }, [])
+
+    useEffect(() => {
+        gsap.fromTo(
+            logoRef.current,
+            { x: '-100%', opacity: 0 }, // Start from off-screen left
+            { x: '0%', opacity: 1, duration: 1.5, ease: 'power3.out' } // Move to its original position with easing
+        )
+    }, [])
+
     return (
         <>
             <form
@@ -53,8 +76,11 @@ const LoginForm = () => {
                     className="w-16 h-16 mx-auto mt-14"
                     src={logoRound}
                     alt="logo"
+                    ref={logoRef}
                 />
-                <h2 className="mx-auto mt-4 mb-6">Login</h2>
+                <h2 ref={textRef} className="mx-auto mt-4 mb-6">
+                    Login
+                </h2>
 
                 <label>Email</label>
                 <input

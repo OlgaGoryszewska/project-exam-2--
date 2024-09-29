@@ -5,6 +5,11 @@ import { registerUser } from '../services/registerUser'
 import logoRound from '../assets/img/logoRound.png'
 import { CustomAlert } from './CustomAlert'
 import { Link, useNavigate } from 'react-router-dom'
+import { useRef, useEffect } from 'react'
+import { gsap } from 'gsap'
+import { ScrambleTextPlugin } from 'gsap/ScrambleTextPlugin'
+
+gsap.registerPlugin(ScrambleTextPlugin)
 
 const RegistrationForm = () => {
     const {
@@ -66,6 +71,26 @@ const RegistrationForm = () => {
         navigate('/Login')
     }
 
+    const textRef = useRef(null)
+    const logoRef = useRef(null)
+
+    useEffect(() => {
+        gsap.to(textRef.current, {
+            duration: 3,
+            scrambleText: { text: 'Register' },
+            chars: 'XO',
+            ease: 'power3',
+        })
+    }, [])
+
+    useEffect(() => {
+        gsap.fromTo(
+            logoRef.current,
+            { x: '-100%', opacity: 0 },
+            { x: '0%', opacity: 1, duration: 1.5, ease: 'power3.out' }
+        )
+    }, [])
+
     return (
         <>
             <form
@@ -77,8 +102,11 @@ const RegistrationForm = () => {
                     className="w-16 h-16 mx-auto mt-14"
                     src={logoRound}
                     alt="logo"
+                    ref={logoRef}
                 />
-                <h2 className="py-4 mx-auto">Register</h2>
+                <h2 ref={textRef} className="py-4 mx-auto">
+                    Register
+                </h2>
 
                 <label>Full Name</label>
                 <input
