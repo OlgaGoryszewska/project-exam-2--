@@ -9,12 +9,11 @@ export function HeroImg() {
     useEffect(() => {
         gsap.from(imageRef.current, {
             duration: 1,
-            scale: 1,
-            opacity: 0,
+            scale: 1.5,
+            opacity: 1,
             ease: 'back.out(1.7)',
             delay: 0.5,
             transformOrigin: 'center',
-            x: -100,
             stagger: {
                 amount: 0.5,
                 from: 'center',
@@ -25,7 +24,7 @@ export function HeroImg() {
     return (
         <>
             <img
-                className="max-h-600  object-cover "
+                className="max-h-96  object-cover "
                 src={heroImg}
                 alt="home"
                 ref={imageRef}

@@ -2,12 +2,16 @@ import { useState, useEffect } from 'react'
 import Venue from '../assets/img/venuePng.png'
 import StarRating from '../components/RatingStars'
 import { Link } from 'react-router-dom'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 //Icons
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt'
 import WifiIcon from '@mui/icons-material/Wifi'
 import BakeryDiningIcon from '@mui/icons-material/BakeryDining'
 import PlaceOutlinedIcon from '@mui/icons-material/PlaceOutlined'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const url = 'https://v2.api.noroff.dev/holidaze/venues'
 
@@ -27,8 +31,21 @@ function GetVenueList() {
         fetchVenueList()
     }, [])
 
+    useEffect(() => {
+        gsap.from('hero-card', {
+            scrollTrigger: {
+                trigger: '.hero-card',
+                start: 'top 80%',
+            },
+            stagger: { amount: 0.5 },
+            scale: 1,
+            duration: 1,
+            markers: true,
+        })
+    }, [])
+
     return (
-        <div className="mx-4">
+        <div className="hero-card">
             {venueList.length > 0 ? (
                 venueList.map((venue) => (
                     <div key={venue.id} className="venue-item">
@@ -39,7 +56,7 @@ function GetVenueList() {
                                     key={index}
                                     src={mediaItem.url}
                                     alt={mediaItem.alt || 'Venue Image'}
-                                    className="venue-image"
+                                    className="venue-image "
                                 />
                             ))
                         ) : (

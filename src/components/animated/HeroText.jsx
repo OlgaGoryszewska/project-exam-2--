@@ -12,8 +12,7 @@ export const HeroText = () => {
             duration: 3,
             scrambleText: { text: 'Discover the best retreats of Sri Lanka' },
             chars: 'XO',
-            revealDelay: 0.5,
-            tweenLength: false,
+            ease: 'power3',
         })
     }, [])
 
